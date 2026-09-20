@@ -10,12 +10,13 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#D81B6A">
 <link rel="icon" type="image/jpeg" href="https://i.ibb.co/jkCF4Xhv/logo-set.jpg">
-<title>Doces da Analu | Brigadeiros Gourmet em João Pessoa e Cabedelo</title>
+<title>Doces da Analu | Brigadeiros personalizados em João Pessoa e Cabedelo</title>
 <link rel="preconnect" href="https://images.weserv.nl" crossorigin>
 <link rel="dns-prefetch" href="https://images.weserv.nl">
 <link rel="preconnect" href="https://i.ibb.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&amp;w=800&amp;q=68&amp;output=webp">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -114,7 +115,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .numeros strong { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--pink-text); }
 .numeros span { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .07em; }
 
-/* ===== Vídeo dentro da TV ===== */
+
 .video-wrap { display: flex; justify-content: center; }
 .tv { position: relative; width: 100%; max-width: 280px; padding: 0 6px; }
 .tv-body {
@@ -129,7 +130,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
     inset 0 0 0 2px rgba(255,255,255,.28),
     inset 0 -6px 0 rgba(168,20,79,.22);
 }
-/* botões laterais (volume à esquerda, power à direita) */
 .tv-body::before, .tv-body::after {
   content: ''; position: absolute; width: 5px; border-radius: 3px;
   background: linear-gradient(180deg, #FF74AC, #C81F63);
@@ -547,7 +547,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .pd-progress { scroll-margin-top: 16px; }
 
 
-/* ===== Celular interativo ===== */
 .tv-panel button {
   background: none; border: none; cursor: pointer; padding: 4px;
   -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
@@ -622,7 +621,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   .ph-app-view, .ph-home { transition: none; }
 }
 
-/* ===== App Galeria dentro do celular ===== */
 .ph-gal { background: #fff; color: #1c1c1e; overflow: hidden; }
 .ph-gal-bar { flex-shrink: 0; padding: 27px 14px 8px; display: flex; align-items: baseline; justify-content: space-between; }
 .ph-gal-title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
@@ -683,8 +681,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .ph-gal-arrow.prev { left: 6px; } .ph-gal-arrow.next { right: 6px; }
 .ph-gal-close { top: 26px; right: 10px; }
 
-
-/* ===== Músicas ===== */
 .mp-row { display: flex; align-items: center; gap: 8px; }
 .mp-cover { width: 38px; height: 38px; border-radius: 7px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; background: linear-gradient(135deg,#FF74AC,#D81B6A); }
 .mp-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
@@ -727,7 +723,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 }
 .mini-player.on { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
 
-/* ===== Cardápio ===== */
 .mn-head { text-align: center; max-width: 520px; margin: 0 auto 32px; }
 .mn-head h2 { font-size: clamp(28px, 4.6vw, 40px); font-style: italic; }
 .mn-lead { font-size: 15.5px; line-height: 1.72; color: var(--ink-mid); margin-top: 12px; }
@@ -779,7 +774,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .mn-hint { font-size: 12.5px; font-weight: 600; color: var(--ink-mid); }
 .mn-hint i { color: var(--pink); margin-right: 6px; }
 
-/* ===== Foto do sabor (mira tech) ===== */
 .sf-overlay {
   position: fixed; inset: 0; z-index: 400;
   background: rgba(15,4,10,.84);
@@ -898,7 +892,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .sf-desc { font-size: 14px; line-height: 1.7; color: var(--ink-mid); margin-bottom: 22px; }
 .sf-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
 
-/* ===== Desempenho ===== */
 .pd-flavor.selected { transform: none; box-shadow: none; }
 @media (max-width: 899px) {
   .reveal { transform: none; transition: opacity .35s ease; transition-delay: 0s !important; }
@@ -908,20 +901,12 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   .tema:hover .tema-img-wrap img { transform: none; }
 }
 
-/* ===== Sem flash azul ao tocar ===== */
 * { -webkit-tap-highlight-color: transparent; }
 img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; }
 .sf-overlay, .sf-card, .sf-photo, .sf-photo img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .sf-photo img { pointer-events: none; }
 .tema, .pd-combo-option, .pd-flavor, .ph-app, button { -webkit-touch-callout: none; }
 
-/* ===== Escolha de sabores (bandeja + remover) ===== */
-.pd-flavors{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-@media (min-width:520px){.pd-flavors{grid-template-columns:repeat(3,1fr)}}
-.pd-flavor{display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:14px;font-size:13px;line-height:1.2}
-.pd-flavor::before{content:'';width:20px;height:20px;border-radius:50%;flex-shrink:0;border:1.5px solid var(--pink-soft);background:#fff;transition:all .18s}
-.pd-flavor.selected{background:var(--pink-pale);border-color:var(--pink);color:var(--pink-dark);transform:none;box-shadow:0 4px 14px rgba(216,27,106,.16)}
-.pd-flavor.selected::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;font-size:10px;color:#fff;background:var(--pink);border-color:var(--pink);display:flex;align-items:center;justify-content:center}
 .pd-picked{display:none;background:var(--pink-pale);border:1px solid var(--pink-soft);border-radius:14px;padding:12px 14px;margin-bottom:16px}
 .pd-picked.on{display:block}
 .pd-picked-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pink-text)}
@@ -932,13 +917,8 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .pd-chip:hover i{background:rgba(255,255,255,.45)}
 .pd-picked-hint{font-size:11.5px;color:var(--ink-soft);margin-top:9px}
 
-/* ===== Título da galeria ===== */
 .galeria-titulo{text-align:center;margin-bottom:34px}
 
-/* ===== Laser / mira tecnológica ===== */
-.sf-photo::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;z-index:1;opacity:0;transition:opacity .6s ease .1s;
-  background:linear-gradient(rgba(108,243,255,.08) 1px,transparent 1px) 0 0/100% 22px,linear-gradient(90deg,rgba(108,243,255,.08) 1px,transparent 1px) 0 0/22px 100%,radial-gradient(ellipse at center,transparent 55%,rgba(6,20,30,.4) 100%)}
-.sf-overlay.open .sf-photo::after{opacity:1}
 .sf-sweep{height:3px;top:-6%;z-index:3;
   background:linear-gradient(90deg,transparent,#6CF3FF 20%,#fff 50%,#6CF3FF 80%,transparent);
   box-shadow:0 0 12px 3px rgba(108,243,255,.75),0 0 34px 10px rgba(108,243,255,.35);
@@ -952,7 +932,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .sf-reticle::before{left:50%;top:4px;bottom:4px;width:1px}
 .sf-reticle::after{top:50%;left:4px;right:4px;height:1px}
 .sf-corner{width:18px;height:18px;border-width:3px;border-color:#6CF3FF;filter:drop-shadow(0 0 5px rgba(108,243,255,.9))}
-.sf-pulse{background:#6CF3FF;z-index:1}
+.sf-pulse{background:#6CF3FF;z-index:1;animation:sfPing 1.4s ease-out .9s 1 both}
 @keyframes sfPing{0%{box-shadow:0 0 0 0 rgba(108,243,255,.6)}70%{box-shadow:0 0 0 22px rgba(108,243,255,0)}100%{box-shadow:0 0 0 0 rgba(108,243,255,0)}}
 .sf-line{background:repeating-linear-gradient(180deg,#6CF3FF 0 4px,transparent 4px 8px)}
 .sf-tag{background:rgba(6,22,32,.92);color:#6CF3FF;border:1px solid rgba(108,243,255,.55);border-radius:6px;padding:6px 10px;
@@ -960,6 +940,185 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   box-shadow:0 0 16px rgba(108,243,255,.35)}
 .sf-tag i{color:#6CF3FF}
 @media (prefers-reduced-motion:reduce){.sf-sweep,.sf-pulse{animation:none}}
+
+
+.pd-combos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pd-combos .pd-combo-option{flex-direction:column;align-items:flex-start;gap:0;padding:18px 16px 15px;border-radius:18px;min-height:150px;border:1.5px solid var(--line);background:#fff}
+.pd-combos .pd-combo-option:hover{border-color:var(--pink-mid)}
+.pd-combos .pd-combo-option.selected{border-color:var(--pink);background:var(--pink-pale);box-shadow:0 0 0 3px rgba(216,27,106,.12)}
+.pd-combos .pd-combo-option.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:14px;min-height:0;padding:14px 16px;border-style:dashed}
+.pc-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:40px;line-height:1;color:var(--pink);display:flex;align-items:baseline;gap:6px}
+.pc-num small{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.pc-name,.pc-desc{display:block}
+.pc-name{margin-top:12px;font-weight:700;font-size:14.5px;color:var(--ink)}
+.pc-desc{font-size:12px;color:var(--ink-mid);margin-top:3px;line-height:1.4}
+.pc-max{margin-top:auto;padding-top:12px;font-size:11px;font-weight:700;color:var(--pink-text);display:flex;align-items:center;gap:6px}
+.pc-max::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink-mid)}
+.pc-flag{position:absolute;top:12px;right:12px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--pink);padding:3px 9px;border-radius:999px}
+.pd-combos .wide .pc-name{margin-top:0}
+.pd-combos .pd-combo-option.selected .pc-num{color:var(--pink-dark)}
+
+.pd-flavors{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:520px){.pd-flavors{grid-template-columns:repeat(3,1fr)}}
+.pd-flavor{display:flex;align-items:center;gap:11px;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--ink);line-height:1.2;box-shadow:0 1px 3px rgba(168,20,79,.05)}
+.pd-flavor:not(.blocked):not(.selected):hover{border-color:var(--pink-mid);background:#fff;color:var(--ink)}
+.pd-flavor.selected{border-color:var(--pink);background:var(--pink-pale);color:var(--pink-dark);transform:none;box-shadow:0 0 0 3px rgba(216,27,106,.12)}
+.pd-flavor.blocked:not(.selected){opacity:.4}
+.pd-flavor>span{flex:1;min-width:0}
+.pd-tick{display:none;width:20px;height:20px;border-radius:50%;background:var(--pink);color:#fff;align-items:center;justify-content:center;font-size:9.5px;font-style:normal;flex-shrink:0}
+.pd-flavor.selected .pd-tick{display:flex}
+
+
+#galeria.s-alt{background:rgba(255,246,250,.2);border-top-color:transparent;border-bottom-color:transparent}
+
+.mn-head { max-width: 620px; }
+.mn-head .eyebrow { margin-bottom: 14px; }
+.mn-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(27px, 4.4vw, 43px);
+  line-height: 1.22;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  font-style: normal;
+  text-wrap: balance;
+}
+.mn-title em {
+  font-style: italic;
+  color: var(--pink-dark);
+  position: relative;
+  white-space: nowrap;
+}
+.mn-title em::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: .06em;
+  height: .28em; z-index: -1;
+  background: linear-gradient(90deg, rgba(249,208,228,.85), rgba(253,232,242,.5));
+  border-radius: 3px;
+}
+.mn-orn {
+  display: block; width: 92px; height: 9px; margin: 20px auto 0;
+  background:
+    linear-gradient(90deg, transparent, var(--pink-soft) 22%, var(--pink-soft) 78%, transparent) center/100% 1px no-repeat;
+  position: relative;
+}
+.mn-orn::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+  background: var(--pink-mid); transform: rotate(45deg);
+  border-radius: 1px;
+  box-shadow: 0 0 0 4px var(--white);
+}
+.mn-lead { margin-top: 16px; font-size: 15px; }
+
+
+.mn-inner { padding: 26px 18px 24px; }
+.mn-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 9px; column-gap: 9px;
+}
+.mn-item {
+  gap: 13px; padding: 9px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(168,20,79,.04);
+  transition: border-color .18s ease, box-shadow .2s ease, transform .18s ease;
+}
+.mn-item:hover {
+  background: #fff;
+  border-color: var(--pink-soft);
+  box-shadow: 0 10px 22px rgba(216,27,106,.10);
+  transform: translateY(-2px);
+}
+.mn-item:active { background: #fff; transform: translateY(0); }
+.mn-thumb { width: 60px; height: 60px; border-radius: 13px; }
+.mn-nome { font-size: 19px; letter-spacing: -.005em; }
+.mn-resumo { font-size: 12px; color: var(--ink-soft); }
+.mn-go {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pink-pale); color: var(--pink);
+  font-size: 10.5px; margin-right: 2px;
+  transition: background .18s ease, color .18s ease;
+}
+.mn-item:hover .mn-go { background: var(--pink); color: #fff; }
+.mn-foot { margin-top: 24px; }
+@media (hover: none) {
+  .mn-item:hover { transform: none; box-shadow: 0 1px 2px rgba(168,20,79,.04); }
+}
+
+.pd-combos {
+  display: flex; flex-direction: column; gap: 0;
+  border-top: 1px solid var(--line);
+}
+.pd-combos .pd-combo-option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 14px;
+  min-height: 0; padding: 15px 4px;
+  border: none; border-bottom: 1px solid var(--line);
+  border-radius: 0; background: transparent; box-shadow: none;
+  flex-direction: row; transition: background .16s ease;
+}
+.pd-combos .pd-combo-option.wide {
+  border-style: none; border-bottom: none; padding-top: 16px;
+}
+.pd-combos .pd-combo-option:hover {
+  background: rgba(216,27,106,.035);
+  border-color: var(--line); box-shadow: none; transform: none;
+}
+.pd-combos .pd-combo-option.selected {
+  background: rgba(216,27,106,.06);
+  border-color: var(--line); box-shadow: none;
+}
+
+.pc-radio {
+  width: 19px; height: 19px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid var(--pink-soft); background: #fff;
+  position: relative; transition: border-color .16s ease;
+}
+.pd-combo-option:hover .pc-radio { border-color: var(--pink-mid); }
+.pd-combo-option.selected .pc-radio { border-color: var(--pink); }
+.pd-combo-option.selected .pc-radio::after {
+  content: ''; position: absolute; top: 3.5px; right: 3.5px; bottom: 3.5px; left: 3.5px;
+  border-radius: 50%; background: var(--pink);
+}
+
+.pc-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pc-name {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px;
+  margin-top: 0; font-weight: 700; font-size: 14.5px; color: var(--ink);
+  letter-spacing: -.005em;
+}
+.pc-name small {
+  font-weight: 600; font-size: 12px; color: var(--ink-soft);
+  letter-spacing: 0; text-transform: none;
+}
+.pc-desc { font-size: 12px; color: var(--ink-soft); margin-top: 0; line-height: 1.45; }
+.pc-flag {
+  font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--pink-dark); background: var(--pink-pale);
+  border: 1px solid var(--pink-soft);
+  padding: 2px 7px; border-radius: 4px;
+  position: static;
+}
+.pc-max {
+  margin-top: 0; padding-top: 0; flex-shrink: 0;
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  color: var(--ink-soft); text-align: right; white-space: nowrap;
+}
+.pc-max::before { display: none; }
+.pd-combo-option.selected .pc-max { color: var(--pink-dark); font-weight: 700; }
+
+@media (max-width: 420px) {
+  .pd-combos .pd-combo-option { grid-template-columns: auto 1fr; gap: 12px; }
+  .pc-max { grid-column: 2; text-align: left; margin-top: 4px; }
+}
+.pc-radio {
+    display: none !important;
+}
 </style>
 </head>
 <body>
@@ -969,7 +1128,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     src="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&w=800&q=68&output=webp"
     onerror="this.onerror=null;this.src='https://i.ibb.co/8DYjbzhQ/brig.png';"
     alt=""
-    fetchpriority="low"
+    fetchpriority="high"
     decoding="async">
 </div>
 
@@ -980,7 +1139,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     <div>
       <p class="eyebrow">Doces da Analu</p>
       <h1>Brigadeiros gourmet para tornar sua festa inesquecível</h1>
-      <p class="hero-sub"></p>
+      <p class="hero-sub">Brigadeiros artesanais feitos um a um, com carinho e capricho para deixar sua festa ainda mais doce.</p>
       <div class="ctas">
         <a class="btn btn-pink" href="#pedido">Fazer pedido</a>
         <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
@@ -997,7 +1156,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
           <div class="tv-screen" id="phone">
             <span class="tv-notch"></span>
 
-            <!-- Tela inicial -->
+            
             <div class="ph-home" id="ph-home">
               <div class="ph-status">
                 <span id="ph-time">20:45</span>
@@ -1024,7 +1183,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               </div>
             </div>
 
-            <!-- App Galeria (abre dentro do celular) -->
+        
             <div class="ph-app-view ph-gal" id="ph-gal-view" aria-hidden="true" style="transform-origin:17% 52%">
               <div class="ph-gal-bar"><span class="ph-gal-title">Galeria</span><span class="ph-gal-count" id="gal-count"></span></div>
               <div class="ph-gal-grid" id="gal-grid"></div>
@@ -1039,7 +1198,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               </div>
             </div>
 
-            <!-- App Músicas (abre dentro do celular) -->
+            
             <div class="ph-app-view ph-mus" id="ph-mus-view" aria-hidden="true" style="transform-origin:83% 52%">
               <div class="ph-mus-head">Músicas</div>
               <div class="ph-mus-banner"><i class="fas fa-headphones"></i><span>Ouça música enquanto vê nosso cardápio</span></div>
@@ -1056,7 +1215,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               </div>
             </div>
 
-            <!-- App do YouTube (abre dentro do celular) -->
+            
             <div class="ph-app-view" id="ph-yt-view" aria-hidden="true">
               <div class="ph-app-bar"><i class="fa-brands fa-youtube"></i><span>Doces da Analu</span></div>
               <iframe id="yt-frame" title="Vídeo Doces da Analu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1079,9 +1238,11 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 
     <div class="mn-head reveal">
       <p class="eyebrow">Cardápio</p>
-      <h2>Nossos sabores</h2>
-      <p class="mn-lead">São 11 sabores feitos à mão, para você escolher o seu favorito.</p>
+      <h2 class="mn-title">Doces personalizados para combinar com a <em>sua festa</em>, do jeitinho que você imaginou.</h2>
+      <span class="mn-orn" aria-hidden="true"></span>
+      <p class="mn-lead"></p>
     </div>
+
 
     <div class="mn-card reveal">
       <div class="mn-inner">
@@ -1131,58 +1292,57 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 
     <div class="pd-step-card active" id="step-1">
       <div class="pd-card-label">Passo 1 de 3</div>
-      <div class="pd-card-title">Qual combo você quer?</div>
+      <div class="pd-card-title">Escolha a quantidade</div>
 
       <div class="pd-combos" id="combo-list">
         <label class="pd-combo-option" data-value="Caixinha (4 brigadeiros)" data-max="4" data-desc="4 brigadeiros">
           <input type="radio" name="combo" value="Caixinha (4 brigadeiros)">
-          <div class="pd-combo-icon"><i class="fas fa-gift"></i></div>
-          <div class="pd-combo-info">
-            <div class="pd-combo-name">Caixinha</div>
-            <div class="pd-combo-desc">Ideal para presentear</div>
-          </div>
-          <span class="pd-combo-badge">4 unid.</span>
-          <span class="pd-combo-check"><i class="fas fa-check"></i></span>
+
+          <span class="pc-txt">
+            <span class="pc-name">Caixinha <small>4 unidades</small></span>
+            <span class="pc-desc">Ideal para presentear</span>
+          </span>
+          <span class="pc-max">até 4 sabores</span>
         </label>
+
         <label class="pd-combo-option" data-value="25 brigadeiros" data-max="2" data-desc="25 brigadeiros">
           <input type="radio" name="combo" value="25 brigadeiros">
-          <div class="pd-combo-icon"><i class="fas fa-champagne-glasses"></i></div>
-          <div class="pd-combo-info">
-            <div class="pd-combo-name">Mini festa</div>
-            <div class="pd-combo-desc">Perfeito para reuniões íntimas</div>
-          </div>
-          <span class="pd-combo-badge">25 unid.</span>
-          <span class="pd-combo-check"><i class="fas fa-check"></i></span>
+          <span class="pc-radio"></span>
+          <span class="pc-txt">
+            <span class="pc-name">Mini festa <small>25 unidades</small></span>
+            <span class="pc-desc">Para reuniões em casa</span>
+          </span>
+          <span class="pc-max">até 2 sabores</span>
         </label>
+
         <label class="pd-combo-option" data-value="Meio cento — 50 brigadeiros" data-max="2" data-desc="50 brigadeiros">
           <input type="radio" name="combo" value="Meio cento — 50 brigadeiros">
-          <div class="pd-combo-icon"><i class="fas fa-cake-candles"></i></div>
-          <div class="pd-combo-info">
-            <div class="pd-combo-name">Meio cento</div>
-            <div class="pd-combo-desc">Para festas e eventos</div>
-          </div>
-          <span class="pd-combo-badge">50 unid.</span>
-          <span class="pd-combo-check"><i class="fas fa-check"></i></span>
+          <span class="pc-radio"></span>
+          <span class="pc-txt">
+            <span class="pc-name">Meio cento <small>50 unidades</small></span>
+            <span class="pc-desc">Aniversários e confraternizações</span>
+          </span>
+          <span class="pc-max">até 2 sabores</span>
         </label>
+
         <label class="pd-combo-option popular" data-value="Cento completo — 100 brigadeiros" data-max="4" data-desc="100 brigadeiros">
           <input type="radio" name="combo" value="Cento completo — 100 brigadeiros">
-          <div class="pd-combo-icon"><i class="fas fa-crown"></i></div>
-          <div class="pd-combo-info">
-            <div class="pd-combo-name">Cento completo <span class="pd-combo-tag">Mais pedido</span></div>
-            <div class="pd-combo-desc">Para grandes celebrações</div>
-          </div>
-          <span class="pd-combo-badge">100 unid.</span>
-          <span class="pd-combo-check"><i class="fas fa-check"></i></span>
+          <span class="pc-radio"></span>
+          <span class="pc-txt">
+            <span class="pc-name">Cento completo <small>100 unidades</small><b class="pc-flag">mais pedido</b></span>
+            <span class="pc-desc">Festas e eventos maiores</span>
+          </span>
+          <span class="pc-max">até 4 sabores</span>
         </label>
-        <label class="pd-combo-option" data-value="orcamento" data-max="0" data-desc="Personalizado">
+
+        <label class="pd-combo-option wide" data-value="orcamento" data-max="0" data-desc="Personalizado">
           <input type="radio" name="combo" value="orcamento">
-          <div class="pd-combo-icon"><i class="fas fa-comment-dots"></i></div>
-          <div class="pd-combo-info">
-            <div class="pd-combo-name">Orçamento personalizado</div>
-            <div class="pd-combo-desc">Quantidade e sabores à sua escolha</div>
-          </div>
-          <span class="pd-combo-badge">Custom</span>
-          <span class="pd-combo-check"><i class="fas fa-check"></i></span>
+          <span class="pc-radio"></span>
+          <span class="pc-txt">
+            <span class="pc-name">Outra quantidade</span>
+            <span class="pc-desc">Fale direto com a Analu e monte do seu jeito</span>
+          </span>
+          <span class="pc-max">sob medida</span>
         </label>
       </div>
 
@@ -1206,17 +1366,17 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
         <p class="pd-picked-hint">Toque no × para remover ou trocar um sabor</p>
       </div>
       <div class="pd-flavors" id="flavor-list">
-        <label class="pd-flavor"><input type="checkbox" value="Brigadeiro Branco"><span>Branco</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Brigadeiro ao Leite"><span>Ao leite</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Meio Amargo"><span>Meio amargo</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Ninho"><span>Ninho</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Ninho Colorido"><span>Ninho colorido</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Surpresa de Uva"><span>Surpresa de uva</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Casadinho"><span>Casadinho</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Beijinho"><span>Beijinho</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Amendoim"><span>Amendoim</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Prestígio"><span>Prestígio</span></label>
-        <label class="pd-flavor"><input type="checkbox" value="Confete"><span>Confete</span></label>
+        <label class="pd-flavor"><input type="checkbox" value="Brigadeiro Branco"><span>Branco</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Brigadeiro ao Leite"><span>Ao leite</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Meio Amargo"><span>Meio amargo</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Ninho"><span>Ninho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Ninho Colorido"><span>Ninho colorido</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Surpresa de Uva"><span>Surpresa de uva</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Casadinho"><span>Casadinho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Beijinho"><span>Beijinho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Amendoim"><span>Amendoim</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Prestígio"><span>Prestígio</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Confete"><span>Confete</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
       </div>
       <div class="pd-nav">
         <button class="pd-btn-back" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
@@ -1260,7 +1420,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     <div class="galeria-frame" id="galeria-frame" style="cursor:pointer;">
       <div class="slider">
         <div class="slides" id="slides">
-          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=700&q=78&output=webp" alt="Trabalho recente" loading="lazy" decoding="async"></div>
+          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=700&q=80&output=webp" alt="Trabalho recente" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1415,7 +1575,6 @@ var FOTOS = [
 ];
 
 
-/* ===== Cardápio + foto do sabor ===== */
 try {
   (function(){
     var FOTOS_SAB = {
@@ -1428,10 +1587,14 @@ try {
       ninho: "https://i.ibb.co/DDvFv3NX/cd844cb3-8dfb-41bb-aa4a-26ca91e2a87e.jpg",
       beijinho: "https://i.ibb.co/PGj6yTGj/7c7648fc-ff9d-4645-9711-e0dc7a2364f5.jpg"
     };
-    /* Mesma URL nas miniaturas do cardápio e na foto ampliada:
-       a imagem baixa uma vez só e a foto abre na hora. */
+    
+    
     function leve(u){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=640&q=72&output=webp";
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=200&q=75&output=webp";
+    }
+    
+    function nitida(u){
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=1200&we&q=90&output=webp";
     }
     var SPOTLIGHT = {
       branco: {
@@ -1564,6 +1727,13 @@ try {
       reticle.style.height = height + "px";
       var alturaPx = Math.max(18, Math.round(top * 0.32));
       line.style.setProperty("--sf-line-h", alturaPx + "px");
+      /* mantém o nome dentro da foto */
+      var tg = document.getElementById("sf-tag");
+      tg.style.marginLeft = "0px";
+      var meio = tg.offsetWidth / 2, cx = left + width / 2, dx = 0;
+      if(cx - meio < 6) dx = 6 - (cx - meio);
+      else if(cx + meio > cw - 6) dx = (cw - 6) - (cx + meio);
+      tg.style.marginLeft = dx + "px";
     }
     img.addEventListener("load", function(){
       carregada = true;
@@ -1581,7 +1751,7 @@ try {
         carregada = false;
         photoBox.classList.add("loading");
         reticle.style.visibility = "hidden";
-        img.src = leve(FOTOS_SAB[s.foto]);
+        img.src = nitida(FOTOS_SAB[s.foto]);
       }
       eyebrowText.textContent = s.box ? "É esse aqui, olha a seta" : "Olha só que delícia";
       img.alt = s.titulo;
@@ -1590,9 +1760,14 @@ try {
       tagText.textContent = s.tag;
 
       reticle.classList.remove("go");
+      /* feixe só nos sabores com mira; roda uma vez */
+      sweep.style.display = s.box ? "" : "none";
       sweep.style.animation = "none";
+      var pulso = reticle.querySelector(".sf-pulse");
+      if(pulso) pulso.style.animation = "none";
       void sweep.offsetWidth;
       sweep.style.animation = "";
+      if(pulso) pulso.style.animation = "";
 
       overlay.classList.add("open");
       overlay.setAttribute("aria-hidden", "false");
@@ -1624,7 +1799,7 @@ try {
       if(alvo){ alvo.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
 
-    /* ===== Cardápio ===== */
+    
     var MENU = [
       { key: "branco",        nome: "Brigadeiro branco",   resumo: "Cremoso, com granulado branco" },
       { key: "aoleite",       nome: "Brigadeiro ao leite", resumo: "Com raspas de chocolate" },
@@ -1642,7 +1817,7 @@ try {
     var cdList = document.getElementById("cd-list");
     var montado = false;
 
-    /* Enquadra a miniatura no brigadeiro do sabor (quando a posição dele é conhecida) */
+    
     function ajustarThumb(im, sp){
       var b = sp.box, iw = im.naturalWidth, ih = im.naturalHeight;
       if(!b || !iw || !ih) return;
@@ -1712,7 +1887,7 @@ try {
       });
     }
 
-    /* Monta já no carregamento (a lista é leve; as fotos baixam perto da seção) */
+    
     montarCardapio();
   })();
 } catch(e){}
@@ -1758,7 +1933,7 @@ document.querySelectorAll(".pd-combo-option").forEach(function(opt){
     }
     atualizarSabores();
 
-    // vai direto para os sabores (orçamento continua pelo botão)
+    
     clearTimeout(comboTimer);
     if(selectedCombo !== "orcamento"){
       comboTimer = setTimeout(function(){
@@ -1793,7 +1968,7 @@ function renderPicked(){
   list.innerHTML = "";
   if(!sel.length){ box.classList.remove("on"); return; }
   box.classList.add("on");
-  document.getElementById("pd-picked-count").textContent = selectedMax > 0 ? (sel.length + " de " + selectedMax + " escolhidos") : (sel.length + " escolhido(s)");
+  document.getElementById("pd-picked-count").textContent = "Seus sabores";
   Array.prototype.forEach.call(sel, function(cb){
     var chip = document.createElement("button");
     chip.type = "button";
@@ -1940,7 +2115,7 @@ try {
     var closeTimer, fotos = [], atual = 0, galMontada = false;
 
     function prox(u, w, h){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=" + w + (h ? "&h=" + h + "&fit=cover" : "") + "&q=72&output=webp";
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=" + w + (h ? "&h=" + h + "&fit=cover" : "") + "&q=75&output=webp";
     }
 
     function abrir(view){
@@ -1966,13 +2141,13 @@ try {
       fecharApp();
     }
 
-    /* ---- YouTube ---- */
+
     document.getElementById("app-youtube").addEventListener("click", function(){
       frame.src = YT;
       abrir(ytView);
     });
 
-    /* ---- Galeria ---- */
+
     function coletarFotos(){ return FOTOS.slice(); }
     var mostradas = 0;
     var gGrid = document.getElementById("gal-grid");
@@ -1982,13 +2157,13 @@ try {
     function mostrar(n){
       atual = (n + mostradas) % mostradas;
       var f = fotos[atual];
-      viewerImg.src = prox(f.src, 700);
+      viewerImg.src = prox(f.src, 1000);
       viewerImg.alt = f.nome || "Foto " + (atual + 1);
       viewerCap.textContent = (f.nome ? f.nome + " · " : "") + (atual + 1) + " de " + mostradas;
-      /* já baixa a foto anterior e a próxima para o passar ficar instantâneo */
+    
       [atual + 1, atual - 1].forEach(function(j){
         var g = fotos[(j + mostradas) % mostradas];
-        if(g){ var pre = new Image(); pre.src = prox(g.src, 700); }
+        if(g){ var pre = new Image(); pre.src = prox(g.src, 1000); }
       });
     }
     var POR_PAGINA = 4;
@@ -2022,7 +2197,7 @@ try {
         im.alt = "";
         var tentou = false;
         im.addEventListener("error", function(){ if(!tentou){ tentou = true; im.src = f.src; } });
-        im.src = prox(f.src, 300, 380);
+        im.src = prox(f.src, 200, 250);
         b.appendChild(im);
         b.addEventListener("click", function(){
           mostrar(i);
@@ -2052,11 +2227,12 @@ try {
       if(Math.abs(d) > 40){ mostrar(atual + (d > 0 ? 1 : -1)); }
     }, { passive: true });
 
-    /* ---- Botões de baixo ---- */
+    
     document.getElementById("nav-back").addEventListener("click", voltar);
     document.getElementById("nav-home").addEventListener("click", fecharApp);
+    document.getElementById("nav-recents").addEventListener("click", fecharApp);
 
-    /* ---- Relógio ---- */
+    
     function relogio(){
       var d = new Date();
       var hm = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -2070,87 +2246,9 @@ try {
 } catch(e){}
 
 try {
-  var TEMAS = [
-    { nome: "15 Anos",  fotos: ["https://i.ibb.co/7NG24jy8/IMG-20260816-WA0062.jpg"] },
-    { nome: "Infantil", fotos: ["https://i.ibb.co/vxR2ht7c/IMG-20260816-WA0061.jpg"] },
-    { nome: "Flores",   fotos: ["https://i.ibb.co/93bkSkWW/IMG-20260816-WA0059.jpg"] },
-    { nome: "Crisma",   fotos: ["https://i.ibb.co/ZzGXP5ZM/IMG-20260816-WA0060.jpg"] }
-  ];
-
-  window.pedirOrcamentoTema = function(nomeTema){
-    var msg = "Olá, Analu! Vi o tema \"" + nomeTema + "\" no site e gostaria de solicitar um orçamento.";
-    window.open("https://api.whatsapp.com/send?phone=558396905025&text=" + encodeURIComponent(msg), "_blank");
-  };
-
-  (function(){
-    var g = document.getElementById("temas-grid");
-    TEMAS.forEach(function(t, idx){
-      var c = document.createElement("div");
-      c.className = "tema";
-      var wrap = document.createElement("div");
-      wrap.className = "tema-img-wrap";
-      var img = document.createElement("img");
-      var original = t.fotos[0], tentouOriginal = false;
-      img.src = "https://images.weserv.nl/?url=" + original.replace(/^https?:\/\//, "") + "&w=400&q=75&output=webp";
-      img.alt = t.nome;
-      img.loading = "lazy";
-      img.decoding = "async";
-      img.addEventListener("error", function(){
-        if(!tentouOriginal){ tentouOriginal = true; img.src = original; return; }
-        wrap.classList.add("no-photo");
-        wrap.innerHTML = '<i class="fas fa-image"></i>';
-      });
-      wrap.appendChild(img);
-      var nome = document.createElement("div");
-      nome.className = "tema-nome";
-      nome.textContent = t.nome;
-      c.appendChild(wrap);
-      c.appendChild(nome);
-      c.addEventListener("click", function(){ pedirOrcamentoTema(t.nome); });
-      g.appendChild(c);
-    });
-
-  })();
-} catch(e){}
-
-try {
-  (function(){
-    var slides = document.getElementById("slides");
-    var dotsEl = document.getElementById("galeria-dots");
-    var items = slides.querySelectorAll(".slide");
-    var total = items.length, cur = 0, timer;
-    if(total <= 1){ return; }
-    function ir(n){
-      cur = (n + total) % total;
-      slides.style.transform = "translateX(-" + (cur * 100) + "%)";
-      dotsEl.querySelectorAll(".dot").forEach(function(d, i){ d.className = "dot" + (i === cur ? " on" : ""); });
-    }
-    items.forEach(function(_, i){
-      var d = document.createElement("div");
-      d.className = "dot" + (i === 0 ? " on" : "");
-      d.addEventListener("click", function(){ ir(i); reset(); });
-      dotsEl.appendChild(d);
-    });
-    function reset(){ clearInterval(timer); timer = setInterval(function(){ ir(cur + 1); }, 5000); }
-    var arrPrev = document.querySelector(".arr-prev");
-    var arrNext = document.querySelector(".arr-next");
-    if(arrPrev) arrPrev.addEventListener("click", function(){ ir(cur - 1); reset(); });
-    if(arrNext) arrNext.addEventListener("click", function(){ ir(cur + 1); reset(); });
-    var tx = 0;
-    slides.addEventListener("touchstart", function(e){ tx = e.touches[0].clientX; }, { passive: true });
-    slides.addEventListener("touchend", function(e){
-      var d = tx - e.changedTouches[0].clientX;
-      if(Math.abs(d) > 40){ ir(cur + (d > 0 ? 1 : -1)); reset(); }
-    }, { passive: true });
-    reset();
-  })();
-} catch(e){}
-
-
-try {
   (function(){
     var FAIXAS = [
-      { titulo: "Sabrina Carpenter", src: "musicas/sabrina-carpenter.mp3", dados: "mus-data-0", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)", capa: "data:image/webp;base64,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" }
+      { titulo: "Sabrina Carpenter", src: "sabrina carpenter.mp3", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)" }
     ];
     var audio = new Audio();
     audio.preload = "none";
@@ -2165,29 +2263,10 @@ try {
 
     function aplicarCapa(el, f){
       var ico = el.querySelector("i");
-      if(f.capa){
-        el.style.background = "url(" + f.capa + ") center/cover no-repeat";
-        if(ico) ico.style.display = "none";
-      } else {
-        el.style.background = f.cor;
-        if(ico) ico.style.display = "";
-      }
+      el.style.background = f.cor;
+      if(ico) ico.style.display = "";
     }
-    function urlDaFaixa(i){
-      var f = FAIXAS[i];
-      if(f.url) return f.url;
-      try {
-        var el = f.dados && document.getElementById(f.dados);
-        var b64 = el ? el.textContent.replace(/\s+/g, "") : "";
-        if(b64){
-          var bin = atob(b64), n = bin.length, bytes = new Uint8Array(n);
-          for(var k = 0; k < n; k++){ bytes[k] = bin.charCodeAt(k); }
-          f.url = URL.createObjectURL(new Blob([bytes], { type: "audio/mpeg" }));
-          return f.url;
-        }
-      } catch(e){}
-      return f.src;
-    }
+    function urlDaFaixa(i){ return FAIXAS[i].src; }
     function aviso(txt){
       toast.querySelector("span").textContent = txt;
       toast.classList.add("show");
@@ -2296,6 +2375,83 @@ try {
         navigator.mediaSession.setActionHandler("previoustrack", function(){ proxima(-1); });
       }
     } catch(e){}
+  })();
+} catch(e){}
+
+try {
+  var TEMAS = [
+    { nome: "15 Anos",  fotos: ["https://i.ibb.co/7NG24jy8/IMG-20260816-WA0062.jpg"] },
+    { nome: "Infantil", fotos: ["https://i.ibb.co/vxR2ht7c/IMG-20260816-WA0061.jpg"] },
+    { nome: "Flores",   fotos: ["https://i.ibb.co/93bkSkWW/IMG-20260816-WA0059.jpg"] },
+    { nome: "Crisma",   fotos: ["https://i.ibb.co/ZzGXP5ZM/IMG-20260816-WA0060.jpg"] }
+  ];
+
+  window.pedirOrcamentoTema = function(nomeTema){
+    var msg = "Olá, Analu! Vi o tema \"" + nomeTema + "\" no site e gostaria de solicitar um orçamento.";
+    window.open("https://api.whatsapp.com/send?phone=558396905025&text=" + encodeURIComponent(msg), "_blank");
+  };
+
+  (function(){
+    var g = document.getElementById("temas-grid");
+    TEMAS.forEach(function(t, idx){
+      var c = document.createElement("div");
+      c.className = "tema";
+      var wrap = document.createElement("div");
+      wrap.className = "tema-img-wrap";
+      var img = document.createElement("img");
+      var original = t.fotos[0], tentouOriginal = false;
+      img.src = "https://images.weserv.nl/?url=" + original.replace(/^https?:\/\//, "") + "&w=480&q=76&output=webp";
+      img.alt = t.nome;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.addEventListener("error", function(){
+        if(!tentouOriginal){ tentouOriginal = true; img.src = original; return; }
+        wrap.classList.add("no-photo");
+        wrap.innerHTML = '<i class="fas fa-image"></i>';
+      });
+      wrap.appendChild(img);
+      var nome = document.createElement("div");
+      nome.className = "tema-nome";
+      nome.textContent = t.nome;
+      c.appendChild(wrap);
+      c.appendChild(nome);
+      c.addEventListener("click", function(){ pedirOrcamentoTema(t.nome); });
+      g.appendChild(c);
+    });
+
+  })();
+} catch(e){}
+
+try {
+  (function(){
+    var slides = document.getElementById("slides");
+    var dotsEl = document.getElementById("galeria-dots");
+    var items = slides.querySelectorAll(".slide");
+    var total = items.length, cur = 0, timer;
+    if(total <= 1){ return; }
+    function ir(n){
+      cur = (n + total) % total;
+      slides.style.transform = "translateX(-" + (cur * 100) + "%)";
+      dotsEl.querySelectorAll(".dot").forEach(function(d, i){ d.className = "dot" + (i === cur ? " on" : ""); });
+    }
+    items.forEach(function(_, i){
+      var d = document.createElement("div");
+      d.className = "dot" + (i === 0 ? " on" : "");
+      d.addEventListener("click", function(){ ir(i); reset(); });
+      dotsEl.appendChild(d);
+    });
+    function reset(){ clearInterval(timer); timer = setInterval(function(){ ir(cur + 1); }, 5000); }
+    var arrPrev = document.querySelector(".arr-prev");
+    var arrNext = document.querySelector(".arr-next");
+    if(arrPrev) arrPrev.addEventListener("click", function(){ ir(cur - 1); reset(); });
+    if(arrNext) arrNext.addEventListener("click", function(){ ir(cur + 1); reset(); });
+    var tx = 0;
+    slides.addEventListener("touchstart", function(e){ tx = e.touches[0].clientX; }, { passive: true });
+    slides.addEventListener("touchend", function(e){
+      var d = tx - e.changedTouches[0].clientX;
+      if(Math.abs(d) > 40){ ir(cur + (d > 0 ? 1 : -1)); reset(); }
+    }, { passive: true });
+    reset();
   })();
 } catch(e){}
 </script>
