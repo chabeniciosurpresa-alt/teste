@@ -775,13 +775,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 /* ===== Desempenho ===== */
 .pd-flavor.selected { transform: none; box-shadow: none; }
 @media (max-width: 899px) {
-  .bg-fixed img { display: none; }
-  .bg-fixed { background: linear-gradient(180deg, #FBD6E7 0%, #F9CBE0 100%); -webkit-transform: none; transform: none; }
-  .bg-fixed::after { display: none; }
   .reveal { transform: none; transition: opacity .35s ease; transition-delay: 0s !important; }
-  .s-alt { background: #FFF1F7; }
-  .section-pedido { background: #FDEAF3; }
-  .section-pedido::before { display: none; }
 }
 @media (hover: none) {
   .pd-combo-option:hover, .sabor-item:hover, .tema:hover { transform: none; box-shadow: none; }
@@ -793,18 +787,12 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 
 <div class="bg-fixed" aria-hidden="true">
   <img
-    data-src="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&w=800&q=68&output=webp"
+    src="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&w=800&q=68&output=webp"
     onerror="this.onerror=null;this.src='https://i.ibb.co/8DYjbzhQ/brig.png';"
     alt=""
     fetchpriority="low"
     decoding="async">
 </div>
-<script>
-if(!window.matchMedia || !matchMedia("(max-width:899px)").matches){
-  var bgImg = document.querySelector(".bg-fixed img");
-  bgImg.src = bgImg.getAttribute("data-src");
-}
-</script>
 
 <main>
 
