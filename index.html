@@ -809,7 +809,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   background: var(--pink-pale); flex-shrink: 0;
 }
 @media (min-width: 720px) { .sf-photo { width: 44%; aspect-ratio: auto; max-height: none; height: auto; } }
-.sf-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .25s ease; }
+.sf-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: opacity .25s ease; }
 .sf-photo.loading img { opacity: 0; }
 .sf-photo.loading::before {
   content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1;
@@ -1119,6 +1119,144 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .pc-radio {
     display: none !important;
 }
+
+/* ===== AJUSTES FINAIS PARA CELULAR ===== */
+@media (max-width: 719px) {
+  /* Foto dos sabores: mostra a imagem inteira, sem cortar */
+  .sf-card {
+    max-height: calc(100dvh - 24px);
+  }
+
+  .sf-photo {
+    width: 100%;
+    height: min(54vw, 330px);
+    min-height: 220px;
+    max-height: 330px;
+    aspect-ratio: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+
+  .sf-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #fff;
+  }
+
+  .sf-info {
+    padding: 20px 18px 18px;
+  }
+
+  .sf-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  /* Combos: cada informação fica em seu próprio bloco */
+  .pd-combos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: none;
+  }
+
+  .pd-combos .pd-combo-option,
+  .pd-combos .pd-combo-option.wide {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "txt"
+      "max";
+    align-items: start;
+    gap: 7px;
+    width: 100%;
+    min-height: 0;
+    padding: 14px 14px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .pd-combos .pd-combo-option.selected {
+    background: var(--pink-pale);
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(216,27,106,.10);
+  }
+
+  .pc-txt {
+    grid-area: txt;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .pc-name {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .pc-name small {
+    font-size: 11px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .pc-desc {
+    margin-top: 2px;
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+
+  .pc-max {
+    grid-area: max;
+    justify-self: start;
+    margin: 0;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: var(--pink-pale);
+    color: var(--pink-dark);
+    font-size: 10.5px;
+    line-height: 1.2;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .pc-max::before {
+    display: none;
+  }
+
+  .pc-flag {
+    font-size: 8.5px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    position: static;
+  }
+}
+
+/* Em telas um pouco maiores, mantém os combos compactos sem quebrar as frases. */
+@media (min-width: 421px) and (max-width: 719px) {
+  .pd-combos .pd-combo-option:not(.wide) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "txt max";
+    align-items: center;
+    gap: 10px 12px;
+  }
+
+  .pd-combos .pd-combo-option:not(.wide) .pc-max {
+    justify-self: end;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1712,7 +1850,10 @@ try {
       if(sp.espaco === "foto"){
         var iw = img.naturalWidth, ih = img.naturalHeight;
         if(!iw || !ih || !cw || !ch){ reticle.style.visibility = "hidden"; return; }
-        var esc = Math.max(cw / iw, ch / ih), dw = iw * esc, dh = ih * esc;
+        var esc = window.matchMedia("(max-width: 719px)").matches
+          ? Math.min(cw / iw, ch / ih)
+          : Math.max(cw / iw, ch / ih),
+        dw = iw * esc, dh = ih * esc;
         var ox = (cw - dw) / 2, oy = (ch - dh) / 2;
         left = ox + b.left / 100 * dw; top = oy + b.top / 100 * dh;
         width = b.width / 100 * dw; height = b.height / 100 * dh;
@@ -2248,7 +2389,7 @@ try {
 try {
   (function(){
     var FAIXAS = [
-      { titulo: "Sabrina Carpenter", src: "sabrina carpenter.mp3", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)" }
+      { titulo: "Sabrina Carpenter", src: "sabrina carpenter.mp3", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)", capa: "https://i.ibb.co/ynpcq5Kv/images.jpg" }
     ];
     var audio = new Audio();
     audio.preload = "none";
@@ -2264,7 +2405,11 @@ try {
     function aplicarCapa(el, f){
       var ico = el.querySelector("i");
       el.style.background = f.cor;
-      if(ico) ico.style.display = "";
+      el.style.backgroundImage = f.capa ? 'url("' + f.capa + '")' : "";
+      el.style.backgroundPosition = "center";
+      el.style.backgroundSize = "cover";
+      el.style.backgroundRepeat = "no-repeat";
+      if(ico) ico.style.display = f.capa ? "none" : "";
     }
     function urlDaFaixa(i){ return FAIXAS[i].src; }
     function aviso(txt){
@@ -2311,7 +2456,11 @@ try {
       if(!avisou){ avisou = true; aviso("Ouça música enquanto vê nosso cardápio"); }
       try {
         if("mediaSession" in navigator){
-          navigator.mediaSession.metadata = new MediaMetadata({ title: FAIXAS[i].titulo, artist: "Doces da Analu" });
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: FAIXAS[i].titulo,
+            artist: "Doces da Analu",
+            artwork: FAIXAS[i].capa ? [{ src: FAIXAS[i].capa, sizes: "512x512", type: "image/jpeg" }] : []
+          });
         }
       } catch(e){}
     }
