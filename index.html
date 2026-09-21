@@ -1607,6 +1607,63 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   .mn-list{gap:12px}
 }
 </style>
+<style id="phone-real-style-4">
+/* ---- celular v4: barra de navegação dentro da tela, nada sobrepõe ---- */
+.tv .tv-body{padding:6px}
+.tv .tv-screen{display:flex;flex-direction:column;background:#000}
+.ph-stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;border-radius:0}
+.ph-stage .ph-app-view{border-radius:0}
+.tv-screen .ph-home{min-height:352px}
+.ph-nav{flex:0 0 auto;height:34px;background:#000;display:flex;align-items:center;justify-content:space-around;padding:0 24px 2px;position:relative;z-index:2}
+.ph-nav button{width:36px;height:28px;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ph-nav svg{width:17px;height:17px;opacity:.8;transition:opacity .12s ease,transform .12s ease}
+.ph-nav button:hover svg{opacity:1}
+.ph-nav button:active svg{opacity:1;transform:scale(.82)}
+@media (max-width:480px){ .tv-screen .ph-home{min-height:330px} }
+
+/* botões laterais mais discretos e metálicos */
+.tv .tv-body::before{left:-3px;top:78px;width:3px;height:30px;border-radius:2px 0 0 2px;
+  background:linear-gradient(90deg,#8e1a52 0%,#e872ab 55%,#ffc6de 100%);
+  box-shadow:0 40px 0 0 #d24a8b,0 1px 2px rgba(60,0,30,.35)}
+.tv .tv-body::after{right:-3px;top:100px;width:3px;height:44px;border-radius:0 2px 2px 0;
+  background:linear-gradient(270deg,#8e1a52 0%,#e872ab 55%,#ffc6de 100%);
+  box-shadow:0 1px 2px rgba(60,0,30,.35)}
+
+/* ---- app de músicas: tudo cabe dentro da tela ---- */
+.tv-screen .ph-mus{overflow:hidden}
+.tv-screen .ph-mus-head{padding:32px 14px 6px;font-size:18px}
+.tv-screen .ph-mus-banner{margin:0 10px 6px;padding:6px 9px;font-size:9.5px;line-height:1.3}
+.tv-screen .ph-mus-list{flex:1 1 0;min-height:0;padding:0 6px}
+.tv-screen .ph-mus-track{padding:5px 8px}
+.tv-screen .ph-mus-cover{width:38px;height:38px}
+.tv-screen .ph-mus-now{margin:4px 8px 8px;padding:8px 10px 6px;border-radius:14px}
+.tv-screen .ph-mus-now .mp-row{flex-wrap:wrap;justify-content:center;row-gap:2px;column-gap:8px}
+.tv-screen .ph-mus-now .mp-cover{width:34px;height:34px}
+.tv-screen .ph-mus-now .mp-info{flex:1 1 calc(100% - 44px);min-width:0}
+.tv-screen .ph-mus-now .mp-btn{width:30px;height:30px;font-size:12px;margin:0 6px}
+.tv-screen .ph-mus-now .mp-seek{width:100%}
+body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast,
+body.phone-visivel .mini-player,body.phone-visivel #mus-toast{opacity:0;pointer-events:none;display:none}
+
+/* gaveta do calendário empurra a grade (não cobre nada) */
+#ph-cal-view:has(.ph-cal-note:not([hidden])) .pc-tip,
+#ph-cal-view:has(.ph-cal-note:not([hidden])) .pc-bar{display:none}
+#ph-cal-view .ph-cal-note{position:relative;left:auto;right:auto;bottom:auto;margin:0;flex:0 0 auto;z-index:1;border-radius:16px 16px 0 0;box-shadow:0 -6px 16px rgba(30,10,20,.12);animation:none;padding:8px 12px 10px}
+#ph-cal-view .ph-cal-note-head{margin-bottom:5px}
+#ph-cal-view .ph-cal-note textarea{min-height:36px;height:36px;padding:6px 9px;font-size:11px}
+#ph-cal-view .ph-cal-note-foot{margin-top:5px;gap:5px}
+#ph-cal-view .ph-cal-note-count{display:none}
+#ph-cal-view:has(.ph-cal-note:not([hidden])) .ph-cal-day span{width:20px;height:20px;font-size:10px}
+#ph-cal-view:has(.ph-cal-note:not([hidden])) .ph-cal-day.has-note::after,
+#ph-cal-view:has(.ph-cal-note:not([hidden])) .ph-cal-day.today.has-note::after{top:23px}
+
+/* ---- calendário: gaveta de anotação cabe na tela ---- */
+#ph-cal-view .ph-cal-note{padding:10px 12px 12px}
+#ph-cal-view .ph-cal-note-foot{flex-direction:column;align-items:stretch;gap:6px;margin-top:6px}
+#ph-cal-view .ph-cal-note-count{text-align:right}
+#ph-cal-view .ph-cal-note-actions{width:100%;gap:6px}
+#ph-cal-view .ph-cal-note-del,#ph-cal-view .ph-cal-note-save{flex:1 1 0;min-width:0;justify-content:center;padding:7px 6px;font-size:10px;white-space:nowrap}
+</style>
 </head>
 <body>
 
@@ -1642,6 +1699,8 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
         <div class="tv-body">
           <div class="tv-screen" id="phone">
             <span class="tv-notch"></span>
+
+            <div class="ph-stage">
 
             <div class="ph-home" id="ph-home">
               <div class="ph-status">
@@ -1722,7 +1781,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
                   <span id="ph-cal-note-date">Data selecionada</span>
                   <button type="button" class="ph-cal-note-close" id="ph-cal-note-close" aria-label="Fechar anotação"><i class="fas fa-xmark"></i></button>
                 </div>
-                <textarea id="ph-cal-note-input" maxlength="500" placeholder="Observações sobre a festa (opcional). Ex.: horário, tema, local..."></textarea>
+                <textarea id="ph-cal-note-input" maxlength="500" placeholder="Observações (opcional)"></textarea>
                 <div class="ph-cal-note-foot">
                   <span class="ph-cal-note-count" id="ph-cal-note-count">0/500</span>
                   <div class="ph-cal-note-actions">
@@ -1739,12 +1798,13 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               <div class="ph-app-bar"><i class="fa-brands fa-youtube"></i><span>Doces da Analu</span></div>
               <iframe id="yt-frame" title="Vídeo Doces da Analu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-          </div>
+            </div>
 
-          <div class="tv-panel">
-            <button type="button" id="nav-back" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M15.5 5.5 7.5 12l8 6.5z" fill="#fff"/></svg></button>
-            <button type="button" id="nav-home" aria-label="Início"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
-            <button type="button" id="nav-recents" aria-label="Apps recentes"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
+            <div class="ph-nav">
+              <button type="button" id="nav-back" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M15.5 5.5 7.5 12l8 6.5z" fill="#fff"/></svg></button>
+              <button type="button" id="nav-home" aria-label="Início"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
+              <button type="button" id="nav-recents" aria-label="Apps recentes"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
+            </div>
           </div>
         </div>
       </div>
@@ -2664,6 +2724,7 @@ try {
 
     function abrir(view){
       clearTimeout(closeTimer);
+      document.body.classList.toggle("app-musica-aberto", view === musView);
       view.classList.add("open");
       view.setAttribute("aria-hidden", "false");
       home.classList.add("away");
@@ -2678,6 +2739,7 @@ try {
       fecharVisor();
       [ytView, galView, musView, calView].forEach(function(v){ v.classList.remove("open"); v.setAttribute("aria-hidden", "true"); });
       home.classList.remove("away");
+      document.body.classList.remove("app-musica-aberto");
       closeTimer = setTimeout(function(){ frame.src = "about:blank"; }, 300);
     }
     function voltar(){
@@ -2853,7 +2915,7 @@ try {
 
       caixa.hidden = false;
       campo.value = notas[chave] || "";
-      data.textContent = "Data da festa: " + dataTexto;
+      data.textContent = "Festa: " + dataTexto;
       definirDataFesta(chave, notas[chave]);
       atualizarContadorNota();
     }
@@ -3046,6 +3108,14 @@ try {
     var audio = new Audio();
     audio.preload = "none";
     var atual = -1, fechado = false, avisou = false, toastTimer;
+    try {
+      var telaCelular = document.getElementById("phone");
+      if(telaCelular && "IntersectionObserver" in window){
+        new IntersectionObserver(function(es){
+          document.body.classList.toggle("phone-visivel", es[0].isIntersecting);
+        }, { threshold: 0.05 }).observe(telaCelular);
+      }
+    } catch(e){}
 
     function $(id){ return document.getElementById(id); }
     var lista = $("mus-list"), now = $("mus-now"), mini = $("mini-player"), toast = $("mus-toast");
@@ -3065,6 +3135,16 @@ try {
     }
     function urlDaFaixa(i){ return FAIXAS[i].src; }
     function aviso(txt){
+      if(document.body.classList.contains("app-musica-aberto")){
+        var bn = document.querySelector("#ph-mus-view .ph-mus-banner span");
+        if(bn){
+          if(!bn.dataset.orig) bn.dataset.orig = bn.textContent;
+          bn.textContent = txt;
+          clearTimeout(aviso._t2);
+          aviso._t2 = setTimeout(function(){ bn.textContent = bn.dataset.orig; }, 3200);
+        }
+        return;
+      }
       toast.querySelector("span").textContent = txt;
       toast.classList.add("show");
       clearTimeout(toastTimer);
