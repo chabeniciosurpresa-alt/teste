@@ -1538,25 +1538,25 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .tv .tv-screen{aspect-ratio:auto;border-radius:39px;border:5px solid #050308;background:#000;
   box-shadow:0 0 0 1px rgba(255,255,255,.10),inset 0 0 0 1px rgba(255,255,255,.06)}
 .tv .tv-notch{top:8px;width:64px;height:19px}
-.tv-screen .ph-home{position:relative;top:auto;right:auto;bottom:auto;left:auto;min-height:384px}
-.tv-screen .ph-home .ph-grid{padding-bottom:28px}
-.tv-screen .ph-app-view{padding-bottom:16px}
+.tv-screen .ph-home{position:relative;top:auto;right:auto;bottom:auto;left:auto;min-height:372px}
+.tv-screen .ph-home .ph-grid{padding-bottom:14px}
+.tv-screen .ph-app-view{padding-bottom:0}
 .ph-homebar{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:80px;height:18px;padding:0;border:0;background:none;cursor:pointer;z-index:20;display:flex;align-items:center;justify-content:center}
 .ph-homebar::after{content:'';width:70px;height:4px;border-radius:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
 .ph-homebar:active::after{width:56px}
 @media (max-width:480px){
   .tv{max-width:214px}
-  .tv-screen .ph-home{min-height:362px}
+  .tv-screen .ph-home{min-height:348px}
 }
 
 /* ---- calendário compacto para caber no celular menor ---- */
-#ph-cal-view{padding-bottom:16px}
+#ph-cal-view{padding-bottom:4px}
 #ph-cal-view .pc-tip{padding:6px 9px;margin-bottom:0}
 #ph-cal-view .pc-tip b{font-size:10px}
 #ph-cal-view .pc-tip span{font-size:8.5px}
 #ph-cal-view .pc-head{padding:4px 14px 4px}
 #ph-cal-view .pc-title strong{font-size:20px}
-#ph-cal-view .pc-bar{padding:6px 14px 4px}
+#ph-cal-view .pc-bar{padding:6px 14px 8px}
 #ph-cal-view .ph-cal-days-only .ph-cal-day{font-size:11px;padding-top:2px}
 #ph-cal-view .ph-cal-day span{width:22px;height:22px}
 #ph-cal-view .ph-cal-day.has-note::after,
@@ -1576,6 +1576,36 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 }
 #ph-cal-view .pc-tip{position:relative;margin-top:8px}
 #ph-cal-view .pc-opt{position:absolute;top:-7px;right:10px;margin:0;vertical-align:baseline;white-space:nowrap;box-shadow:0 2px 5px rgba(216,27,106,.3)}
+</style>
+<style id="phone-real-style-3">
+/* celular mais realista */
+.tv{filter:drop-shadow(0 26px 24px rgba(71,8,34,.28)) drop-shadow(0 6px 8px rgba(71,8,34,.18))}
+.tv .tv-body{border-radius:46px;padding:6px 6px 4px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 6%,rgba(255,255,255,0) 94%,rgba(255,255,255,.35) 100%),
+    linear-gradient(160deg,#ffc7de 0%,#ee78ae 10%,#cf3a80 45%,#9d1655 85%,#80103f 100%);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 0 0 3px rgba(120,10,60,.35),inset 0 3px 4px rgba(255,255,255,.65),inset 0 -3px 5px rgba(60,0,30,.45),0 0 0 1px rgba(90,8,45,.35)}
+.tv .tv-screen{border:6px solid #020103;border-radius:40px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),inset 0 0 0 1px rgba(255,255,255,.08),inset 0 0 14px rgba(0,0,0,.6)}
+.tv .tv-panel{padding:9px 26px 4px;opacity:1}
+.tv-screen .ph-home{background:
+  radial-gradient(120% 60% at 15% 0%,rgba(255,255,255,.38) 0%,rgba(255,255,255,0) 55%),
+  radial-gradient(90% 55% at 90% 100%,rgba(255,80,160,.45) 0%,rgba(255,80,160,0) 60%),
+  linear-gradient(170deg,#FF8CBA 0%,#E8559A 52%,#B01A5B 100%)}
+.ph-ico{position:relative;box-shadow:0 3px 7px rgba(80,0,40,.28),inset 0 0 0 .5px rgba(255,255,255,.35)}
+.ph-ico::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,0) 46%)}
+
+/* cardápio: logo no meio, sem ícone, fotos maiores */
+.mn-brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:22px}
+.mn-brand img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 20px rgba(216,27,106,.22)}
+.mn-brand h3{font-size:26px;font-style:italic;margin-top:6px}
+.mn-brand p{font-size:12.5px;color:var(--ink-soft)}
+.mn-go{display:none !important}
+@media (max-width:699px){
+  .mn-thumb{aspect-ratio:4/5}
+  .mn-list{gap:12px}
+}
 </style>
 </head>
 <body>
@@ -1709,10 +1739,13 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               <div class="ph-app-bar"><i class="fa-brands fa-youtube"></i><span>Doces da Analu</span></div>
               <iframe id="yt-frame" title="Vídeo Doces da Analu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-            <button type="button" class="ph-homebar" id="nav-home" aria-label="Início"></button>
           </div>
 
-          <div hidden><button type="button" id="nav-back" aria-label="Voltar"></button><button type="button" id="nav-recents" aria-label="Apps recentes"></button></div>
+          <div class="tv-panel">
+            <button type="button" id="nav-back" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M15.5 5.5 7.5 12l8 6.5z" fill="#fff"/></svg></button>
+            <button type="button" id="nav-home" aria-label="Início"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
+            <button type="button" id="nav-recents" aria-label="Apps recentes"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="2.6"/></svg></button>
+          </div>
         </div>
       </div>
     </div>
@@ -2065,7 +2098,7 @@ try {
     };
 
     function leve(u){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=420&q=78&output=webp";
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=800&q=80&output=webp";
     }
 
     function nitida(u){
@@ -2292,22 +2325,28 @@ try {
     var cdList = document.getElementById("cd-list");
     var montado = false;
 
+    var THUMBS = [];
+
     function ajustarThumb(im, sp){
-      var b = sp.box, iw = im.naturalWidth, ih = im.naturalHeight;
-      if(!b || !iw || !ih) return;
+      var b = sp.box, iw = im.naturalWidth, ih = im.naturalHeight, th = im.parentNode, s = im.style;
+      s.width = s.height = s.left = s.top = s.objectFit = "";
+      if(!b || !iw || !ih || !th || !th.offsetWidth || !th.offsetHeight) return;
       if(sp.espaco !== "foto" && Math.abs(iw / ih - 9 / 16) > 0.06) return;
-      var rw = Math.min(1, b.width / 100 * 2.6), m = 1 / rw, r = ih / iw;
-      if(m * r < 1) return;
+      var A = th.offsetWidth / th.offsetHeight;
+      var rw = Math.min(1, b.width / 100 * 3.4), m = 1 / rw, r = ih / iw, mh = m * r * A;
+      if(mh < 1) return;
       var cx = (b.left + b.width / 2) / 100, cy = (b.top + b.height / 2) / 100;
       var L = Math.min(0, Math.max(1 - m, 0.5 - cx * m));
-      var T = Math.min(0, Math.max(1 - m * r, 0.5 - cy * m * r));
-      var s = im.style;
+      var T = Math.min(0, Math.max(1 - mh, 0.5 - cy * mh));
       s.width = (m * 100) + "%";
-      s.height = (m * r * 100) + "%";
+      s.height = (mh * 100) + "%";
       s.left = (L * 100) + "%";
       s.top = (T * 100) + "%";
       s.objectFit = "fill";
     }
+    window.addEventListener("resize", function(){
+      THUMBS.forEach(function(t){ ajustarThumb(t.im, t.sp); });
+    });
 
     function montarCardapio(){
       if(montado || !cdList) return;
@@ -2325,6 +2364,7 @@ try {
           var tentou = false;
           im.alt = "";
           im.decoding = "async";
+          THUMBS.push({ im: im, sp: sp });
           im.addEventListener("load", function(){ ajustarThumb(im, sp); });
           im.addEventListener("error", function(){
             if(!tentou){ tentou = true; im.src = FOTOS_SAB[sp.foto]; }
@@ -2998,7 +3038,10 @@ try {
 try {
   (function(){
     var FAIXAS = [
-      { titulo: "Sabrina Carpenter", src: "sabrina carpenter.mp3", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)", capa: "https://i.ibb.co/ynpcq5Kv/images.jpg" }
+      { titulo: "Sabrina Carpenter", src: "sabrina carpenter.mp3", cor: "linear-gradient(135deg,#FF74AC,#D81B6A)", capa: "https://i.ibb.co/ynpcq5Kv/images.jpg" },
+      { titulo: "ABBA", src: "abba.mp3", cor: "linear-gradient(135deg,#5b8def,#1e3a8a)", capa: "https://i.ibb.co/84fd1sMR/images.jpg" },
+      { titulo: "Taylor Swift", src: "taylor swift.mp3", cor: "linear-gradient(135deg,#f6c453,#c2410c)", capa: "https://i.ibb.co/1t6ht8hB/O6-YGON2-I3-RGJ5-PO7-OZMCYRNMRU.avif" },
+      { titulo: "Jennifer Lopez", src: "jennifer lopez.mp3", cor: "linear-gradient(135deg,#f472b6,#9d174d)", capa: "https://i.ibb.co/GKnQpgc/images.jpg" }
     ];
     var audio = new Audio();
     audio.preload = "none";
@@ -3068,7 +3111,7 @@ try {
           navigator.mediaSession.metadata = new MediaMetadata({
             title: FAIXAS[i].titulo,
             artist: "Doces da Analu",
-            artwork: FAIXAS[i].capa ? [{ src: FAIXAS[i].capa, sizes: "512x512", type: "image/jpeg" }] : []
+            artwork: FAIXAS[i].capa ? [{ src: FAIXAS[i].capa, sizes: "512x512" }] : []
           });
         }
       } catch(e){}
