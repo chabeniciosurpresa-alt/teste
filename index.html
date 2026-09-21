@@ -962,11 +962,11 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 
 .sf-photo {
   position: relative; overflow: hidden;
-  aspect-ratio: 9/16; max-height: 52vh;
-  background: var(--pink-pale); flex-shrink: 0;
+  aspect-ratio: 4/5; max-height: 70vh;
+  background: #fff; flex-shrink: 0;
 }
-@media (min-width: 720px) { .sf-photo { width: 44%; aspect-ratio: auto; max-height: none; height: auto; } }
-.sf-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; transition: opacity .25s ease; }
+@media (min-width: 720px) { .sf-photo { width: 58%; aspect-ratio: 4/5; max-height: 82vh; height: auto; } }
+.sf-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: opacity .25s ease; }
 .sf-photo.loading img { opacity: 0; }
 .sf-photo.loading::before {
   content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1;
@@ -2397,19 +2397,9 @@ section,
     <button type="button" class="sf-close" id="sf-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
     <div class="sf-photo loading" id="sf-photo">
       <img id="sf-img" alt="" decoding="async">
-      <div class="sf-sweep" id="sf-sweep"></div>
-      <div class="sf-reticle" id="sf-reticle">
-        <span class="sf-corner tl"></span>
-        <span class="sf-corner tr"></span>
-        <span class="sf-corner bl"></span>
-        <span class="sf-corner br"></span>
-        <span class="sf-pulse"></span>
-        <span class="sf-line" id="sf-line"></span>
-        <span class="sf-tag" id="sf-tag"><i class="fas fa-location-crosshairs"></i><span id="sf-tag-text"></span></span>
-      </div>
-    </div>
+</div>
     <div class="sf-info">
-      <span class="sf-eyebrow"><i class="fas fa-wand-magic-sparkles"></i> <span id="sf-eyebrow-text">É esse aqui, olha a seta</span></span>
+      <span class="sf-eyebrow"><span id="sf-eyebrow-text">Detalhes do sabor</span></span>
       <h3 class="sf-title" id="sf-title"></h3>
       <p class="sf-desc" id="sf-desc"></p>
       <div class="sf-actions">
@@ -2476,12 +2466,14 @@ try {
     var FOTOS_SAB = {
       antiga: "https://i.ibb.co/yBn7jvfm/c5db1107-e41b-40e3-9bfd-3fc98ff42974.jpg",
       nova: "https://i.ibb.co/j12TNjv/874d1886-fd5b-43af-8272-77ffe25eb121.jpg",
-      branca: "https://i.ibb.co/ymWkm59s/df8d47bd-8649-4336-924d-ed9fa1f8b434.jpg",
+      branca: "https://i.ibb.co/Jwb8bgZn/1a4056a2-25ed-4971-b08d-b642a88d626f.jpg",
       casadinho: "https://i.ibb.co/67p7Nw3s/3ab131bc-5cb2-4002-a972-227915da742c.jpg",
       ninhocolorido: "https://i.ibb.co/5gGtg9wC/4cd0fbc7-16a2-4966-a33a-1df31bce74ca.jpg",
       meioamargo: "https://i.ibb.co/FLQKN3jY/9a0b4f65-598e-41d0-bd11-21e6d3f56289.jpg",
       ninho: "https://i.ibb.co/DDvFv3NX/cd844cb3-8dfb-41bb-aa4a-26ca91e2a87e.jpg",
-      beijinho: "https://i.ibb.co/PGj6yTGj/7c7648fc-ff9d-4645-9711-e0dc7a2364f5.jpg"
+      beijinho: "https://i.ibb.co/PGj6yTGj/7c7648fc-ff9d-4645-9711-e0dc7a2364f5.jpg",
+      aoleite: "https://i.ibb.co/gZmyLWn2/05763ffe-2fef-42e9-b9f9-3a018382f9ba.jpg",
+      confete: "https://i.ibb.co/7NYYXjbN/007e0bcb-a24d-441e-b0c0-e600b4aa9bba.jpg"
     };
 
     function leve(u){
@@ -2497,83 +2489,70 @@ try {
         foto: "branca",
         titulo: "Brigadeiro branco",
         desc: "Brigadeiro branco cremoso, enrolado em granulado branco. Delicado, docinho e lindo em qualquer mesa de doces.",
-        tag: "Branco",
-        box: { left: 26.5, top: 66.8, width: 16.3, height: 11.5 }
+        tag: "Branco"
       },
       aoleite: {
-        foto: "branca",
+        foto: "aoleite",
         titulo: "Brigadeiro ao leite",
         desc: "Chocolate ao leite belga derretido com manteiga e leite condensado, finalizado com raspas de chocolate crocante por cima. O clássico que nunca sai de moda.",
-        tag: "Ao leite",
-        box: { left: 65.4, top: 67.3, width: 14.9, height: 11.2 }
+        tag: "Ao leite"
       },
       ninho: {
         foto: "ninho",
         titulo: "Ninho",
         desc: "Brigadeiro de leite ninho, branquinho, cremoso e com sabor de infância.",
-        tag: "Ninho",
-        box: null
+        tag: "Ninho"
       },
       casadinho: {
         foto: "casadinho",
         titulo: "Casadinho",
         desc: "Brigadeiro branco e brigadeiro de chocolate juntos em um só docinho. O casamento perfeito de sabores.",
-        tag: "Casadinho",
-        box: null
+        tag: "Casadinho"
       },
       ninhocolorido: {
         foto: "ninhocolorido",
         titulo: "Ninho colorido",
         desc: "Brigadeiro de leite ninho cremoso, enrolado em granulado colorido. Alegre e perfeito para festas.",
-        tag: "Ninho colorido",
-        box: null
+        tag: "Ninho colorido"
       },
       meioamargo: {
         foto: "meioamargo",
         titulo: "Meio amargo",
         desc: "Brigadeiro de chocolate meio amargo, intenso e cremoso. Para quem gosta de chocolate de verdade.",
-        tag: "Meio amargo",
-        box: null
+        tag: "Meio amargo"
       },
       uva: {
         foto: "antiga",
         titulo: "Surpresa de uva",
         desc: "Uma uva verde inteira escondida no centro, envolvida em chocolate branco cremoso. A surpresa é a mordida — por fora parece um brigadeiro comum, por dentro tem a fruta fresquinha.",
-        tag: "Surpresa de uva",
-        box: { left: 13.9, top: 60.2, width: 26.4, height: 13.7 }
+        tag: "Surpresa de uva"
       },
       confete: {
-        foto: "antiga",
+        foto: "confete",
         titulo: "Confete",
         desc: "Chocolate ao leite cremoso coberto com confetes coloridos crocantes. Alegre, divertido e é sempre o primeiro a acabar nas festas infantis.",
-        tag: "Confete",
-        box: { left: 53.5, top: 63.7, width: 27.1, height: 13.7 }
+        tag: "Confete"
       },
       beijinho: {
         foto: "beijinho",
         titulo: "Beijinho",
         desc: "Leite condensado com coco ralado fresco, enrolado e coberto com coco em flocos. Docinho tradicional que agrada todo mundo.",
-        tag: "Beijinho",
-        box: { left: 37.2, top: 36.6, width: 14.4, height: 6.6 }
+        tag: "Beijinho"
       },
       amendoim: {
         foto: "nova",
         titulo: "Amendoim",
         desc: "Brigadeiro cremoso enrolado em amendoim crocante triturado. Doce e crocante na medida certa.",
-        tag: "Amendoim",
-        box: null
+        tag: "Amendoim"
       }
     };
 
     var overlay = document.getElementById("sf-overlay");
     var photoBox = document.getElementById("sf-photo");
     var img = document.getElementById("sf-img");
-    var reticle = document.getElementById("sf-reticle");
-    var line = document.getElementById("sf-line");
     var titleEl = document.getElementById("sf-title");
     var descEl = document.getElementById("sf-desc");
     var tagText = document.getElementById("sf-tag-text");
-    var sweep = document.getElementById("sf-sweep");
     var pedirBtn = document.getElementById("sf-pedir");
     var chaveAtual = null;
     var tentouOriginal = false, fotoAtual = null, carregada = false;
@@ -2596,45 +2575,9 @@ try {
       if(!tentouOriginal && fotoAtual){ tentouOriginal = true; img.src = FOTOS_SAB[fotoAtual]; }
     });
 
-    function posicionar(){
-      if(!chaveAtual) return;
-      var sp = SPOTLIGHT[chaveAtual], b = sp.box;
-      if(!b || !carregada){ reticle.style.visibility = "hidden"; return; }
-      var pai = reticle.parentElement, cw = pai.clientWidth, ch = pai.clientHeight;
-      var left, top, width, height;
-      if(sp.espaco === "foto"){
-        var iw = img.naturalWidth, ih = img.naturalHeight;
-        if(!iw || !ih || !cw || !ch){ reticle.style.visibility = "hidden"; return; }
-        var esc = window.matchMedia("(max-width: 719px)").matches
-          ? Math.min(cw / iw, ch / ih)
-          : Math.max(cw / iw, ch / ih),
-        dw = iw * esc, dh = ih * esc;
-        var ox = (cw - dw) / 2, oy = (ch - dh) / 2;
-        left = ox + b.left / 100 * dw; top = oy + b.top / 100 * dh;
-        width = b.width / 100 * dw; height = b.height / 100 * dh;
-      } else {
-        left = b.left / 100 * cw; top = b.top / 100 * ch;
-        width = b.width / 100 * cw; height = b.height / 100 * ch;
-      }
-      reticle.style.visibility = "";
-      reticle.style.left = left + "px";
-      reticle.style.top = top + "px";
-      reticle.style.width = width + "px";
-      reticle.style.height = height + "px";
-      var alturaPx = Math.max(18, Math.round(top * 0.32));
-      line.style.setProperty("--sf-line-h", alturaPx + "px");
-      var tg = document.getElementById("sf-tag");
-      tg.style.marginLeft = "0px";
-      var meio = tg.offsetWidth / 2, cx = left + width / 2, dx = 0;
-      if(cx - meio < 6) dx = 6 - (cx - meio);
-      else if(cx + meio > cw - 6) dx = (cw - 6) - (cx + meio);
-      tg.style.marginLeft = dx + "px";
-    }
-
     img.addEventListener("load", function(){
       carregada = true;
       photoBox.classList.remove("loading");
-      posicionar();
     });
 
     window.abrirSaborFoto = function(chave){
@@ -2646,31 +2589,19 @@ try {
         tentouOriginal = false;
         carregada = false;
         photoBox.classList.add("loading");
-        reticle.style.visibility = "hidden";
         img.src = nitida(FOTOS_SAB[s.foto]);
       }
 
-      eyebrowText.textContent = s.box ? "É esse aqui, olha a seta" : "Olha só que delícia";
+      eyebrowText.textContent = "Detalhes do sabor";
       img.alt = s.titulo;
       titleEl.textContent = s.titulo;
       descEl.textContent = s.desc;
       tagText.textContent = s.tag;
 
-      reticle.classList.remove("go");
-      sweep.style.display = s.box ? "" : "none";
-      sweep.style.animation = "none";
-      var pulso = reticle.querySelector(".sf-pulse");
-      if(pulso) pulso.style.animation = "none";
-      void sweep.offsetWidth;
-      sweep.style.animation = "";
-      if(pulso) pulso.style.animation = "";
-
       overlay.classList.add("open");
       overlay.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
 
-      requestAnimationFrame(function(){ posicionar(); });
-      setTimeout(posicionar, 60);
     };
 
     function fecharSaborFoto(){
@@ -2683,7 +2614,6 @@ try {
     document.getElementById("sf-fechar").addEventListener("click", fecharSaborFoto);
     overlay.addEventListener("click", function(e){ if(e.target === overlay) fecharSaborFoto(); });
     document.addEventListener("keydown", function(e){ if(e.key === "Escape") fecharSaborFoto(); });
-    window.addEventListener("resize", posicionar);
 
     pedirBtn.addEventListener("click", function(){
       if(chaveAtual){
@@ -2775,7 +2705,7 @@ try {
         txt.appendChild(resumo);
 
         var go = document.createElement("i");
-        go.className = "fas " + (sp ? "fa-camera" : "fa-chevron-right") + " mn-go";
+        go.className = "fas " + (sp ? "fa-arrow-right" : "fa-chevron-right") + " mn-go";
 
         row.appendChild(th);
         row.appendChild(txt);
@@ -3682,3 +3612,331 @@ try {
 
 </body>
 </html>
+
+<style id="flavor-menu-bigger-clean">
+/* Fotos dos sabores maiores e cardápio mais elegante */
+.mn-list{
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:16px;
+}
+.mn-item{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:10px;
+  padding:10px 10px 14px;
+  border-radius:18px;
+}
+.mn-thumb{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/5;
+  border-radius:14px;
+  overflow:hidden;
+}
+.mn-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.mn-txt{align-items:center;text-align:center}
+.mn-nome{font-size:20px}
+.mn-resumo{font-size:12px}
+@media (min-width:900px){
+  .mn-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .mn-thumb{aspect-ratio:4/5}
+}
+@media (min-width:1100px){
+  .mn-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:699px){
+  .mn-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .mn-item{padding:8px 8px 12px}
+  .mn-thumb{aspect-ratio:4/5}
+  .mn-nome{font-size:17px}
+}
+</style>
+
+<style id="flavor-menu-premium">
+/* ===== CARDS PREMIUM — SABORES ===== */
+#cd-list.mn-list,
+.mn-list{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+
+.mn-item{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  min-height:100%;
+  padding:0 0 16px;
+  overflow:hidden;
+  border:1px solid rgba(159,25,82,.12);
+  border-radius:24px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,248,251,.98));
+  box-shadow:
+    0 10px 28px rgba(105,22,61,.10),
+    0 2px 7px rgba(105,22,61,.06),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  cursor:pointer;
+  text-align:left;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.mn-item::before{
+  content:"BRIGADEIRO GOURMET";
+  position:absolute;
+  z-index:5;
+  top:14px;
+  left:14px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,250,252,.94);
+  color:#8f164d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.16em;
+  line-height:1;
+  box-shadow:0 4px 12px rgba(72,7,39,.14);
+  backdrop-filter:blur(6px);
+}
+
+.mn-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:24px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.72);
+}
+
+.mn-item:hover{
+  transform:translateY(-6px);
+  border-color:rgba(191,27,101,.25);
+  box-shadow:
+    0 18px 38px rgba(105,22,61,.16),
+    0 5px 12px rgba(105,22,61,.08);
+}
+
+.mn-item:active{transform:translateY(-2px) scale(.995)}
+
+.mn-thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/4.7;
+  height:auto;
+  overflow:hidden;
+  border-radius:23px 23px 0 0;
+  background:#f5dce7;
+}
+
+.mn-thumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(55,0,28,.02) 45%,rgba(55,0,28,.18) 100%);
+  opacity:.65;
+}
+
+.mn-thumb img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.015);
+  transition:transform .55s cubic-bezier(.2,.75,.2,1), filter .35s ease;
+}
+
+.mn-item:hover .mn-thumb img{
+  transform:scale(1.065);
+  filter:saturate(1.04) contrast(1.02);
+}
+
+.mn-txt{
+  display:flex !important;
+  flex-direction:column;
+  align-items:flex-start !important;
+  gap:5px;
+  width:100%;
+  padding:16px 18px 3px;
+  text-align:left !important;
+}
+
+.mn-nome{
+  position:relative;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px !important;
+  font-weight:700;
+  line-height:1.1;
+  color:#6e123d;
+  letter-spacing:-.02em;
+}
+
+.mn-nome::after{
+  content:"";
+  display:block;
+  width:34px;
+  height:2px;
+  margin-top:8px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#d51d70,#f3a2c5);
+}
+
+.mn-resumo{
+  max-width:95%;
+  margin-top:1px;
+  color:#765266;
+  font-size:12.5px !important;
+  line-height:1.45;
+}
+
+.mn-go{
+  position:absolute !important;
+  right:16px;
+  bottom:15px;
+  z-index:6;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#fff;
+  color:#c71967;
+  font-size:12px;
+  box-shadow:0 5px 14px rgba(92,10,49,.14);
+  transition:transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.mn-item:hover .mn-go{
+  transform:translateX(2px);
+  background:#c71967;
+  color:#fff;
+}
+
+/* Card sem foto */
+.mn-thumb.no-photo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:180px;
+  color:#c71967;
+  font-size:34px;
+  background:linear-gradient(135deg,#fff0f6,#f8d8e7);
+}
+
+/* Modal premium */
+.sf-overlay{
+  background:rgba(53,8,31,.68) !important;
+  backdrop-filter:blur(9px);
+}
+
+.sf-card{
+  border:1px solid rgba(255,255,255,.62) !important;
+  border-radius:28px !important;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(44,4,25,.35) !important;
+}
+
+.sf-photo{
+  position:relative;
+  background:#f6dce7 !important;
+}
+
+.sf-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 62%,rgba(50,5,28,.16));
+}
+
+.sf-info{
+  background:linear-gradient(180deg,#fffafd,#fff3f8) !important;
+}
+
+.sf-title{
+  font-family:Georgia,"Times New Roman",serif !important;
+  color:#6e123d !important;
+}
+
+@media (min-width:900px){
+  #cd-list.mn-list,
+  .mn-list{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
+  }
+}
+
+@media (min-width:1200px){
+  #cd-list.mn-list,
+  .mn-list{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:24px;
+  }
+}
+
+@media (max-width:699px){
+  #cd-list.mn-list,
+  .mn-list{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+
+  .mn-item{
+    border-radius:18px;
+    padding-bottom:12px;
+  }
+
+  .mn-item::before{
+    top:9px;
+    left:9px;
+    padding:5px 7px;
+    font-size:7px;
+    letter-spacing:.10em;
+  }
+
+  .mn-thumb{
+    aspect-ratio:4/4.8;
+    border-radius:17px 17px 0 0;
+  }
+
+  .mn-txt{
+    gap:4px;
+    padding:12px 11px 2px;
+  }
+
+  .mn-nome{
+    font-size:17px !important;
+  }
+
+  .mn-nome::after{
+    width:25px;
+    height:1.5px;
+    margin-top:6px;
+  }
+
+  .mn-resumo{
+    font-size:10.5px !important;
+    line-height:1.35;
+    padding-right:3px;
+  }
+
+  .mn-go{
+    right:9px;
+    bottom:10px;
+    width:28px;
+    height:28px;
+    font-size:10px;
+  }
+}
+</style>
