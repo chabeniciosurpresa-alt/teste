@@ -546,7 +546,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 
 .pd-progress { scroll-margin-top: 16px; }
 
-
 .tv-panel button {
   background: none; border: none; cursor: pointer; padding: 4px;
   -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
@@ -568,13 +567,34 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   font-size: 10.5px; font-weight: 700; text-shadow: 0 1px 2px rgba(80,0,40,.45);
 }
 .ph-status-ico { display: inline-flex; gap: 5px; font-size: 10px; }
-.ph-clock { text-align: center; margin-top: 16px; text-shadow: 0 2px 6px rgba(80,0,40,.4); }
-.ph-clock-time { font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -.02em; }
+.ph-clock { text-align: center; margin-top: 12px; text-shadow: 0 2px 6px rgba(80,0,40,.4); }
+.ph-clock-time { font-size: 40px; font-weight: 300; line-height: 1; letter-spacing: -.02em; }
 .ph-clock-date { font-size: 11.5px; font-weight: 600; margin-top: 6px; text-transform: capitalize; opacity: .95; }
 
 .ph-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 16px 4px; padding: 26px 14px 0;
+  gap: 13px 3px; padding: 22px 12px 8px;
+  align-content: start;
+}
+.ph-calendar-ico {
+  position: relative; flex-direction: column; gap: 0;
+  background: #fff; color: #D81B6A;
+  overflow: hidden; border-radius: 22%;
+}
+.cal-ico-top {
+  width: 100%; padding: 5px 0 3px;
+  background: #D81B6A; color: #fff;
+  font-size: 8px; font-weight: 800; letter-spacing: .12em;
+  text-align: center; line-height: 1;
+}
+.cal-ico-day {
+  display: flex; align-items: center; justify-content: center; flex: 1;
+  font-size: 22px; line-height: 1; font-weight: 800;
+}
+@media (max-width: 420px) {
+  .ph-grid { gap: 10px 2px; padding: 18px 10px 6px; }
+  .ph-ico { width: 48px; height: 48px; }
+  .ph-label { font-size: 9px; }
 }
 .ph-app {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -593,13 +613,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .ph-app:active .ph-ico { transform: scale(.86); }
 .ph-label { font-size: 10px; font-weight: 600; text-shadow: 0 1px 2px rgba(80,0,40,.55); }
 
-.ph-dock {
-  margin: auto 10px 10px;
-  display: flex; justify-content: space-around; align-items: center;
-  padding: 10px 6px;
-  background: rgba(255,255,255,.26);
-  border-radius: 24px; border: 1px solid rgba(255,255,255,.35);
-}
+.ph-dock { display: none; }
 
 .ph-app-view {
   position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 3;
@@ -620,6 +634,59 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 @media (prefers-reduced-motion: reduce) {
   .ph-app-view, .ph-home { transition: none; }
 }
+
+.ph-cal { background: #fff; color: #1c1c1e; overflow: hidden; }
+.ph-cal-days-only {
+  width:100%; height:100%; box-sizing:border-box;
+  display:grid; grid-template-columns:repeat(7,1fr);
+  grid-auto-rows:1fr; gap:5px;
+  padding:34px 14px 18px;
+  align-content:stretch;
+}
+.ph-cal-days-only .ph-cal-day {
+  min-width:0; min-height:0; width:100%; height:100%;
+  border:0; border-radius:8px; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#353035;
+  cursor:pointer;
+  box-shadow:0 1px 4px rgba(30,20,25,.05);
+}
+.ph-cal-days-only .ph-cal-day.empty { background:transparent; box-shadow:none; cursor:default; }
+.ph-cal-days-only .ph-cal-day.today { background:#D81B6A; color:#fff; box-shadow:0 2px 7px rgba(216,27,106,.25); }
+.ph-cal-days-only .ph-cal-day.selected { outline:2px solid #D81B6A; outline-offset:-2px; background:#fde8f2; color:#D81B6A; }
+.ph-cal-days-only .ph-cal-day.today.selected { background:#D81B6A; color:#fff; }
+.ph-calendar-ico img { width:100%; height:100%; object-fit:cover; display:block; }
+
+.ph-cal-day {
+  position: relative;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.ph-cal-day:not(.empty):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(216,27,106,.14);
+}
+.ph-cal-day.has-note::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #D81B6A;
+}
+.ph-cal-day.today.has-note::after { background: #fff; }
+.ph-calendar-ico {
+  display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+  background:#fff; color:#D81B6A; border:1px solid rgba(216,27,106,.28);
+  box-shadow:0 3px 7px rgba(80,0,40,.20);
+}
+.cal-ico-top {
+  display:flex; align-items:center; justify-content:center; width:100%; height:16px;
+  background:#D81B6A; color:#fff; font-size:8px; font-weight:800; letter-spacing:.04em;
+}
+.cal-ico-day { font-size:25px; line-height:29px; color:#23171d; }
 
 .ph-gal { background: #fff; color: #1c1c1e; overflow: hidden; }
 .ph-gal-bar { flex-shrink: 0; padding: 27px 14px 8px; display: flex; align-items: baseline; justify-content: space-between; }
@@ -723,38 +790,71 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 }
 .mini-player.on { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
 
-.mn-head { text-align: center; max-width: 520px; margin: 0 auto 32px; }
-.mn-head h2 { font-size: clamp(28px, 4.6vw, 40px); font-style: italic; }
-.mn-lead { font-size: 15.5px; line-height: 1.72; color: var(--ink-mid); margin-top: 12px; }
-
-.mn-card {
-  max-width: 860px; margin: 0 auto; padding: 10px;
-  background: var(--white); border: 1px solid var(--line); border-radius: 24px;
-  box-shadow: 0 20px 48px rgba(168,20,79,.12);
+.mn-head { max-width: 620px; }
+.mn-head .eyebrow { margin-bottom: 14px; }
+.mn-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(27px, 4.4vw, 43px);
+  line-height: 1.22;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  font-style: normal;
+  text-wrap: balance;
 }
-.mn-inner { border: 1.5px dashed var(--pink-soft); border-radius: 17px; padding: 30px 22px 26px; }
+.mn-title em {
+  font-style: italic;
+  color: var(--pink-dark);
+  position: relative;
+  white-space: nowrap;
+}
+.mn-title em::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: .06em;
+  height: .28em; z-index: -1;
+  background: linear-gradient(90deg, rgba(249,208,228,.85), rgba(253,232,242,.5));
+  border-radius: 3px;
+}
+.mn-orn {
+  display: block; width: 92px; height: 9px; margin: 20px auto 0;
+  background:
+    linear-gradient(90deg, transparent, var(--pink-soft) 22%, var(--pink-soft) 78%, transparent) center/100% 1px no-repeat;
+  position: relative;
+}
+.mn-orn::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+  background: var(--pink-mid); transform: rotate(45deg);
+  border-radius: 1px;
+  box-shadow: 0 0 0 4px var(--white);
+}
+.mn-lead { margin-top: 16px; font-size: 15px; }
 
-.mn-brand { text-align: center; margin-bottom: 22px; }
-.mn-brand img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin: 0 auto 10px; border: 2px solid var(--pink-soft); }
-.mn-brand h3 { font-size: 34px; font-style: italic; }
-.mn-brand p { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--pink-text); margin-top: 6px; }
-
-.mn-list { display: grid; grid-template-columns: 1fr; column-gap: 40px; }
-@media (min-width: 720px) { .mn-list { grid-template-columns: 1fr 1fr; } }
-
+.mn-inner { padding: 26px 18px 24px; }
+.mn-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 9px; column-gap: 9px;
+}
 .mn-item {
-  display: flex; align-items: center; gap: 14px; width: 100%;
-  padding: 12px 8px; border: none; background: none; text-align: left; cursor: pointer;
-  border-bottom: 1px dotted var(--pink-mid); color: var(--ink);
-  border-radius: 12px; transition: background .15s ease;
+  display: flex; align-items: center; gap: 13px; width: 100%;
+  padding: 9px; background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(168,20,79,.04);
+  transition: border-color .18s ease, box-shadow .2s ease, transform .18s ease;
+  cursor: pointer;
 }
-.mn-item:hover { background: var(--pink-pale); }
-.mn-item:active { background: var(--pink-soft); }
-.mn-item:focus-visible { outline: 2px solid var(--pink); outline-offset: -2px; }
-
+.mn-item:hover {
+  background: #fff;
+  border-color: var(--pink-soft);
+  box-shadow: 0 10px 22px rgba(216,27,106,.10);
+  transform: translateY(-2px);
+}
+.mn-item:active { background: #fff; transform: translateY(0); }
 .mn-thumb {
-  position: relative; width: 62px; height: 62px; flex-shrink: 0;
-  border-radius: 16px; overflow: hidden; background: var(--pink-pale);
+  position: relative; width: 60px; height: 60px; flex-shrink: 0;
+  border-radius: 13px; overflow: hidden; background: var(--pink-pale);
 }
 .mn-thumb img {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -766,11 +866,11 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   color: var(--pink-mid); font-size: 22px;
 }
 .mn-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-.mn-nome { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; line-height: 1.1; }
-.mn-resumo { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; }
+.mn-nome { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; line-height: 1.1; }
+.mn-resumo { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
 .mn-go { color: var(--pink-mid); font-size: 14px; flex-shrink: 0; }
 
-.mn-foot { text-align: center; margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.mn-foot { text-align: center; margin-top: 24px; }
 .mn-hint { font-size: 12.5px; font-weight: 600; color: var(--ink-mid); }
 .mn-hint i { color: var(--pink); margin-right: 6px; }
 
@@ -779,7 +879,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   background: rgba(15,4,10,.84);
   overscroll-behavior: contain;
   display: flex; align-items: center; justify-content: center;
-  padding: 18px; padding: calc(18px + env(safe-area-inset-top,0px)) 18px calc(18px + env(safe-area-inset-bottom,0px));
+  padding: 18px;
   opacity: 0; pointer-events: none;
   transition: opacity .25s ease;
 }
@@ -809,7 +909,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   background: var(--pink-pale); flex-shrink: 0;
 }
 @media (min-width: 720px) { .sf-photo { width: 44%; aspect-ratio: auto; max-height: none; height: auto; } }
-.sf-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: opacity .25s ease; }
+.sf-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; transition: opacity .25s ease; }
 .sf-photo.loading img { opacity: 0; }
 .sf-photo.loading::before {
   content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1;
@@ -879,8 +979,8 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
   transition: opacity .3s ease 1.05s, transform .3s ease 1.05s;
 }
 .sf-overlay.open .sf-tag { opacity: 1; transform: translate(-50%, 0); }
-.sf-tag i { color: var(--pink-mid); margin-right: 5px; }
 
+.sf-tag i { color: var(--pink-mid); margin-right: 5px; }
 .sf-info { padding: 26px 26px 24px; display: flex; flex-direction: column; flex: 1; min-height: 0; overflow-y: auto; }
 .sf-eyebrow {
   display: inline-flex; align-items: center; gap: 7px; width: fit-content;
@@ -941,137 +1041,29 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .sf-tag i{color:#6CF3FF}
 @media (prefers-reduced-motion:reduce){.sf-sweep,.sf-pulse{animation:none}}
 
-
-.pd-combos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.pd-combos .pd-combo-option{flex-direction:column;align-items:flex-start;gap:0;padding:18px 16px 15px;border-radius:18px;min-height:150px;border:1.5px solid var(--line);background:#fff}
-.pd-combos .pd-combo-option:hover{border-color:var(--pink-mid)}
-.pd-combos .pd-combo-option.selected{border-color:var(--pink);background:var(--pink-pale);box-shadow:0 0 0 3px rgba(216,27,106,.12)}
-.pd-combos .pd-combo-option.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:14px;min-height:0;padding:14px 16px;border-style:dashed}
-.pc-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:40px;line-height:1;color:var(--pink);display:flex;align-items:baseline;gap:6px}
-.pc-num small{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.pc-name,.pc-desc{display:block}
-.pc-name{margin-top:12px;font-weight:700;font-size:14.5px;color:var(--ink)}
-.pc-desc{font-size:12px;color:var(--ink-mid);margin-top:3px;line-height:1.4}
-.pc-max{margin-top:auto;padding-top:12px;font-size:11px;font-weight:700;color:var(--pink-text);display:flex;align-items:center;gap:6px}
-.pc-max::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink-mid)}
-.pc-flag{position:absolute;top:12px;right:12px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--pink);padding:3px 9px;border-radius:999px}
-.pd-combos .wide .pc-name{margin-top:0}
-.pd-combos .pd-combo-option.selected .pc-num{color:var(--pink-dark)}
-
-.pd-flavors{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media (min-width:520px){.pd-flavors{grid-template-columns:repeat(3,1fr)}}
-.pd-flavor{display:flex;align-items:center;gap:11px;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--ink);line-height:1.2;box-shadow:0 1px 3px rgba(168,20,79,.05)}
-.pd-flavor:not(.blocked):not(.selected):hover{border-color:var(--pink-mid);background:#fff;color:var(--ink)}
-.pd-flavor.selected{border-color:var(--pink);background:var(--pink-pale);color:var(--pink-dark);transform:none;box-shadow:0 0 0 3px rgba(216,27,106,.12)}
-.pd-flavor.blocked:not(.selected){opacity:.4}
-.pd-flavor>span{flex:1;min-width:0}
-.pd-tick{display:none;width:20px;height:20px;border-radius:50%;background:var(--pink);color:#fff;align-items:center;justify-content:center;font-size:9.5px;font-style:normal;flex-shrink:0}
-.pd-flavor.selected .pd-tick{display:flex}
-
-
-#galeria.s-alt{background:rgba(255,246,250,.2);border-top-color:transparent;border-bottom-color:transparent}
-
-.mn-head { max-width: 620px; }
-.mn-head .eyebrow { margin-bottom: 14px; }
-.mn-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: clamp(27px, 4.4vw, 43px);
-  line-height: 1.22;
-  letter-spacing: -.008em;
-  color: var(--ink);
-  font-style: normal;
-  text-wrap: balance;
-}
-.mn-title em {
-  font-style: italic;
-  color: var(--pink-dark);
-  position: relative;
-  white-space: nowrap;
-}
-.mn-title em::after {
-  content: '';
-  position: absolute; left: 0; right: 0; bottom: .06em;
-  height: .28em; z-index: -1;
-  background: linear-gradient(90deg, rgba(249,208,228,.85), rgba(253,232,242,.5));
-  border-radius: 3px;
-}
-.mn-orn {
-  display: block; width: 92px; height: 9px; margin: 20px auto 0;
-  background:
-    linear-gradient(90deg, transparent, var(--pink-soft) 22%, var(--pink-soft) 78%, transparent) center/100% 1px no-repeat;
-  position: relative;
-}
-.mn-orn::after {
-  content: ''; position: absolute; left: 50%; top: 50%;
-  width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
-  background: var(--pink-mid); transform: rotate(45deg);
-  border-radius: 1px;
-  box-shadow: 0 0 0 4px var(--white);
-}
-.mn-lead { margin-top: 16px; font-size: 15px; }
-
-
-.mn-inner { padding: 26px 18px 24px; }
-.mn-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-  gap: 9px; column-gap: 9px;
-}
-.mn-item {
-  gap: 13px; padding: 9px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(168,20,79,.04);
-  transition: border-color .18s ease, box-shadow .2s ease, transform .18s ease;
-}
-.mn-item:hover {
-  background: #fff;
-  border-color: var(--pink-soft);
-  box-shadow: 0 10px 22px rgba(216,27,106,.10);
-  transform: translateY(-2px);
-}
-.mn-item:active { background: #fff; transform: translateY(0); }
-.mn-thumb { width: 60px; height: 60px; border-radius: 13px; }
-.mn-nome { font-size: 19px; letter-spacing: -.005em; }
-.mn-resumo { font-size: 12px; color: var(--ink-soft); }
-.mn-go {
-  width: 26px; height: 26px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--pink-pale); color: var(--pink);
-  font-size: 10.5px; margin-right: 2px;
-  transition: background .18s ease, color .18s ease;
-}
-.mn-item:hover .mn-go { background: var(--pink); color: #fff; }
-.mn-foot { margin-top: 24px; }
-@media (hover: none) {
-  .mn-item:hover { transform: none; box-shadow: 0 1px 2px rgba(168,20,79,.04); }
-}
-
-.pd-combos {
-  display: flex; flex-direction: column; gap: 0;
-  border-top: 1px solid var(--line);
+.pd-combos{
+  display:flex; flex-direction:column; gap:0;
+  border-top:1px solid var(--line);
 }
 .pd-combos .pd-combo-option {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center; gap: 14px;
-  min-height: 0; padding: 15px 4px;
-  border: none; border-bottom: 1px solid var(--line);
-  border-radius: 0; background: transparent; box-shadow: none;
-  flex-direction: row; transition: background .16s ease;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center; gap:14px;
+  min-height:0; padding:15px 4px;
+  border:none; border-bottom:1px solid var(--line);
+  border-radius:0; background:transparent; box-shadow:none;
+  flex-direction:row; transition:background .16s ease;
 }
 .pd-combos .pd-combo-option.wide {
-  border-style: none; border-bottom: none; padding-top: 16px;
+  border-style:none; border-bottom:none; padding-top:16px;
 }
 .pd-combos .pd-combo-option:hover {
   background: rgba(216,27,106,.035);
-  border-color: var(--line); box-shadow: none; transform: none;
+  border-color: var(--line); box-shadow:none; transform:none;
 }
 .pd-combos .pd-combo-option.selected {
   background: rgba(216,27,106,.06);
-  border-color: var(--line); box-shadow: none;
+  border-color: var(--line); box-shadow:none;
 }
 
 .pc-radio {
@@ -1085,7 +1077,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   content: ''; position: absolute; top: 3.5px; right: 3.5px; bottom: 3.5px; left: 3.5px;
   border-radius: 50%; background: var(--pink);
 }
-
 .pc-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .pc-name {
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px;
@@ -1120,9 +1111,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     display: none !important;
 }
 
-/* ===== AJUSTES FINAIS PARA CELULAR ===== */
 @media (max-width: 719px) {
-  /* Foto dos sabores: mostra a imagem inteira, sem cortar */
   .sf-card {
     max-height: calc(100dvh - 24px);
   }
@@ -1157,7 +1146,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     margin-bottom: 18px;
   }
 
-  /* Combos: cada informação fica em seu próprio bloco */
   .pd-combos {
     display: flex;
     flex-direction: column;
@@ -1242,7 +1230,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   }
 }
 
-/* Em telas um pouco maiores, mantém os combos compactos sem quebrar as frases. */
 @media (min-width: 421px) and (max-width: 719px) {
   .pd-combos .pd-combo-option:not(.wide) {
     grid-template-columns: 1fr auto;
@@ -1257,7 +1244,284 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   }
 }
 
+.tv {
+  position: relative;
+  width: 100%;
+  max-width: 238px;
+  padding: 0 4px;
+  filter: drop-shadow(0 30px 32px rgba(71, 8, 34, .22));
+}
+.tv-body {
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 18%),
+    linear-gradient(155deg, #f47db0 0%, #d83982 48%, #9e164f 100%);
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 42px;
+  padding: 8px;
+  box-shadow:
+    0 34px 58px rgba(101,13,54,.28),
+    0 10px 20px rgba(84,7,41,.20),
+    inset 0 1px 1px rgba(255,255,255,.75),
+    inset 0 -5px 10px rgba(84,7,41,.22),
+    inset 0 0 0 1px rgba(92,8,45,.24);
+}
+.tv-body::before, .tv-body::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffb8d5 0%, #d22f79 45%, #8e1248 100%);
+  box-shadow: inset 1px 0 rgba(255,255,255,.35), 0 2px 5px rgba(70,0,35,.24);
+}
+.tv-body::before {
+  left: -4px; top: 90px; height: 42px;
+  box-shadow: inset 1px 0 rgba(255,255,255,.35), 0 2px 5px rgba(70,0,35,.24),
+              0 50px 0 -0px #b61f66, 0 50px 1px rgba(255,255,255,.18);
+}
+.tv-body::after {
+  right: -4px; top: 118px; height: 56px;
+}
+.tv-screen {
+  position: relative;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 35px;
+  overflow: hidden;
+  background: #000;
+  border: 2px solid rgba(18,5,12,.95);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.16),
+    inset 0 0 24px rgba(0,0,0,.72),
+    0 0 0 1px rgba(255,255,255,.42);
+}
+.tv-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+  background: linear-gradient(118deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 19%, rgba(255,255,255,0) 72%, rgba(255,255,255,.055) 100%);
+}
+.tv-screen::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.20) 0%, rgba(255,255,255,.03) 17%, rgba(255,255,255,0) 36%, rgba(255,255,255,.035) 84%, rgba(255,255,255,.10) 100%);
+  mix-blend-mode: screen;
+}
+.tv-notch {
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 73px; height: 21px;
+  border-radius: 999px;
+  z-index: 8; pointer-events: none;
+  background: linear-gradient(180deg, #09080b, #050408);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(0,0,0,.45),
+    inset 0 1px 2px rgba(255,255,255,.04);
+}
+.tv-notch::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 50%;
+  width: 8px; height: 8px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #31456e 0 16%, #17233e 34%, #06070c 72%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.04);
+}
+.tv-notch::after {
+  content: '';
+  position: absolute;
+  right: 10px; top: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle at 35% 35%, #546b96 0%, #1b2540 42%, #06070c 75%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.04), inset 0 0 2px rgba(255,255,255,.15);
+}
+.tv-panel {
+  display: flex; align-items: center; justify-content: space-around;
+  padding: 8px 24px 1px;
+  opacity: .82;
+}
+.tv-panel button { opacity: .9; }
+@media (max-width: 480px) {
+  .tv { max-width: 226px; }
+  .tv-body { border-radius: 35px; padding: 6px; }
+  .tv-screen { border-radius: 29px; }
+  .tv-notch { width: 59px; height: 17px; }
+}
+
+.ph-app-view.ph-cal{
+  position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column;min-height:0;border-radius:22px;background:linear-gradient(180deg,#fff8fb 0%,#f9f9fb 48%,#f6f5f7 100%);color:#241d22
+}
+.ph-cal-top{flex:0 0 auto;display:flex;align-items:center;gap:10px;margin:22px 12px 10px;padding:12px 12px;border-radius:16px;background:#fff;box-shadow:0 4px 16px rgba(60,20,40,.08);border:1px solid rgba(216,27,106,.10)}
+.ph-cal-top-icon{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:#D81B6A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 3px 8px rgba(216,27,106,.22)}
+.ph-cal-top-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
+.ph-cal-top-copy strong{font-size:12px;line-height:1.2;color:#2b2227}
+.ph-cal-top-copy span{font-size:8.5px;line-height:1.25;color:#8a7880}
+.ph-cal-monthbar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;margin:0 12px 8px;padding:5px 5px;border-radius:13px;background:#fff;border:1px solid #eee1e7;box-shadow:0 2px 8px rgba(50,20,35,.05)}
+.ph-cal-monthbar strong{font-size:12px;text-transform:capitalize;color:#30262b}
+.ph-cal-monthbar button{width:29px;height:29px;border:0;border-radius:9px;background:#fde8f2;color:#D81B6A;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px}
+.ph-cal-monthbar button:disabled{opacity:.3;cursor:not-allowed}
+.ph-cal-weekdays{flex:0 0 auto;display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:0 12px 5px;padding:0 2px}
+.ph-cal-weekdays span{text-align:center;font-size:6.5px;font-weight:800;letter-spacing:.04em;color:#a08d96}
+.ph-cal-days-only{flex:1 1 auto;min-height:0;width:auto;margin:0 12px 12px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:minmax(25px,1fr);gap:4px;padding:5px;border-radius:15px;background:rgba(255,255,255,.72);border:1px solid #eee5e9;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 3px 12px rgba(50,20,35,.04)}
+.ph-cal-days-only .ph-cal-day{min-width:0;min-height:25px;width:100%;height:100%;border:0;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#44373e;cursor:pointer;box-shadow:0 1px 3px rgba(35,20,28,.06);transition:transform .12s ease,background .12s ease,box-shadow .12s ease}
+.ph-cal-days-only .ph-cal-day:not(.empty):hover{transform:translateY(-1px);box-shadow:0 3px 7px rgba(216,27,106,.12)}
+.ph-cal-days-only .ph-cal-day.empty{background:transparent;box-shadow:none;cursor:default}
+.ph-cal-days-only .ph-cal-day.today{background:#D81B6A;color:#fff;box-shadow:0 3px 8px rgba(216,27,106,.25)}
+.ph-cal-days-only .ph-cal-day.selected{outline:2px solid #D81B6A;outline-offset:-2px;background:#fde8f2;color:#D81B6A}
+.ph-cal-days-only .ph-cal-day.today.selected{background:#D81B6A;color:#fff}
+@media(max-width:420px){
+  .ph-cal-top{margin-top:20px;margin-left:10px;margin-right:10px;padding:11px 10px}
+  .ph-cal-top-icon{width:32px;height:32px;flex-basis:32px;font-size:15px}
+  .ph-cal-top-copy strong{font-size:11px}
+  .ph-cal-top-copy span{font-size:8px}
+  .ph-cal-monthbar{margin-left:10px;margin-right:10px}
+  .ph-cal-weekdays{margin-left:10px;margin-right:10px}
+  .ph-cal-days-only{margin-left:10px;margin-right:10px;margin-bottom:10px;gap:3px;padding:4px}
+  .ph-cal-days-only .ph-cal-day{font-size:9px;border-radius:7px}
+}
 </style>
+
+<style id="calendar-notes-style">
+.ph-cal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px 8px;
+  flex: 0 0 auto;
+}
+
+.ph-cal-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(216,27,106,.12);
+  box-shadow: 0 4px 14px rgba(60,20,40,.08);
+}
+
+.ph-cal-today-btn{
+  flex:0 0 auto; border:1px solid rgba(216,27,106,.32); background:#fde8f2; color:#D81B6A;
+  font-size:9.5px; font-weight:800; letter-spacing:.03em; text-transform:uppercase;
+  padding:7px 11px; border-radius:999px; cursor:pointer; white-space:nowrap;
+  transition:transform .12s ease, background .15s ease, color .15s ease;
+}
+.ph-cal-today-btn:hover{background:#D81B6A;color:#fff;}
+.ph-cal-today-btn:active{transform:scale(.92);}
+
+.ph-cal-note{
+  margin:0 12px 12px; flex:0 0 auto;
+  background:#fff; border:1px solid #eadde3; border-radius:14px;
+  padding:10px 12px 12px; box-shadow:0 4px 14px rgba(50,20,35,.07);
+  animation: calNoteIn .18s ease;
+}
+.ph-cal-note[hidden]{display:none!important;}
+@keyframes calNoteIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+.ph-cal-note-head{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  margin-bottom:7px;
+}
+.ph-cal-note-head span{
+  font-size:11px; font-weight:800; color:#D81B6A; text-transform:capitalize;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.ph-cal-note-close{
+  flex:0 0 auto; width:20px; height:20px; border-radius:50%; border:none;
+  background:#fde8f2; color:#D81B6A;
+  display:flex; align-items:center; justify-content:center; font-size:9px; cursor:pointer;
+}
+.ph-cal-note-close:active{ transform:scale(.88); }
+.ph-cal-note textarea{
+  display:block;width:100%;box-sizing:border-box;min-height:54px;
+  resize:none;border:1px solid #eadde3;border-radius:10px;
+  background:#fdfafb;padding:8px 10px;color:#33282e;
+  font:12.5px/1.35 inherit;outline:none;
+  transition:border-color .15s ease, background .15s ease;
+}
+.ph-cal-note textarea:focus{border-color:#D81B6A;background:#fff;}
+.ph-cal-note-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  margin-top:8px;
+}
+.ph-cal-note-count{font-size:9.5px;color:#a08d96;font-weight:600;flex:0 0 auto;}
+.ph-cal-note-actions{display:flex;gap:6px;}
+.ph-cal-note-del, .ph-cal-note-save{
+  display:flex; align-items:center; gap:5px;
+  border:none; border-radius:999px; cursor:pointer;
+  font-size:10.5px; font-weight:700; padding:6px 11px;
+  transition:transform .12s ease, background .15s ease;
+}
+.ph-cal-note-del{background:#fdeef3;color:#c81f63;}
+.ph-cal-note-del:hover{background:#fbdce8;}
+.ph-cal-note-save{background:#D81B6A;color:#fff;}
+.ph-cal-note-save:hover{background:#A8144F;}
+.ph-cal-note-del:active, .ph-cal-note-save:active{transform:scale(.94);}
+
+.ph-cal-toast{
+  position:absolute; left:50%; bottom:14px; transform:translate(-50%,10px);
+  background:#1C0813; color:#fff; font-size:10.5px; font-weight:700;
+  padding:8px 14px; border-radius:999px; display:flex; align-items:center; gap:7px;
+  box-shadow:0 8px 18px rgba(0,0,0,.3);
+  opacity:0; pointer-events:none; transition:opacity .22s ease, transform .22s ease;
+  z-index:9; white-space:nowrap;
+}
+.ph-cal-toast.show{opacity:1; transform:translate(-50%,0);}
+.ph-cal-toast i{color:#4be08a;}
+</style>
+
+<style id="cal-phone-style">
+#ph-cal-view{background:#fff;color:#1c1c1e;padding:30px 0 0}
+#ph-cal-view .pc-head{display:flex;align-items:flex-end;justify-content:space-between;padding:6px 14px 8px}
+#ph-cal-view .pc-title{display:flex;flex-direction:column;line-height:1.05}
+#ph-cal-view .pc-title strong{font-size:22px;font-weight:800;letter-spacing:-.02em;color:#1c1c1e;text-transform:capitalize}
+#ph-cal-view .pc-title span{font-size:12px;font-weight:600;color:#D81B6A;margin-top:2px}
+#ph-cal-view .pc-nav{display:flex;gap:2px}
+#ph-cal-view .pc-nav button{width:30px;height:30px;border:0;background:none;color:#D81B6A;font-size:13px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#ph-cal-view .pc-nav button:active{background:#fde8f2}
+#ph-cal-view .ph-cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin:0;padding:0 6px 4px}
+#ph-cal-view .ph-cal-weekdays span{font-size:10px;font-weight:700;color:#8e8e93;text-align:center;letter-spacing:0}
+#ph-cal-view .ph-cal-days-only{flex:1;min-height:0;margin:0;padding:0 6px 6px;gap:0;background:none;border:0;box-shadow:none;border-radius:0;grid-template-columns:repeat(7,1fr);grid-auto-rows:1fr;align-content:stretch;touch-action:pan-y}
+#ph-cal-view .ph-cal-days-only .ph-cal-day{min-height:0;width:100%;height:100%;border:0;border-top:1px solid #ececf0;border-radius:0;background:none;box-shadow:none;transform:none;outline:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4px 0 0;font-size:12px;font-weight:600;color:#1c1c1e}
+#ph-cal-view .ph-cal-days-only .ph-cal-day:hover,
+#ph-cal-view .ph-cal-days-only .ph-cal-day.today,
+#ph-cal-view .ph-cal-days-only .ph-cal-day.selected,
+#ph-cal-view .ph-cal-days-only .ph-cal-day.today.selected{background:none;box-shadow:none;transform:none;outline:0;color:#1c1c1e}
+#ph-cal-view .ph-cal-day.empty{cursor:default}
+#ph-cal-view .ph-cal-day span{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+#ph-cal-view .ph-cal-day.today span{background:#D81B6A;color:#fff}
+#ph-cal-view .ph-cal-day.selected span{background:#1c1c1e;color:#fff}
+#ph-cal-view .ph-cal-day.today.selected span{background:#D81B6A}
+#ph-cal-view .ph-cal-day.has-note::after,
+#ph-cal-view .ph-cal-day.today.has-note::after{right:auto;bottom:auto;left:50%;top:32px;margin-left:-2px;width:4px;height:4px;background:#D81B6A}
+#ph-cal-view .pc-bar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 14px 12px;border-top:1px solid #ececf0}
+#ph-cal-view .pc-bar small{font-size:9.5px;color:#8e8e93;font-weight:600}
+#ph-cal-view .ph-cal-note{position:absolute;left:0;right:0;bottom:0;margin:0;border:0;border-radius:20px 20px 22px 22px;padding:12px 14px 16px;box-shadow:0 -10px 30px rgba(30,10,20,.22);z-index:6;animation:pcSheet .25s ease}
+@keyframes pcSheet{from{transform:translateY(100%)}to{transform:none}}
+#ph-cal-view .ph-cal-note textarea{font-family:inherit;font-size:12.5px}
+#ph-cal-view .ph-cal-toast{bottom:auto;top:44px}
+#ph-cal-view .pc-tip{margin:0 12px 2px;padding:8px 10px;border-radius:12px;background:#fde8f2;color:#A8144F;display:flex;gap:8px;align-items:flex-start}
+#ph-cal-view .pc-tip i{font-size:12px;margin-top:1px;color:#D81B6A}
+#ph-cal-view .pc-tip b{display:block;font-size:10.5px;line-height:1.25}
+#ph-cal-view .pc-tip span{display:block;font-size:9px;line-height:1.3;color:#7a3a55;margin-top:2px}
+#ph-cal-view .pc-opt{display:inline-block;font-size:8px;font-weight:700;background:#D81B6A;color:#fff;border-radius:999px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+#ph-cal-view .ph-cal-note-head span{text-transform:none}
+#ph-cal-view .ph-cal-days-only .ph-cal-day.past{opacity:.35;cursor:default}
+#ph-cal-view .pc-nav button:disabled{opacity:.25;cursor:default}
+#ph-cal-view .pc-nav button:disabled:active{background:none}
+</style>
+
 </head>
 <body>
 
@@ -1294,7 +1558,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
           <div class="tv-screen" id="phone">
             <span class="tv-notch"></span>
 
-            
             <div class="ph-home" id="ph-home">
               <div class="ph-status">
                 <span id="ph-time">20:45</span>
@@ -1308,20 +1571,16 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               <div class="ph-grid">
                 <a class="ph-app" href="#cardapio" id="hero-cardapio"><span class="ph-ico"><img src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&w=120&h=120&fit=cover&output=webp" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Cardápio</span></a>
                 <a class="ph-app" href="#pedido"><span class="ph-ico" style="background:#FF9500"><i class="fas fa-bag-shopping"></i></span><span class="ph-label">Pedido</span></a>
-                <button type="button" class="ph-app" id="app-galeria" aria-label="Abrir galeria"><span class="ph-ico" style="background:#fff"><img src="data:image/webp;base64,UklGRr4HAABXRUJQVlA4ILIHAADwJACdASqAAIAAPlEgjkQjoiGZORTkOAUEswBqRPDunxU/HfkL7QNg/rn4H5fE/3YhOS+6r3BP0v/XbrT+YT9jf2z93b/AesD+/eoB/Zf8b1kHoReW3+6HwpfvH6NX//znf+4dvu0tXq5xyhHsb3hu27EPe/GqCqdnjv9ryM15d1r40JjUPblybtaqsFP5tlkfyDerAyi7G3cImNhfoX3FSBBl0xokV7ZbNIbzNuhvr7lO+9/0q/QqtKM62HOFcQwnqXr404LemIKAeUdDbud1xwl+oS2kgXslZIq5hO/e0juH0BgaUyfUsW3ofyaiyI3Rha5COUAS4kebqfpxDVxHJsvVQJnAgOKWbgI0R5RGwbCVaPbIde2+hsifQQizfyMdIKZSa2Cs7zsPxTV8vgkgAP79wIC5BDIe00vNhA0oaobAoCmsJNOz7jLkCakoucqXfgpeoczMY69g1wHcJeghQTbFuAkrKaTXqP5KMBAp4dwixHToD4OAHCuZ/kvlL97Jd0qrmXO+RIffPS1rMaqxujISxv/GDjlbu84MSmXgOuaB4cT4Jx6t/K+o/c9A57EWRm+oYf0HYf/6YIhJ8YqFC36nJvfsCwrdrXoC7FnrdWqUo6nxhAJIEcZ2ODvqdJwJpW5u9ErjAz6cHfqaghbRQWfeBegpP1+bILWylFna0n0CZ4PuCkfWz++ymaT8zGZeC8sPqBvFOAWMwV4Z9jj6v2fBgBajnxUby40iBW1LsMCqEuUtv3ejjyfDfv5/RAcFa9DSKtfElkerg0x6LvtDgeIQPb9Gt4ZPaVA2KZzBD5fzE97Pw3aSbt/mZuGOQH5U43A+knmY6T5l0gSb9yLOxBBHEOVe0fieztIayxvPT1DSSP0aW4O+dBh0NAAkGC46CCE3chio6IxgZeoa6dWESc5VNs0AMZr10o53E6TDuv67V9uU2EsGxBgkJ6ur+ZMxQbIMHlVmN+4ljYwICF80N/3SfuReoigHqUYCcuDCVgLkb860Ncowp+HaSrtp7yqjBRpslt92owmM65dfnR2P/5MC2z+wsuTJ0u1llzLQERluYXdmQ9b/jlTkYDLqX3Hmw4GAscuTbATHnIBf59tVxNpmpCBwAStI18h31Vq6yi66OhrRUxp7YnV7K5ZbvCW0my5RSTAmTYliop7JNqDykAHNKPJwJdb9vPxM888EkBzyhx/VwMu1zr1xrF6qXLOZkXvCVD/4/rB7pakYrM3TenqOZrn0SXb5twB1YbKFeRKlj9/UPjrsS2y8gu9qMT4KRkh6ahg2X5ocyAcW09rPbJj13Ie074EBmcZq++QziUBgybh4obXL6WhlaEvtW/P7By+K4fKbrXQB5TCsge9ko2pxwaDiRrNv6cVjBo+dIDy4b0F+t9xPt+UarCLAvyXHPZTsTKtnPGpbSYhNvOQrxDeKP8h+0xRg0drlyEDIgqt9pwbioGFRti9WloyGcoS3YuF7G9TIASJmbd/bWn2J67X1CYi+g5fH7GT4CLX2tXMVmCKo7nVUPD8U2hOXNjsdg/74i7IoQtgVV7FfUI+cHmJJHvdfSfja/Jtv3mweRbTiAzJdoUS13r1HB2LVfYun0pVL87Q3RVUrsLpsPR/0ZJPY6iQadxduj1W4Q9mriAp/Ge7UaRkni0x/PiF/9eemo4H6ssc5S9icPx4H4XbSXwoUT3CgPTyvEng+kcow2Psvhsvrvbbp4ZftrBx3LNjhjA84FyyYC/k1QI5OQQ9WSrv+lALSM/PPUtpPWPTRJME2jlH5W/XOTsMEaWfE+JxcfUyx6PhFlCxinon2IsNjpAZRPSv2ICms3WEA7ke7rh/h7NfN4WycpzdM6ynetYhxnGZnqgAtPn3AnLqSREK5/gSkZwc2+or38iz3rAJW1G9fUeZb/eUgwJnBcua7SnYLfFURDRBu6xKZv6aujcCjRGaX4UQHqFHA7QMBaV+c302+LLZ5XbCOfy6ZlB006gkIYCddyKLqcMKkdUQSKRkpA/32QoKZPJelgXU893QlYBiomrCU9JsWoq0odzkyznSf+7LAZmKe5o8qGx0RZFx6wjxhLiU7/gMe0HS2n3/sv1zJg6pROfwupmx1j0lZWwrJtnqYJSuUg6qThQ/790bzIIbGdR68StNyTWloNu3HNzyn+qI/Yyt+f/UD/1ot/R21arFGi0uldDAdXfH4f7UvnNCZhhK92Rsl7s7yctHYTVJAQPxhTaRTo9baMeZrYnwGvOy5+HkRYV+91k1/2HDw3KbBjQ+V0dl5MzBpBNFBOkkK5LPEgDIZDBqGuusG2dKyXMbRp6CzncdMTI8FWbUG3ZswunXW00qNtWyk/eylBrS2x8R+9lW1VcK/pKG2Us+NPlpMnRUwBH7V44NDn7kKSoTsa2KA+C7p3IwDYwqkIX7lLp7izTSHXyRxN4v55anQnQPDFzwW0in8f/mBZbprD6S9lJ8iQCUQZUgqtbLfuhN+Q0t8kK6AuWtBCaDfi54+/yI5kPG16hDT6EUw1JWN2g9dqYVcIQACu7p/MQIG8vvDFiNleEyctdhw1r8jG1EbZBFl52mWbjdo6sSZbehLczbR7po82nfkFH7JhzR6V0Fpv6e9xjSoFCRrh5CYAAAAAA==" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Galeria</span></button>
+                <button type="button" class="ph-app" id="app-galeria" aria-label="Abrir galeria"><span class="ph-ico" style="background:#fff"><img src="https://i.ibb.co/tMg2JXgv/images.jpg" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Galeria</span></button>
                 <a class="ph-app" href="https://br.pinterest.com/docesdaanalu2026/minhas-produ%C3%A7%C3%B5es/" target="_blank" rel="noopener"><span class="ph-ico" style="background:#E60023"><i class="fa-brands fa-pinterest-p"></i></span><span class="ph-label">Pinterest</span></a>
-                <a class="ph-app" href="#contato"><span class="ph-ico" style="background:#fff;color:#D81B6A"><i class="fas fa-location-dot"></i></span><span class="ph-label">Contato</span></a>
                 <button type="button" class="ph-app" id="app-musica" aria-label="Abrir músicas"><span class="ph-ico" style="background:#1ED760"><img src="data:image/webp;base64,UklGRioJAABXRUJQVlA4IB4JAADwKQCdASqAAIAAPj0ejUQiIaGUSlyYIAPEsQBovoAdj3M/tz6z+NPtU23+v/fnl3jT9ufKB9Cv8/6gPzZ/zv6T8AH6Nf2v8kv6r3B/5b6AP4l/T/+f/effN9Bn/d9QD/FdQV6AHln/tl8Ln7a/r57SX/z1jRpP+WySTijP92A7XH9i3ncAH47/OvUZmNfgDAJHT6Hmfp6i4Fn7L+07+1RUZAkddPPdnBmLxuzgSl94WVgFtZvzFjdGbye5SrAJA3tR3r+/zzh22n6aoR2JyJjrzYF8+myRZbgy2aufVFvsXFYzQ92oCXhvEsJCGKlnvj0urbhP1eB/V30MhLRYe3mwBzX3t476NYnop2pK08pNUq1mY9+Sm0svr2nYnCox+PVjRnlhIgqCOg6Y+DLSl9PsvYU86Ip5HN2mMuNMzT6Ga3ppEnj7JVsrf40KLzSYQ4Va4tz/G9FwAAD+6a3/5PhOuVWP/5dt+Xbfl23y5jMjDqEoW81a1qxTZaJ7T98sBTkXB6erUPeADxq7zKOBT2T6kWdBz958nSC1/hsr3HPX8syCuoBDpGpxgjLGmQ+08oI1dG27fErFLLOmCekgv3Q75sUmPNo5ik0b12d4gUumez/24DM376FAusxNE3RosL6cREb4xn1OUa7V/t4D8L8Ry53iHbcmVW+eKrxVVCUIzGTFlB1pEyccxF6iGg+N3wXNcmSvEJyz2wXVQ6Rq9V8261yhuTaHT3gAASsDsDs6kFOIPGIKxuLmJYE7E8M6AcZB0TsYCaoc9SLBFU+xCP6I+geIsbAhv8FOxo63mFqNkr/L7wgWDDXAu3sygwjMNRT8n+J736uBz/CqQH/vhIqIQuC2QhsmlIJATVvA0i+1AJ1lmckwtpfkBQC3zYmqOZFMoT0IdClKiu4kuW/LsBd/l7X+PbfN2s35HxCgef4dxwmHFtvoOJYWsZoiEnXYh84jUDyuUBta/1VxQvtmymJgn+5QJRD31gYYhO5CG9c6A49bmMwn9Dj3+4J8+YD+uOIhV5L1foCJ1SPAqr06aiviLhalqGjDMmNKb4k3taAtS6XGF8cOY/soN4Lg1RkafFbEesDnSgwIm5RDG5D/pWvTwyfiN3OYSKbZx/jOSJMfXvGTu2wdFW9fXTQteVkt6q4m+Q/q35i61RxP1QoiZNCZdXWIjjg7BknCGhAm1ogUGoHzD88+ld7WEKI1FCyc1pyEU9vFxmM/VKhwiHHtZt1wCnzbzkdw/E99jo8/BBahTWMpL+qGfg29xIbkSVoEAblJjbaEJuNuR1f8KsVc5KSFZdWH2MO9gTlJRur2Umm6FlYWDyL2zxEKd1yU7b9zag7+FjxuWpJIkC0qxiHiVefqNrrNI8hzUb4HqXcAzBE6pdT9TbVL4d6cA1ENw+lerjqF7aD8gK+4CdWXkzgjGvoi9wr+LBqbiD+NbHyoGH7gTzvG39iFlP567+uO5U5cFZQiS8YBgpqCWuoMmEqVExklRII+VcvR1lylC5SxP9kKDQZPaECk8gOEbxAWPogGJ7V/ctshDnJwQVRtBkJSP9pC4CL1xt8OOzNTM9Rl74TsBAB4TRONoulQNnf1ijs32eFJF7Hf/yq2E/QuSWiLd3KX5jeEfJUpbYvuk1HnukWjtaE1QpNvRWRaGr45ShkmCtqsQaKmRP7WME1qYkZN5rOB/+kfm4jZNjMx55Oait4QexgLtvunqpr4u3ylemBhf32WKwjmTCPSMzm758Tk4VwrUKT06qJjc6E0p16YzB8xWjr7FGvY7/P/o9hOJpY5SMaKVhZTxX43EeYO74bomDdvlxRuo12dToOWC7lLlXaNVzofFzJZbWkOA+kALdPLmg1yNpi1oQKCOOwInvwjtxpRHYS7tNtNq2fLLrEEV/YehxSPUz9zbsiWVQvgc6Ln74Xbh9wtSKosXccGouTEWaEUoHjwTpb0qunts30lDS6J1/H7dbvDlTnEdF/ogGuiQY2dcHYn/gyHJfET3+8ZVctQGFVicSqVlGiSsgWDstvtlPOXosJBJ7ed69Cu3lh6MOVNCTBIbQf23hhYT475OntpeHtH/UzUcabGQticJ4t4AjBD03J3eckOdAIp54kxDFBb85v9/fZLJe659NHDNqs10N7Tv9UpS9/IF68a0vHiJnk5S+cMw568/XhCpa5gdywC7go81S16tyc8fK4asLLbRKsCLwe5kaCkaTufON7RL9cC7JdVnhg1sTIXZg6giTBAxIHHXa5Xf8EK9zKSMGF5qPYNYv5vsOuhqqp4/JuzFdmkFbi0schFZGsf02nUDskN7AQG0LP2n//neF89nn8xy/uS01zeX8K5yW2jO9/trUlcDS2sGL+Alj58+U2RvMOB/sw7HE7ZZrU+Hv+OsJDGIixBuU1IexKOQgj+t5/B4LUXPyK2ULK8b9k+fMDR0TJVxndxGgUj4QB2dxdK7mtHOSH0Bs2Xdf4/HQ8cWpBQJjJbMeGyn6xIZyF1leXU8bBUW+PDtecSwo4IkibxA6MjCEOmqWDsUnSZm5kMWsUqnZzTLyw7YWVaNrLN0y0NW5CQT6k0NsOX3cXZ6JnJwn3/yQc+esKGLvrnTuEYlU8aKfmrcI+91dUxQgA8vej8f/DB/bClY7nK0OELygmneaHrUTFkxppObQTqzkaLPDVF/tUeJB3FHhFYQZhsTaBGN/msweLZkcyI9H/S+j4lbRIMbtQ2IF+hYl9ZQJLyRCKNxoieqapsqJ5oXeB7T0LSk9kKSWKBIZaMF5cVzN74Kit6qk51+1wZA6q/MQacAR/tpYI1Bl36MD2zWhZlnjXRqY/8pgb2o75VHfT+1OsONc0P8WtPCapdL6DDPFIwkogUAgJWDetQEatSBAAWpUI7BBs/vFVyhok1x1PM9Sf3Y+fAhcbMjZKQQF823SJXoxtLzsd13zKRf1egpn+GDTviPEI9wPsfDJqTBOQXkFVbt4AiSoLlu4+nwa1owd+NY93cDHVO5xuP71H9WAuc48s7rQTvcVAfW39goKAmOmBJP5JlmfZsSSXzF5E/RpCD9WVdbxfMwdrqNvMwC/E2D1VjVY9Qanzf1yck+Z5gXehivGYAFlZ3OtuNJSbxJgpwAAA=" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Músicas</span></button>
-              </div>
-
-              <div class="ph-dock">
-                <button type="button" class="ph-app" id="app-youtube" aria-label="Abrir vídeo"><span class="ph-ico" style="background:#FF0000"><i class="fa-brands fa-youtube"></i></span></button>
-                <a class="ph-app" href="https://instagram.com/_docesdaanalu_" target="_blank" rel="noopener" aria-label="Instagram"><span class="ph-ico" style="background:linear-gradient(45deg,#FEDA75 0%,#FA7E1E 25%,#D62976 50%,#962FBF 75%,#4F5BD5 100%)"><i class="fa-brands fa-instagram"></i></span></a>
-                <a class="ph-app" href="https://api.whatsapp.com/send?phone=558396905025&text=Oi%20Analu%2C%20quero%20fazer%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="ph-ico" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></span></a>
+                <button type="button" class="ph-app" id="app-youtube" aria-label="Abrir vídeo"><span class="ph-ico" style="background:#FF0000"><i class="fa-brands fa-youtube"></i></span><span class="ph-label">YouTube</span></button>
+                <a class="ph-app" href="https://instagram.com/_docesdaanalu_" target="_blank" rel="noopener" aria-label="Instagram"><span class="ph-ico" style="background:linear-gradient(45deg,#FEDA75 0%,#FA7E1E 25%,#D62976 50%,#962FBF 75%,#4F5BD5 100%)"><i class="fa-brands fa-instagram"></i></span><span class="ph-label">Instagram</span></a>
+                <a class="ph-app" href="https://api.whatsapp.com/send?phone=558396905025&text=Oi%20Analu%2C%20quero%20fazer%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="ph-ico" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></span><span class="ph-label">WhatsApp</span></a>
+                <button type="button" class="ph-app" id="app-calendario" aria-label="Abrir calendário"><span class="ph-ico ph-calendar-ico"><img src="https://i.ibb.co/B2Xp1kjt/images.png" alt="Calendário" decoding="async"></span><span class="ph-label">Calendário</span></button>
               </div>
             </div>
 
-        
             <div class="ph-app-view ph-gal" id="ph-gal-view" aria-hidden="true" style="transform-origin:17% 52%">
               <div class="ph-gal-bar"><span class="ph-gal-title">Galeria</span><span class="ph-gal-count" id="gal-count"></span></div>
               <div class="ph-gal-grid" id="gal-grid"></div>
@@ -1336,7 +1595,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               </div>
             </div>
 
-            
             <div class="ph-app-view ph-mus" id="ph-mus-view" aria-hidden="true" style="transform-origin:83% 52%">
               <div class="ph-mus-head">Músicas</div>
               <div class="ph-mus-banner"><i class="fas fa-headphones"></i><span>Ouça música enquanto vê nosso cardápio</span></div>
@@ -1353,7 +1611,45 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
               </div>
             </div>
 
-            
+            <div class="ph-app-view ph-cal" id="ph-cal-view" aria-hidden="true" style="transform-origin:83% 60%">
+              <div class="pc-tip">
+                <i class="fas fa-calendar-check"></i>
+                <div><b>Escolha a data da sua festa <small class="pc-opt">opcional</small></b><span>Toque em uma data para conferir o dia e facilitar a combinação dos detalhes da sua festa com a Analu.</span></div>
+              </div>
+              <div class="pc-head">
+                <div class="pc-title"><strong id="ph-cal-month-title">Setembro</strong><span id="ph-cal-year">2026</span></div>
+                <div class="pc-nav">
+                  <button type="button" id="ph-cal-prev" aria-label="Mês anterior"><i class="fas fa-chevron-left"></i></button>
+                  <button type="button" id="ph-cal-next" aria-label="Próximo mês"><i class="fas fa-chevron-right"></i></button>
+                </div>
+              </div>
+
+              <div class="ph-cal-weekdays"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+              <div class="ph-cal-days-only" id="ph-cal-days-only"></div>
+
+              <div class="pc-bar">
+                <button type="button" class="ph-cal-today-btn" id="ph-cal-today">Hoje</button>
+                <small>A data vai junto com o pedido no WhatsApp</small>
+              </div>
+
+              <div class="ph-cal-note" id="ph-cal-note" hidden>
+                <div class="ph-cal-note-head">
+                  <span id="ph-cal-note-date">Data selecionada</span>
+                  <button type="button" class="ph-cal-note-close" id="ph-cal-note-close" aria-label="Fechar anotação"><i class="fas fa-xmark"></i></button>
+                </div>
+                <textarea id="ph-cal-note-input" maxlength="500" placeholder="Observações sobre a festa (opcional). Ex.: horário, tema, local..."></textarea>
+                <div class="ph-cal-note-foot">
+                  <span class="ph-cal-note-count" id="ph-cal-note-count">0/500</span>
+                  <div class="ph-cal-note-actions">
+                    <button type="button" class="ph-cal-note-del" id="ph-cal-note-del"><i class="fas fa-trash"></i> Remover data</button>
+                    <button type="button" class="ph-cal-note-save" id="ph-cal-note-save"><i class="fas fa-check"></i> Confirmar</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ph-cal-toast" id="ph-cal-toast"><i class="fas fa-check"></i><span>Anotação salva</span></div>
+            </div>
+
             <div class="ph-app-view" id="ph-yt-view" aria-hidden="true">
               <div class="ph-app-bar"><i class="fa-brands fa-youtube"></i><span>Doces da Analu</span></div>
               <iframe id="yt-frame" title="Vídeo Doces da Analu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1373,14 +1669,12 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 
 <section class="section s-alt" id="cardapio">
   <div class="wrap">
-
     <div class="mn-head reveal">
       <p class="eyebrow">Cardápio</p>
       <h2 class="mn-title">Doces personalizados para combinar com a <em>sua festa</em>, do jeitinho que você imaginou.</h2>
       <span class="mn-orn" aria-hidden="true"></span>
       <p class="mn-lead"></p>
     </div>
-
 
     <div class="mn-card reveal">
       <div class="mn-inner">
@@ -1398,13 +1692,11 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <section class="section-pedido" id="pedido">
   <div class="pd-wrap">
-
     <div class="pd-header reveal">
       <div class="pd-eyebrow">Peça agora</div>
       <h2 class="pd-title">Monte seu pedido</h2>
@@ -1435,7 +1727,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
       <div class="pd-combos" id="combo-list">
         <label class="pd-combo-option" data-value="Caixinha (4 brigadeiros)" data-max="4" data-desc="4 brigadeiros">
           <input type="radio" name="combo" value="Caixinha (4 brigadeiros)">
-
           <span class="pc-txt">
             <span class="pc-name">Caixinha <small>4 unidades</small></span>
             <span class="pc-desc">Ideal para presentear</span>
@@ -1536,6 +1827,10 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
           <span class="pd-resumo-key">Sabores</span>
           <span class="pd-resumo-val" id="res-sabores">—</span>
         </div>
+        <div class="pd-resumo-linha">
+          <span class="pd-resumo-key">Data da festa</span>
+          <span class="pd-resumo-val" id="res-data">Não informada (opcional)</span>
+        </div>
       </div>
       <a href="#" class="pd-btn-whats" id="btn-finalizar">
         <i class="fa-brands fa-whatsapp" style="font-size:18px;"></i>
@@ -1548,7 +1843,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
         <button class="pd-btn-back" onclick="goStep(2)"><i class="fas fa-arrow-left"></i> Alterar sabores</button>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1563,7 +1857,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
       </div>
     </div>
     <div class="dots" id="galeria-dots"></div>
-
   </div>
 </section>
 
@@ -1604,10 +1897,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     <h2 class="reveal">Fale com a gente</h2>
     <div class="contato-grid">
       <div class="c-bloco reveal">
-        <h3>Localização</h3>
-        <p><i class="fas fa-location-dot"></i> João Pessoa / Cabedelo — PB</p>
-      </div>
-      <div class="c-bloco reveal">
         <h3>Redes sociais</h3>
         <div class="social-links">
           <a href="https://instagram.com/_docesdaanalu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1626,7 +1915,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     </div>
   </div>
 </section>
-
 
 <div class="sabor-toast" id="sabor-toast">
   <i class="fas fa-wand-magic-sparkles"></i>
@@ -1674,6 +1962,7 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   </div>
   <div class="mp-seek" id="mp-seek"><i id="mp-fill"></i></div>
 </div>
+
 <div class="sabor-toast" id="mus-toast" style="bottom:calc(96px + env(safe-area-inset-bottom, 0px));">
   <i class="fas fa-headphones"></i>
   <span>Ouça música enquanto vê nosso cardápio</span>
@@ -1686,7 +1975,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     <p class="rodape-copy" style="margin-top:4px;">Atendimento via WhatsApp · <a href="https://wa.me/558396905025" style="color:rgba(255,255,255,.9); text-decoration:underline;">(83) 9690-5025</a></p>
   </div>
 </footer>
-
 
 <script>
 document.getElementById("ano").textContent = new Date().getFullYear();
@@ -1712,7 +2000,6 @@ var FOTOS = [
   { nome: "Moranguinho / Tradicional", src: "https://i.ibb.co/5x5v5DXS/IMG-20260919-WA0042.jpg" }
 ];
 
-
 try {
   (function(){
     var FOTOS_SAB = {
@@ -1725,22 +2012,21 @@ try {
       ninho: "https://i.ibb.co/DDvFv3NX/cd844cb3-8dfb-41bb-aa4a-26ca91e2a87e.jpg",
       beijinho: "https://i.ibb.co/PGj6yTGj/7c7648fc-ff9d-4645-9711-e0dc7a2364f5.jpg"
     };
-    
-    
+
     function leve(u){
       return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=200&q=75&output=webp";
     }
-    
+
     function nitida(u){
       return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=1200&we&q=90&output=webp";
     }
+
     var SPOTLIGHT = {
       branco: {
         foto: "branca",
         titulo: "Brigadeiro branco",
         desc: "Brigadeiro branco cremoso, enrolado em granulado branco. Delicado, docinho e lindo em qualquer mesa de doces.",
         tag: "Branco",
-        espaco: "foto",
         box: { left: 26.5, top: 66.8, width: 16.3, height: 11.5 }
       },
       aoleite: {
@@ -1748,7 +2034,6 @@ try {
         titulo: "Brigadeiro ao leite",
         desc: "Chocolate ao leite belga derretido com manteiga e leite condensado, finalizado com raspas de chocolate crocante por cima. O clássico que nunca sai de moda.",
         tag: "Ao leite",
-        espaco: "foto",
         box: { left: 65.4, top: 67.3, width: 14.9, height: 11.2 }
       },
       ninho: {
@@ -1798,7 +2083,6 @@ try {
         titulo: "Beijinho",
         desc: "Leite condensado com coco ralado fresco, enrolado e coberto com coco em flocos. Docinho tradicional que agrada todo mundo.",
         tag: "Beijinho",
-        espaco: "foto",
         box: { left: 37.2, top: 36.6, width: 14.4, height: 6.6 }
       },
       amendoim: {
@@ -1868,7 +2152,6 @@ try {
       reticle.style.height = height + "px";
       var alturaPx = Math.max(18, Math.round(top * 0.32));
       line.style.setProperty("--sf-line-h", alturaPx + "px");
-      /* mantém o nome dentro da foto */
       var tg = document.getElementById("sf-tag");
       tg.style.marginLeft = "0px";
       var meio = tg.offsetWidth / 2, cx = left + width / 2, dx = 0;
@@ -1876,6 +2159,7 @@ try {
       else if(cx + meio > cw - 6) dx = (cw - 6) - (cx + meio);
       tg.style.marginLeft = dx + "px";
     }
+
     img.addEventListener("load", function(){
       carregada = true;
       photoBox.classList.remove("loading");
@@ -1894,6 +2178,7 @@ try {
         reticle.style.visibility = "hidden";
         img.src = nitida(FOTOS_SAB[s.foto]);
       }
+
       eyebrowText.textContent = s.box ? "É esse aqui, olha a seta" : "Olha só que delícia";
       img.alt = s.titulo;
       titleEl.textContent = s.titulo;
@@ -1901,7 +2186,6 @@ try {
       tagText.textContent = s.tag;
 
       reticle.classList.remove("go");
-      /* feixe só nos sabores com mira; roda uma vez */
       sweep.style.display = s.box ? "" : "none";
       sweep.style.animation = "none";
       var pulso = reticle.querySelector(".sf-pulse");
@@ -1940,7 +2224,6 @@ try {
       if(alvo){ alvo.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
 
-    
     var MENU = [
       { key: "branco",        nome: "Brigadeiro branco",   resumo: "Cremoso, com granulado branco" },
       { key: "aoleite",       nome: "Brigadeiro ao leite", resumo: "Com raspas de chocolate" },
@@ -1958,7 +2241,6 @@ try {
     var cdList = document.getElementById("cd-list");
     var montado = false;
 
-    
     function ajustarThumb(im, sp){
       var b = sp.box, iw = im.naturalWidth, ih = im.naturalHeight;
       if(!b || !iw || !ih) return;
@@ -2028,10 +2310,15 @@ try {
       });
     }
 
-    
     montarCardapio();
   })();
 } catch(e){}
+
+function linhaDataFesta(){
+  var d = window.dataFestaPedido;
+  if(!d) return "";
+  return "\n• Data da festa: " + d.texto + (d.nota ? "\n• Observação: " + d.nota : "");
+}
 
 var currentStep = 1;
 var selectedCombo = null;
@@ -2074,20 +2361,16 @@ document.querySelectorAll(".pd-combo-option").forEach(function(opt){
     }
     atualizarSabores();
 
-    
     clearTimeout(comboTimer);
     if(selectedCombo !== "orcamento"){
       comboTimer = setTimeout(function(){
         goStep(2);
-        var prog = document.getElementById("pd-progress");
-        if(prog){ var r = prog.getBoundingClientRect(); if(r.top < 0 || r.top > window.innerHeight * 0.5){ prog.scrollIntoView({ behavior: "auto", block: "start" }); } }
       }, 280);
     }
   });
 });
 
-flavorCbs.forEach(function(cb){
-  cb.addEventListener("change", function(){
+function aoMudarSabor(){
     var sel = document.querySelectorAll("#flavor-list input:checked");
     var avisoEl = document.getElementById("aviso-max");
     var avisoText = document.getElementById("aviso-max-text");
@@ -2100,7 +2383,10 @@ flavorCbs.forEach(function(cb){
       }
     }
     atualizarSabores();
-  });
+}
+
+flavorCbs.forEach(function(cb){
+  cb.addEventListener("change", function(){ ancorar(document.getElementById("flavor-list"), aoMudarSabor); });
 });
 
 function renderPicked(){
@@ -2126,17 +2412,40 @@ function renderPicked(){
     list.appendChild(chip);
   });
 }
+
 document.getElementById("pd-picked-clear").addEventListener("click", function(){
   var marcados = document.querySelectorAll("#flavor-list input:checked");
   Array.prototype.forEach.call(marcados, function(cb){ cb.checked = false; });
   if(marcados.length){ marcados[0].dispatchEvent(new Event("change")); }
 });
 
+function saltar(y){
+  var h = document.documentElement, antigo = h.style.scrollBehavior;
+  h.style.scrollBehavior = "auto";
+  window.scrollTo(0, y);
+  h.style.scrollBehavior = antigo;
+}
+
+function ancorar(el, fn){
+  var antes = el.getBoundingClientRect().top;
+  fn();
+  var d = el.getBoundingClientRect().top - antes;
+  if(Math.abs(d) > 1) saltar(window.pageYOffset + d);
+}
+
 function goStep(n){
+  var ref = document.getElementById("pd-progress");
+  ancorar(ref, function(){ _goStep(n); });
+  var topo = ref.getBoundingClientRect().top;
+  if(topo < 0) window.scrollTo({ top: window.pageYOffset + topo - 12, behavior: "smooth" });
+}
+
+function _goStep(n){
   if(n === 2 && selectedCombo === "orcamento"){
-    location.href = "https://api.whatsapp.com/send?phone=558396905025&text=" + encodeURIComponent("Olá, Analu! Gostaria de solicitar um orçamento personalizado.");
+    location.href = "https://api.whatsapp.com/send?phone=558396905025&text=" + encodeURIComponent("Olá, Analu! Gostaria de solicitar um orçamento personalizado." + linhaDataFesta());
     return;
   }
+
   if(n > currentStep){
     if(currentStep === 1 && !selectedCombo) return;
     if(currentStep === 2){
@@ -2144,12 +2453,14 @@ function goStep(n){
       if(selCheck.length === 0) return;
     }
   }
+
   if(n >= 2 && !selectedCombo) return;
   if(n === 3 && document.querySelectorAll("#flavor-list input:checked").length === 0) return;
 
   if(n === 3){
     var sel = document.querySelectorAll("#flavor-list input:checked");
     document.getElementById("res-combo").textContent = selectedCombo || "—";
+    document.getElementById("res-data").textContent = window.dataFestaPedido ? window.dataFestaPedido.texto : "Não informada (opcional)";
     document.getElementById("res-sabores").textContent = Array.from(sel).map(function(s){ return s.value; }).join(", ") || "—";
   }
 
@@ -2192,7 +2503,7 @@ document.getElementById("btn-finalizar").addEventListener("click", function(e){
   var btn = document.getElementById("btn-finalizar");
   var sel = document.querySelectorAll("#flavor-list input:checked");
   var sabores = Array.from(sel).map(function(s){ return s.value; }).join(", ");
-  var msg = "Olá, Analu! Gostaria de fazer o seguinte pedido:\n\n• Combo: " + selectedCombo + "\n• Sabores: " + sabores + "\n\nPoderia me passar o valor?";
+  var msg = "Olá, Analu! Gostaria de fazer o seguinte pedido:\n\n• Combo: " + selectedCombo + "\n• Sabores: " + sabores + linhaDataFesta() + "\n\nPoderia me passar o valor?";
   var orig = btn.innerHTML;
   btn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size:18px;"></i> Abrindo WhatsApp…';
   setTimeout(function(){
@@ -2249,6 +2560,7 @@ try {
     var ytView = document.getElementById("ph-yt-view");
     var galView = document.getElementById("ph-gal-view");
     var musView = document.getElementById("ph-mus-view");
+    var calView = document.getElementById("ph-cal-view");
     var frame = document.getElementById("yt-frame");
     var viewer = document.getElementById("gal-viewer");
     var viewerImg = document.getElementById("gal-viewer-img");
@@ -2270,10 +2582,10 @@ try {
       viewer.setAttribute("aria-hidden", "true");
     }
     function fecharApp(){
-      var aberto = ytView.classList.contains("open") || galView.classList.contains("open") || musView.classList.contains("open");
+      var aberto = ytView.classList.contains("open") || galView.classList.contains("open") || musView.classList.contains("open") || calView.classList.contains("open");
       if(!aberto) return;
       fecharVisor();
-      [ytView, galView, musView].forEach(function(v){ v.classList.remove("open"); v.setAttribute("aria-hidden", "true"); });
+      [ytView, galView, musView, calView].forEach(function(v){ v.classList.remove("open"); v.setAttribute("aria-hidden", "true"); });
       home.classList.remove("away");
       closeTimer = setTimeout(function(){ frame.src = "about:blank"; }, 300);
     }
@@ -2282,12 +2594,10 @@ try {
       fecharApp();
     }
 
-
     document.getElementById("app-youtube").addEventListener("click", function(){
       frame.src = YT;
       abrir(ytView);
     });
-
 
     function coletarFotos(){ return FOTOS.slice(); }
     var mostradas = 0;
@@ -2301,12 +2611,13 @@ try {
       viewerImg.src = prox(f.src, 1000);
       viewerImg.alt = f.nome || "Foto " + (atual + 1);
       viewerCap.textContent = (f.nome ? f.nome + " · " : "") + (atual + 1) + " de " + mostradas;
-    
+
       [atual + 1, atual - 1].forEach(function(j){
         var g = fotos[(j + mostradas) % mostradas];
         if(g){ var pre = new Image(); pre.src = prox(g.src, 1000); }
       });
     }
+
     var POR_PAGINA = 4;
     function atualizarSetas(){
       gUp.disabled = gGrid.scrollTop <= 2;
@@ -2349,18 +2660,267 @@ try {
       });
       atualizarSetas();
     }
+
     gGrid.addEventListener("scroll", atualizarSetas, { passive: true });
     gUp.addEventListener("click", function(){ gGrid.scrollBy({ top: -gGrid.clientHeight, behavior: "smooth" }); });
     gDown.addEventListener("click", function(){ gGrid.scrollBy({ top: gGrid.clientHeight, behavior: "smooth" }); });
+
     document.getElementById("app-musica").addEventListener("click", function(){ abrir(musView); });
+
+    var CAL_STORAGE_KEY = "docesDaAnalu_calendario_anotacoes_v2";
+    var DATA_FESTA_KEY = "docesDaAnalu_data_festa_v1";
+    var calSelectedKey = "";
+    var calMonthIndex = 0;
+    var calBaseDate = new Date();
+    calBaseDate.setDate(1);
+    var calMaxIndex = 14 - calBaseDate.getMonth();
+
+    function textoLongoData(chave){
+      var pc = chave.split("-");
+      return new Date(+pc[0], +pc[1] - 1, +pc[2]).toLocaleDateString("pt-BR", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
+    }
+    function definirDataFesta(chave, nota){
+      window.dataFestaPedido = { key: chave, texto: textoLongoData(chave), nota: (nota || "").trim() };
+      try { localStorage.setItem(DATA_FESTA_KEY, chave); } catch(e){}
+    }
+    function limparDataFesta(){
+      window.dataFestaPedido = null;
+      try { localStorage.removeItem(DATA_FESTA_KEY); } catch(e){}
+    }
+    (function restaurarDataFesta(){
+      try {
+        var k = localStorage.getItem(DATA_FESTA_KEY);
+        if(!k) return;
+        var pc = k.split("-"), dt = new Date(+pc[0], +pc[1] - 1, +pc[2]), h = new Date();
+        h = new Date(h.getFullYear(), h.getMonth(), h.getDate());
+        if(isNaN(dt.getTime()) || dt < h){ localStorage.removeItem(DATA_FESTA_KEY); return; }
+        window.dataFestaPedido = { key: k, texto: textoLongoData(k), nota: (carregarNotasCalendario()[k] || "").trim() };
+      } catch(e){}
+    })();
+
+    function carregarNotasCalendario() {
+      try {
+        return JSON.parse(localStorage.getItem(CAL_STORAGE_KEY) || "{}");
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function salvarNotasCalendario(notas) {
+      try {
+        localStorage.setItem(CAL_STORAGE_KEY, JSON.stringify(notas));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function chaveDataCalendario(ano, mes, dia){
+      return ano + "-" + String(mes + 1).padStart(2, "0") + "-" + String(dia).padStart(2, "0");
+    }
+
+    function formatarDataCalendario(ano, mes, dia){
+      return new Date(ano, mes, dia).toLocaleDateString("pt-BR", {
+        weekday:"short", day:"2-digit", month:"2-digit", year:"numeric"
+      }).replace(/\./g,"");
+    }
+
+    function mostrarToastCalendario(texto){
+      var toast = document.getElementById("ph-cal-toast");
+      if(!toast) return;
+      toast.querySelector("span").textContent = texto;
+      toast.classList.add("show");
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(function(){
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function atualizarContadorNota(){
+      var campo = document.getElementById("ph-cal-note-input");
+      var contador = document.getElementById("ph-cal-note-count");
+      if(campo && contador){
+        contador.textContent = campo.value.length + "/500";
+      }
+    }
+
+    function abrirNotaCalendario(chave, dataTexto, elemento){
+      calSelectedKey = chave;
+
+      document.querySelectorAll(".ph-cal-day.selected").forEach(function(dia){
+        dia.classList.remove("selected");
+      });
+
+      if(elemento){
+        elemento.classList.add("selected");
+      }
+
+      var notas = carregarNotasCalendario();
+      var caixa = document.getElementById("ph-cal-note");
+      var campo = document.getElementById("ph-cal-note-input");
+      var data = document.getElementById("ph-cal-note-date");
+
+      caixa.hidden = false;
+      campo.value = notas[chave] || "";
+      data.textContent = "Data da festa: " + dataTexto;
+      definirDataFesta(chave, notas[chave]);
+      atualizarContadorNota();
+    }
+
+    function montarCalendario(indice){
+      var area = document.getElementById("ph-cal-days-only");
+      var titulo = document.getElementById("ph-cal-month-title");
+      if(!area || !titulo) return;
+
+      var data = new Date(calBaseDate.getFullYear(), calBaseDate.getMonth() + indice, 1);
+      var ano = data.getFullYear();
+      var mes = data.getMonth();
+      var hoje = new Date();
+      var notas = carregarNotasCalendario();
+
+      var nomesMeses = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+
+      titulo.textContent = nomesMeses[mes];
+      document.getElementById("ph-cal-year").textContent = ano;
+      document.getElementById("ph-cal-prev").disabled = indice <= 0;
+      document.getElementById("ph-cal-next").disabled = indice >= calMaxIndex;
+      area.innerHTML = "";
+
+      var primeiroDia = new Date(ano, mes, 1).getDay();
+      var totalDias = new Date(ano, mes + 1, 0).getDate();
+
+      for(var vazio = 0; vazio < primeiroDia; vazio++){
+        var espaco = document.createElement("span");
+        espaco.className = "ph-cal-day empty";
+        area.appendChild(espaco);
+      }
+
+      for(var dia = 1; dia <= totalDias; dia++){
+        var botao = document.createElement("button");
+        var chave = chaveDataCalendario(ano, mes, dia);
+        var ehHoje = dia === hoje.getDate() && mes === hoje.getMonth() && ano === hoje.getFullYear();
+
+        var passado = new Date(ano, mes, dia) < new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+        botao.type = "button";
+        botao.disabled = passado;
+        botao.className = "ph-cal-day" + (ehHoje ? " today" : "") + (notas[chave] ? " has-note" : "") + (passado ? " past" : "");
+        botao.innerHTML = "<span>" + dia + "</span>";
+        botao.dataset.dateKey = chave;
+        botao.setAttribute("aria-label", formatarDataCalendario(ano, mes, dia));
+
+        (function(anoLocal, mesLocal, diaLocal, elemento, chaveLocal){
+          elemento.addEventListener("click", function(){
+            abrirNotaCalendario(chaveLocal, formatarDataCalendario(anoLocal, mesLocal, diaLocal), elemento);
+          });
+        })(ano, mes, dia, botao, chave);
+
+        area.appendChild(botao);
+
+        if(chave === calSelectedKey){
+          botao.classList.add("selected");
+        }
+      }
+
+    }
+
+    function irMes(d){
+      var n = calMonthIndex + d;
+      if(n < 0 || n > calMaxIndex) return;
+      calMonthIndex = n;
+      montarCalendario(n);
+    }
+    document.getElementById("ph-cal-prev").addEventListener("click", function(){ irMes(-1); });
+    document.getElementById("ph-cal-next").addEventListener("click", function(){ irMes(1); });
+
+    (function(){
+      var g = document.getElementById("ph-cal-days-only"), x0 = 0;
+      g.addEventListener("touchstart", function(e){ x0 = e.touches[0].clientX; }, { passive: true });
+      g.addEventListener("touchend", function(e){
+        var d = x0 - e.changedTouches[0].clientX;
+        if(Math.abs(d) > 50){ irMes(d > 0 ? 1 : -1); }
+      }, { passive: true });
+    })();
+
+    
+
+    document.getElementById("ph-cal-today").addEventListener("click", function(){
+      var hoje = new Date();
+      var hojeMes = hoje.getMonth();
+      var hojeAno = hoje.getFullYear();
+
+      var dataInicio = new Date(hojeAno, hojeMes, 1);
+      var diffMeses = (hojeAno - dataInicio.getFullYear()) * 12 + (hojeMes - dataInicio.getMonth());
+
+      calMonthIndex = 0;
+      montarCalendario(calMonthIndex);
+    });
+
+    document.getElementById("ph-cal-note-input").addEventListener("input", function(){
+      atualizarContadorNota();
+    });
+
+    document.getElementById("ph-cal-note-save").addEventListener("click", function(){
+      var campo = document.getElementById("ph-cal-note-input");
+      var notas = carregarNotasCalendario();
+
+      if(!calSelectedKey) return;
+
+      if(campo.value.trim()){
+        notas[calSelectedKey] = campo.value.trim();
+      } else {
+        delete notas[calSelectedKey];
+      }
+
+      salvarNotasCalendario(notas);
+      if(window.dataFestaPedido && window.dataFestaPedido.key === calSelectedKey){
+        window.dataFestaPedido.nota = campo.value.trim();
+      }
+      montarCalendario(calMonthIndex);
+      mostrarToastCalendario("Data salva no pedido");
+    });
+
+    document.getElementById("ph-cal-note-del").addEventListener("click", function(){
+      if(!calSelectedKey) return;
+      var notas = carregarNotasCalendario();
+      delete notas[calSelectedKey];
+      salvarNotasCalendario(notas);
+
+      document.getElementById("ph-cal-note-input").value = "";
+      document.getElementById("ph-cal-note").hidden = true;
+
+      calSelectedKey = "";
+      limparDataFesta();
+      montarCalendario(calMonthIndex);
+      mostrarToastCalendario("Data removida");
+    });
+
+    document.getElementById("ph-cal-note-close").addEventListener("click", function(){
+      document.getElementById("ph-cal-note").hidden = true;
+    });
+
+    document.getElementById("app-calendario").addEventListener("click", function(){
+      var df = window.dataFestaPedido;
+      calSelectedKey = df ? df.key : "";
+      calMonthIndex = 0;
+      if(df){
+        var pp = df.key.split("-");
+        calMonthIndex = Math.max(0, Math.min(calMaxIndex, (+pp[0] - calBaseDate.getFullYear()) * 12 + (+pp[1] - 1) - calBaseDate.getMonth()));
+      }
+      document.getElementById("ph-cal-note").hidden = true;
+      montarCalendario(calMonthIndex);
+      abrir(calView);
+    });
+
     document.getElementById("app-galeria").addEventListener("click", function(){
       montarGaleria();
       abrir(galView);
       atualizarSetas();
     });
+
     document.getElementById("gal-prev").addEventListener("click", function(){ mostrar(atual - 1); });
     document.getElementById("gal-next").addEventListener("click", function(){ mostrar(atual + 1); });
     document.getElementById("gal-close").addEventListener("click", fecharVisor);
+
     var tx = 0;
     viewer.addEventListener("touchstart", function(e){ tx = e.touches[0].clientX; }, { passive: true });
     viewer.addEventListener("touchend", function(e){
@@ -2368,12 +2928,10 @@ try {
       if(Math.abs(d) > 40){ mostrar(atual + (d > 0 ? 1 : -1)); }
     }, { passive: true });
 
-    
     document.getElementById("nav-back").addEventListener("click", voltar);
     document.getElementById("nav-home").addEventListener("click", fecharApp);
     document.getElementById("nav-recents").addEventListener("click", fecharApp);
 
-    
     function relogio(){
       var d = new Date();
       var hm = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -2497,9 +3055,11 @@ try {
         audio.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * audio.duration;
       });
     });
+
     if(FAIXAS.length === 1){
       ctl.forEach(function(c){ c.prev.style.display = "none"; c.next.style.display = "none"; });
     }
+
     $("mp-close").addEventListener("click", function(){
       audio.pause();
       fechado = true;
@@ -2516,6 +3076,7 @@ try {
       var pct = (audio.currentTime / audio.duration * 100) + "%";
       ctl.forEach(function(c){ c.fill.style.width = pct; });
     });
+
     try {
       if("mediaSession" in navigator){
         navigator.mediaSession.setActionHandler("play", function(){ audio.play(); });
@@ -2567,7 +3128,6 @@ try {
       c.addEventListener("click", function(){ pedirOrcamentoTema(t.nome); });
       g.appendChild(c);
     });
-
   })();
 } catch(e){}
 
@@ -2604,5 +3164,6 @@ try {
   })();
 } catch(e){}
 </script>
+
 </body>
 </html>
