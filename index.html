@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Doces da Analu — brigadeiros gourmet artesanais em João Pessoa e Cabedelo, PB. Peça pelo WhatsApp com entrega local.">
 <meta property="og:title" content="Doces da Analu | Brigadeiros Gourmet">
 <meta property="og:description" content="Brigadeiros gourmet artesanais para festas e eventos em João Pessoa e Cabedelo, PB.">
@@ -1664,6 +1664,273 @@ body.phone-visivel .mini-player,body.phone-visivel #mus-toast{opacity:0;pointer-
 #ph-cal-view .ph-cal-note-actions{width:100%;gap:6px}
 #ph-cal-view .ph-cal-note-del,#ph-cal-view .ph-cal-note-save{flex:1 1 0;min-width:0;justify-content:center;padding:7px 6px;font-size:10px;white-space:nowrap}
 </style>
+
+<style id="mobile-overflow-fix">
+/* =========================================================
+   CORREÇÃO DEFINITIVA DE RESPONSIVIDADE — ANDROID + IPHONE
+   Mantém o celular/mockup dentro da própria moldura e
+   impede qualquer conteúdo de criar rolagem horizontal.
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+main,
+section,
+.wrap,
+.hero,
+.hero-grid,
+.video-wrap,
+.tv,
+.tv-body,
+.tv-screen,
+.ph-stage {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.wrap {
+  width: 100%;
+}
+
+/* O mockup nunca pode ficar maior que a largura disponível. */
+.video-wrap {
+  width: 100%;
+  overflow: visible;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.tv {
+  width: min(226px, calc(100vw - 32px));
+  max-width: 226px;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.tv .tv-body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.tv .tv-screen {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Área interna do telefone: tudo fica preso dentro da tela. */
+.tv-screen .ph-stage {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tv-screen .ph-home,
+.tv-screen .ph-app-view,
+.tv-screen .ph-gal,
+.tv-screen .ph-mus,
+.tv-screen #ph-cal-view,
+.tv-screen .ph-youtube {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Grade de aplicativos não cria largura extra. */
+.tv-screen .ph-grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  box-sizing: border-box;
+}
+
+.tv-screen .ph-app {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tv-screen .ph-label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Imagens e iframes jamais ultrapassam a tela. */
+.tv-screen img,
+.tv-screen iframe,
+.tv-screen video {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tv-screen iframe {
+  width: 100%;
+}
+
+/* Calendário */
+#ph-cal-view,
+#ph-cal-view * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+#ph-cal-view .ph-cal-days-only {
+  width: 100%;
+  max-width: 100%;
+}
+
+#ph-cal-view .ph-cal-day {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Cardápio */
+.tv-screen .mn-inner,
+.tv-screen .mn-list,
+.tv-screen .mn-item,
+.tv-screen .mn-txt {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tv-screen .mn-list {
+  width: 100%;
+}
+
+.tv-screen .mn-item {
+  overflow: hidden;
+}
+
+/* Galeria e músicas */
+.tv-screen .ph-gal-grid,
+.tv-screen .ph-mus-list,
+.tv-screen .ph-mus-now {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tv-screen .ph-gal-grid {
+  width: 100%;
+}
+
+.tv-screen .ph-mus-track,
+.tv-screen .ph-mus-txt {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.tv-screen .ph-mus-tt,
+.tv-screen .ph-mus-ss {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Evita botões/textos longos empurrarem a largura. */
+.tv-screen button,
+.tv-screen a,
+.tv-screen input,
+.tv-screen textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Android pequeno */
+@media (max-width: 480px) {
+  .wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .video-wrap {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .tv {
+    width: min(214px, calc(100vw - 24px));
+    max-width: 214px;
+  }
+
+  .tv .tv-body {
+    border-radius: 42px;
+  }
+
+  .tv .tv-screen {
+    border-radius: 36px;
+  }
+
+  .tv-screen .ph-grid {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+/* iPhone muito estreito / Android compacto */
+@media (max-width: 360px) {
+  .wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .tv {
+    width: min(202px, calc(100vw - 20px));
+    max-width: 202px;
+  }
+
+  .tv-screen .ph-grid {
+    gap: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .tv-screen .ph-ico {
+    width: 42px;
+    height: 42px;
+  }
+
+  .tv-screen .ph-label {
+    font-size: 9px;
+  }
+}
+
+/* Segurança contra qualquer componente externo que tente gerar
+   uma largura maior que a viewport. */
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+</style>
+
 </head>
 <body>
 
