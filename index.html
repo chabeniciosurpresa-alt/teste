@@ -3466,7 +3466,17 @@ try {
       var pr = audio.play();
       if(pr && pr.catch) pr.catch(falha);
 
-      if(!avisou){ avisou = true; aviso("Ouça música enquanto vê nosso cardápio"); }
+      // Depois de escolher a música, volta automaticamente ao site.
+      // A música continua tocando no mini-player fixo na parte de baixo,
+      // no estilo de um player compacto do Spotify.
+      var navBack = document.getElementById("nav-back");
+      if(document.body.classList.contains("app-musica-aberto") && navBack){
+        setTimeout(function(){
+          navBack.click();
+        }, 180);
+      }
+
+      if(!avisou){ avisou = true; aviso("Tocando agora"); }
       try {
         if("mediaSession" in navigator){
           navigator.mediaSession.metadata = new MediaMetadata({
@@ -4317,3 +4327,39 @@ try {
   }
 })();
 </script>
+
+<style id="spotify-mini-player">
+.mini-player{
+  bottom:max(12px,env(safe-area-inset-bottom,0px)) !important;
+  width:min(94vw,460px) !important;
+  border-radius:16px !important;
+  background:rgba(24,24,24,.98) !important;
+  box-shadow:0 14px 38px rgba(0,0,0,.35) !important;
+}
+
+.mini-player .mp-title{
+  font-weight:700;
+}
+
+.mini-player .mp-play{
+  background:#1ed760 !important;
+  color:#071d0e !important;
+  border-radius:50%;
+}
+
+.mini-player .mp-seek i{
+  background:#1ed760 !important;
+}
+
+@media (max-width:480px){
+  .mini-player{
+    width:calc(100vw - 20px) !important;
+    bottom:max(8px,env(safe-area-inset-bottom,0px)) !important;
+  }
+}
+
+/* Não deixa controles de navegação aparecerem no topo da tela. */
+.mn-carousel-wrap{
+  position:relative;
+}
+</style>
