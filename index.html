@@ -2683,6 +2683,7 @@ try {
         var row = document.createElement("button");
         row.type = "button";
         row.className = "mn-item";
+        row.setAttribute("data-flavor-key", m.key);
 
         var th = document.createElement("span");
         th.className = "mn-thumb";
@@ -3466,14 +3467,12 @@ try {
       var pr = audio.play();
       if(pr && pr.catch) pr.catch(falha);
 
-      // Depois de escolher a música, volta automaticamente ao site.
-      // A música continua tocando no mini-player fixo na parte de baixo,
-      // no estilo de um player compacto do Spotify.
-      var navBack = document.getElementById("nav-back");
-      if(document.body.classList.contains("app-musica-aberto") && navBack){
+      // Continua dentro do app de músicas. O player da faixa escolhida
+      // desce para a área de "tocando agora", como em um app de música.
+      if(document.body.classList.contains("app-musica-aberto") && now){
         setTimeout(function(){
-          navBack.click();
-        }, 180);
+          now.scrollIntoView({ behavior:"smooth", block:"nearest" });
+        }, 120);
       }
 
       if(!avisou){ avisou = true; aviso("Tocando agora"); }
@@ -3628,6 +3627,51 @@ try {
     reset();
   })();
 } catch(e){}
+</script>
+
+
+<style id="music-no-default-selection">
+/* A tela de música sempre começa sem nenhuma faixa selecionada */
+#music-app [aria-selected="true"],
+#music-app .selected,
+#music-app .active,
+#music-app .playing,
+#music-app .is-playing {
+  /* estado visual será controlado pelo JS abaixo */
+}
+</style>
+<script id="music-no-default-selection-js">
+(function(){
+  function limparSelecaoInicial(){
+    const root = document.querySelector('#music-app, #music, .music-app, .music-screen');
+    if(!root) return;
+
+    root.querySelectorAll('[aria-selected="true"]').forEach(el => el.setAttribute('aria-selected','false'));
+    root.querySelectorAll('.selected,.active,.playing,.is-playing').forEach(el => {
+      el.classList.remove('selected','active','playing','is-playing');
+    });
+
+    const audio = root.querySelector('audio');
+    if(audio){
+      audio.pause();
+      audio.currentTime = 0;
+      audio.removeAttribute('autoplay');
+      audio.autoplay = false;
+    }
+
+    // Limpa possíveis referências globais de faixa atual.
+    ['selectedSong','selectedTrack','currentSong','currentTrack','activeSong','activeTrack'].forEach(k=>{
+      try { if(k in window) window[k] = null; } catch(e){}
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', limparSelecaoInicial);
+  } else {
+    limparSelecaoInicial();
+  }
+  setTimeout(limparSelecaoInicial, 100);
+})();
 </script>
 
 </body>
@@ -4286,38 +4330,119 @@ try {
     const next = document.getElementById("mn-arrow-next");
     if(!track || !prev || !next) return;
 
-    function updateArrows(){
-      const max = Math.max(0, track.scrollWidth - track.clientWidth - 3);
-      prev.classList.toggle("is-disabled", track.scrollLeft <= 3);
-      next.classList.toggle("is-disabled", track.scrollLeft >= max);
+    let ready = false;
+    let normalizing = false;
+
+    function cards(){
+      return Array.from(track.querySelectorAll(".mn-item"));
     }
 
-    function getStep(){
+    function addCloneHandlers(card){
+      const key = card.getAttribute("data-flavor-key");
+      if(!key) return;
+      card.addEventListener("click", function(){
+        if(window.abrirSaborFoto) window.abrirSaborFoto(key);
+      });
+    }
+
+    function montarLoop(){
+      if(ready) return;
+      const originals = cards();
+      if(!originals.length) return;
+
+      originals.forEach(function(card){
+        const key = card.getAttribute("data-flavor-key");
+        if(!key){
+          const nome = card.querySelector(".mn-nome");
+          if(nome) card.setAttribute("data-flavor-key", nome.textContent.trim());
+        }
+      });
+
+      const base = cards();
+      const before = base.map(function(card){
+        const c = card.cloneNode(true);
+        c.classList.add("mn-clone");
+        addCloneHandlers(c);
+        return c;
+      });
+      const after = base.map(function(card){
+        const c = card.cloneNode(true);
+        c.classList.add("mn-clone");
+        addCloneHandlers(c);
+        return c;
+      });
+
+      before.reverse().forEach(function(c){ track.insertBefore(c, track.firstChild); });
+      after.forEach(function(c){ track.appendChild(c); });
+
+      ready = true;
+
+      requestAnimationFrame(function(){
+        const first = track.querySelector(".mn-item");
+        if(!first) return;
+        const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 18);
+        const step = first.getBoundingClientRect().width + gap;
+        track.scrollLeft = step * base.length;
+      });
+    }
+
+    function step(){
       const card = track.querySelector(".mn-item");
       if(!card) return Math.max(240, track.clientWidth * .72);
-      const styles = getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || 18);
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 18);
       return card.getBoundingClientRect().width + gap;
     }
 
+    function normalizar(){
+      if(!ready || normalizing) return;
+      const baseCount = cards().filter(function(c){
+        return !c.classList.contains("mn-clone");
+      }).length;
+      if(!baseCount) return;
+
+      const s = step();
+      const bloco = baseCount * s;
+
+      // Existem três blocos: anterior, original e seguinte.
+      // Ao entrar nos blocos laterais, saltamos para o bloco equivalente
+      // sem animação perceptível, criando um carrossel infinito.
+      if(track.scrollLeft < bloco * 0.45){
+        normalizing = true;
+        track.scrollLeft += bloco;
+        requestAnimationFrame(function(){ normalizing = false; });
+      }else if(track.scrollLeft > bloco * 1.55){
+        normalizing = true;
+        track.scrollLeft -= bloco;
+        requestAnimationFrame(function(){ normalizing = false; });
+      }
+    }
+
+    prev.classList.remove("is-disabled");
+    next.classList.remove("is-disabled");
+
     prev.addEventListener("click", function(){
-      track.scrollBy({left:-getStep(), behavior:"smooth"});
+      track.scrollBy({left:-step(), behavior:"smooth"});
     });
 
     next.addEventListener("click", function(){
-      track.scrollBy({left:getStep(), behavior:"smooth"});
+      track.scrollBy({left:step(), behavior:"smooth"});
     });
 
-    track.addEventListener("scroll", updateArrows, {passive:true});
-    window.addEventListener("resize", updateArrows);
+    track.addEventListener("scroll", normalizar, {passive:true});
+    window.addEventListener("resize", function(){
+      if(!ready) return;
+      const base = cards().filter(function(c){ return !c.classList.contains("mn-clone"); });
+      if(!base.length) return;
+    });
 
+    // O cardápio original é montado dinamicamente.
     const observer = new MutationObserver(function(){
-      requestAnimationFrame(updateArrows);
+      montarLoop();
     });
     observer.observe(track, {childList:true});
 
-    setTimeout(updateArrows, 250);
-    setTimeout(updateArrows, 900);
+    setTimeout(montarLoop, 100);
+    setTimeout(montarLoop, 500);
   }
 
   if(document.readyState === "loading"){
@@ -4362,4 +4487,56 @@ try {
 .mn-carousel-wrap{
   position:relative;
 }
+</style>
+
+<style id="clean-card-arrows">
+.mn-go{
+  display:none !important;
+}
+</style>
+
+<style id="music-now-scroll">
+.ph-mus{
+  overflow-y:auto !important;
+  scroll-behavior:smooth;
+}
+.ph-mus-now{
+  scroll-margin-bottom:18px;
+}
+</style>
+
+<style id="flavor-transparent-bg">
+/* ===== SABORES: MAIS LEVES E TRANSPARENTES ===== */
+#cd-list.mn-list,
+.mn-list{
+  background:transparent !important;
+}
+
+#cd-list .mn-item,
+.mn-list .mn-item{
+  background:rgba(255,255,255,.48) !important;
+  border:1px solid rgba(255,255,255,.38) !important;
+  box-shadow:0 7px 20px rgba(105,22,61,.07) !important;
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+
+#cd-list .mn-item:hover,
+.mn-list .mn-item:hover{
+  background:rgba(255,255,255,.58) !important;
+  box-shadow:0 11px 26px rgba(105,22,61,.10) !important;
+}
+
+#cd-list .mn-txt,
+.mn-list .mn-txt{
+  background:transparent !important;
+}
+</style>
+
+
+<style id="flavor-more-transparent">
+#cd-list.mn-list,.mn-list{background:transparent!important}
+.mn-item{background:rgba(255,255,255,.30)!important;border-color:rgba(255,255,255,.24)!important;box-shadow:0 7px 20px rgba(44,12,28,.07)!important;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.mn-item:hover{background:rgba(255,255,255,.40)!important;box-shadow:0 10px 24px rgba(44,12,28,.10)!important}
+.mn-txt{background:transparent!important}
 </style>
