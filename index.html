@@ -780,15 +780,72 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .ph-mus-now .mp-btn { width: 26px; height: 26px; font-size: 11px; }
 
 .mini-player {
-  position: fixed; left: 50%; z-index: 150;
-  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-  width: min(92vw, 380px); padding: 8px 10px 4px;
-  background: #181818; color: #fff; border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.35);
-  opacity: 0; pointer-events: none; transform: translate(-50%, 20px);
-  transition: opacity .25s ease, transform .25s ease;
+  position: fixed;
+  left: 50%;
+  bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  z-index: 1200;
+  width: min(94vw, 430px);
+  padding: 8px 10px 5px;
+  background: rgba(24,24,24,.97);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.38), 0 2px 8px rgba(0,0,0,.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(-50%, 18px, 0) scale(.98);
+  transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+  contain: layout paint;
 }
-.mini-player.on { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.mini-player.on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0) scale(1);
+  transition: opacity .22s ease, transform .22s ease, visibility 0s;
+}
+.mini-player .mp-row { min-height: 44px; }
+.mini-player .mp-cover {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.mini-player .mp-title { font-size: 12.5px; line-height: 1.2; }
+.mini-player .mp-sub { font-size: 10px; color: #a7a7a7; margin-top: 2px; }
+.mini-player .mp-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+}
+.mini-player .mp-btn.mp-play {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+.mini-player .mp-seek { height: 12px; margin-top: 2px; }
+.mini-player .mp-seek::before,
+.mini-player .mp-seek i { top: 5px; height: 2.5px; }
+.mini-player .mp-seek i { background: #1ed760; }
+
+@media (max-width: 480px) {
+  .mini-player {
+    width: calc(100vw - 16px);
+    bottom: max(8px, env(safe-area-inset-bottom, 0px));
+    border-radius: 13px;
+    padding: 7px 8px 4px;
+  }
+  .mini-player .mp-cover { width: 42px; height: 42px; }
+  .mini-player .mp-info { min-width: 0; }
+  .mini-player .mp-btn { width: 32px; height: 32px; }
+  .mini-player .mp-btn.mp-play { width: 36px; height: 36px; }
+  .mini-player #mp-prev { display: none; }
+  .mini-player #mp-next { display: flex; }
+  .mini-player #mp-close { width: 28px; height: 28px; font-size: 11px; }
+}
 
 .mn-head { max-width: 620px; }
 .mn-head .eyebrow { margin-bottom: 14px; }
@@ -1642,8 +1699,11 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .tv-screen .ph-mus-now .mp-info{flex:1 1 calc(100% - 44px);min-width:0}
 .tv-screen .ph-mus-now .mp-btn{width:30px;height:30px;font-size:12px;margin:0 6px}
 .tv-screen .ph-mus-now .mp-seek{width:100%}
-body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast,
-body.phone-visivel .mini-player,body.phone-visivel #mus-toast{opacity:0;pointer-events:none;display:none}
+body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
 
 /* gaveta do calendário empurra a grade (não cobre nada) */
 #ph-cal-view:has(.ph-cal-note:not([hidden])) .pc-tip,
@@ -3428,15 +3488,25 @@ try {
         el.classList.toggle("active", i === atual);
         el.classList.toggle("playing", i === atual && tocando);
       });
+
       ctl.forEach(function(c){
         c.play.querySelector("i").className = "fas " + (tocando ? "fa-pause" : "fa-play");
         c.play.setAttribute("aria-label", tocando ? "Pausar" : "Tocar");
         c.sub.textContent = tocando ? "Tocando agora" : "Pausado";
-        if(atual >= 0){ c.title.textContent = FAIXAS[atual].titulo; aplicarCapa(c.cover, FAIXAS[atual]); }
+        if(atual >= 0){
+          c.title.textContent = FAIXAS[atual].titulo;
+          aplicarCapa(c.cover, FAIXAS[atual]);
+        }
       });
+
+      // O mini-player aparece assim que a faixa é escolhida.
+      // Não depende de o áudio já ter carregado nem de o visitante estar
+      // perto da seção de música.
       if(atual >= 0){
         now.classList.add("on");
-        if(!fechado) mini.classList.add("on");
+        if(!fechado && mini) mini.classList.add("on");
+      } else if(mini) {
+        mini.classList.remove("on");
       }
     }
     function tocar(i){
@@ -3449,9 +3519,13 @@ try {
       }
       atual = i;
       audio.src = urlDaFaixa(i);
+
+      // Mostra imediatamente o player fixo no rodapé.
+      ui();
+
       var pr = audio.play();
       if(pr && pr.catch) pr.catch(falha);
-      ui();
+
       if(!avisou){ avisou = true; aviso("Ouça música enquanto vê nosso cardápio"); }
       try {
         if("mediaSession" in navigator){
