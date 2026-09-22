@@ -2067,7 +2067,7 @@ section,
             </div>
 
             <div class="ph-app-view ph-mus" id="ph-mus-view" aria-hidden="true" style="transform-origin:83% 52%">
-              <div class="ph-mus-head">Músicas</div>
+              <div class="ph-mus-head"><i class="fa-brands fa-spotify" style="color:#1ed760;font-size:20px;"></i> Músicas</div>
               <div class="ph-mus-banner"><i class="fas fa-headphones"></i><span>Ouça música enquanto vê nosso cardápio</span></div>
               <div class="ph-mus-list" id="mus-list"></div>
               <div class="ph-mus-now" id="mus-now">
@@ -3674,8 +3674,89 @@ try {
 })();
 </script>
 
-</body>
-</html>
+
+<style id="upgrade-calendar-flavor-spotify">
+.ph-cal-day.pulse-today{ animation: calPulseToday .9s ease; }
+@keyframes calPulseToday{
+  0%{ box-shadow:0 0 0 0 rgba(216,27,106,.55); }
+  70%{ box-shadow:0 0 0 14px rgba(216,27,106,0); }
+  100%{ box-shadow:0 0 0 0 rgba(216,27,106,0); }
+}
+.sf-sweep, .sf-reticle, .sf-pulse, .sf-line, .sf-tag { display: none !important; }
+.sf-overlay{
+  background: rgba(28,8,19,.72) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.sf-card{
+  border-radius: 28px !important;
+  border: 1px solid rgba(255,255,255,.65) !important;
+  box-shadow: 0 40px 90px rgba(28,8,19,.32), 0 10px 26px rgba(28,8,19,.16) !important;
+}
+.sf-photo{
+  background: linear-gradient(160deg, var(--pink-pale), #fff) !important;
+}
+.sf-photo img{ transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.sf-overlay.open .sf-photo img{ transform: scale(1.02); }
+.sf-close{
+  background: rgba(255,255,255,.9) !important;
+  color: var(--pink-dark) !important;
+  box-shadow: 0 6px 16px rgba(28,8,19,.18);
+}
+.sf-close:hover{ background:#fff !important; }
+.sf-eyebrow{ background: linear-gradient(135deg, var(--pink-pale), #fff) !important; }
+.sf-title{ font-size: clamp(26px, 4vw, 34px) !important; }
+.sf-desc{ font-size: 14.5px !important; line-height: 1.8 !important; color: var(--ink-mid) !important; }
+.sf-actions .btn-pink{ box-shadow: 0 10px 26px rgba(216,27,106,.28) !important; }
+.sf-actions .pd-btn-back{ border-radius: 999px !important; }
+
+.tv-screen .ph-mus{
+  background: linear-gradient(180deg, #1e3a2a 0%, #121212 34%, #121212 100%) !important;
+}
+.tv-screen .ph-mus-head{
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 800; letter-spacing: -.01em;
+}
+.tv-screen .ph-mus-banner{
+  background: rgba(30,215,96,.14) !important;
+  color: #1ed760 !important;
+  border-radius: 8px;
+}
+.ph-mus-idx{
+  width: 18px; flex: 0 0 18px; text-align: center;
+  font-size: 11.5px; font-weight: 700; color: #8a8a8a;
+}
+.ph-mus-track{ display: flex; align-items: center; gap: 10px; }
+.ph-mus-track.active .ph-mus-idx{ color: #1ed760; }
+.ph-mus-track:hover{ background: rgba(255,255,255,.07) !important; }
+.ph-mus-cover{ border-radius: 4px !important; }
+.ph-mus-tt{ font-weight: 700; }
+.ph-mus-track.active .ph-mus-tt{ color: #1ed760 !important; }
+
+.ph-mus-on.eq{ display: none; align-items: flex-end; gap: 2px; width: 14px; height: 14px; }
+.ph-mus-track.playing .ph-mus-on.eq{ display: flex; }
+.ph-mus-on.eq i{ width: 3px; background: #1ed760; border-radius: 1px; display: block; animation: eqBar .9s ease-in-out infinite; }
+.ph-mus-on.eq i:nth-child(1){ height: 6px; animation-delay: 0s; }
+.ph-mus-on.eq i:nth-child(2){ height: 14px; animation-delay: .2s; }
+.ph-mus-on.eq i:nth-child(3){ height: 9px; animation-delay: .4s; }
+@keyframes eqBar{ 0%,100%{ transform: scaleY(.4); } 50%{ transform: scaleY(1); } }
+
+.ph-mus-now{ background: #181818 !important; border-radius: 10px !important; }
+.ph-mus-now .mp-cover{ border-radius: 4px !important; }
+.ph-mus-now .mp-play{ background: #1ed760 !important; color: #000 !important; }
+.ph-mus-now .mp-play:hover{ background: #1fdf64 !important; transform: scale(1.05); }
+.ph-mus-now .mp-btn:not(.mp-play){ color: #b3b3b3 !important; }
+.ph-mus-now .mp-btn:not(.mp-play):hover{ color: #fff !important; }
+
+.mini-player{ background: rgba(18,18,18,.98) !important; border-radius: 10px !important; }
+.mini-player .mp-cover{ border-radius: 4px !important; }
+.mini-player .mp-play{ background: #1ed760 !important; color: #000 !important; border-radius: 50%; }
+.mini-player .mp-btn:not(.mp-play){ color: #b3b3b3 !important; }
+.mini-player .mp-btn:not(.mp-play):hover{ color: #fff !important; }
+</style>
+
+
+
 
 <style id="flavor-menu-bigger-clean">
 /* Fotos dos sabores maiores e cardápio mais elegante */
@@ -4540,3 +4621,48 @@ try {
 .mn-item:hover{background:rgba(255,255,255,.40)!important;box-shadow:0 10px 24px rgba(44,12,28,.10)!important}
 .mn-txt{background:transparent!important}
 </style>
+
+<style id="fix-iphone-tela-celular">
+/* Correção Safari: mantém o celular no tamanho original e impede
+   qualquer conteúdo da tela de escapar do aparelho. */
+.tv .tv-screen{
+  overflow:hidden !important;
+  -webkit-mask-image:-webkit-radial-gradient(white, black);
+  mask-image:linear-gradient(#fff,#fff);
+  contain:layout paint;
+  isolation:isolate;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+}
+
+.tv .ph-stage,
+.tv .ph-home,
+.tv .ph-app-view{
+  max-height:100%;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+</style>
+
+<script id="fix-iphone-altura-tela">
+/* Não força uma nova altura: o aspect-ratio original continua
+   responsável pelo tamanho do celular. */
+(function(){
+  function fixPhoneOverflow(){
+    document.querySelectorAll('.tv .tv-screen').forEach(function(screen){
+      screen.style.height = '';
+      screen.style.minHeight = '';
+      screen.style.maxHeight = '';
+    });
+  }
+
+  window.addEventListener('load', fixPhoneOverflow);
+  window.addEventListener('resize', fixPhoneOverflow);
+  window.addEventListener('orientationchange', fixPhoneOverflow);
+  fixPhoneOverflow();
+})();
+</script>
+
+
+</body>
+</html>
