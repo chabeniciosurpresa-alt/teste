@@ -2035,6 +2035,83 @@ section,
 }
 </style>
 
+<style id="categorias-style">
+/* ===== CATEGORIAS: carrossel de círculos ===== */
+#categorias { padding: 30px 0 20px; }
+#categorias .cat-head { text-align: center; margin-bottom: 14px; }
+#categorias .cat-head h2 { font-size: clamp(24px, 4.2vw, 32px); }
+#categorias .cat-wrap { position: relative; }
+#categorias .cat-trilho {
+  display: flex; align-items: flex-start; gap: 18px;
+  overflow-x: auto; overflow-y: hidden;
+  margin: 0 -24px; padding: 8px 24px 12px;
+  scroll-snap-type: x proximity; scroll-padding: 0 24px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+#categorias .cat-trilho::-webkit-scrollbar { display: none; }
+#categorias .cat-trilho.arrastando { cursor: grabbing; scroll-snap-type: none; }
+#categorias .cat-item {
+  flex: 0 0 auto; width: 88px;
+  background: none; border: 0; padding: 0;
+  font: inherit; color: inherit; text-align: center;
+  cursor: pointer; scroll-snap-align: start;
+  -webkit-tap-highlight-color: transparent;
+}
+#categorias .cat-foto {
+  display: block; width: 88px; height: 88px;
+  border-radius: 50%; overflow: hidden;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--pink-soft), 0 6px 14px rgba(216,27,106,.14);
+  background: var(--pink-pale);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+#categorias .cat-foto img {
+  width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none; -webkit-user-drag: none; user-select: none;
+}
+#categorias .cat-foto.no-photo { display: flex; align-items: center; justify-content: center; }
+#categorias .cat-foto.no-photo i { font-size: 26px; color: var(--pink-mid); opacity: .6; }
+#categorias .cat-item:hover .cat-foto,
+#categorias .cat-item:focus-visible .cat-foto {
+  box-shadow: 0 0 0 2px var(--pink-mid), 0 10px 20px rgba(216,27,106,.22);
+  transform: translateY(-3px);
+}
+#categorias .cat-item:focus-visible { outline: none; }
+#categorias .cat-nome {
+  display: block; margin-top: 9px;
+  font-size: 12px; font-weight: 700; line-height: 1.25;
+  color: var(--ink-mid);
+}
+#categorias .cat-seta {
+  position: absolute; top: 52px; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--white); color: var(--pink);
+  box-shadow: 0 4px 12px rgba(216,27,106,.16);
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer; padding: 0; z-index: 5;
+  transition: background .2s ease, color .2s ease, opacity .2s ease;
+}
+#categorias .cat-seta svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#categorias .cat-seta:hover { background: var(--pink); color: #fff; }
+#categorias .cat-seta:focus-visible { outline: 2px solid var(--pink-mid); outline-offset: 2px; }
+#categorias .cat-seta[disabled] { opacity: 0; pointer-events: none; }
+#categorias .cat-ant { left: -14px; }
+#categorias .cat-prox { right: -14px; }
+@media (hover: hover) and (min-width: 700px) {
+  #categorias .cat-seta { display: flex; }
+}
+@media (max-width: 480px) {
+  #categorias { padding: 24px 0 14px; }
+  #categorias .cat-trilho { gap: 14px; }
+  #categorias .cat-item, #categorias .cat-foto { width: 76px; }
+  #categorias .cat-foto { height: 76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #categorias .cat-foto { transition: none; }
+  #categorias .cat-item:hover .cat-foto { transform: none; }
+}
+</style>
 </head>
 <body>
 
@@ -2179,6 +2256,20 @@ section,
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="categorias" aria-labelledby="cat-titulo">
+  <div class="wrap">
+    <div class="cat-head reveal">
+      <p class="eyebrow">Categorias</p>
+      <h2 id="cat-titulo">Qual é o tema da sua festa?</h2>
+    </div>
+    <div class="cat-wrap reveal">
+      <button class="cat-seta cat-ant" type="button" aria-label="Categorias anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8 5.2 8 12l6.8 6.8"/></svg></button>
+      <div class="cat-trilho" id="cat-trilho" role="list"></div>
+      <button class="cat-seta cat-prox" type="button" aria-label="Próximas categorias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 5.2 16 12l-6.8 6.8"/></svg></button>
     </div>
   </div>
 </section>
@@ -4708,5 +4799,173 @@ try {
 </script>
 
 
+<script id="categorias-js">
+try {
+  (function(){
+    // Para alterar categorias: edite nome e foto nesta lista.
+    var CATEGORIAS = [
+      { nome: "Sonic",           foto: "https://i.ibb.co/JRL3PDvk/e76b7597247f6220f36c05a1969c4115.jpg" },
+      { nome: "Mickey",          foto: "https://i.ibb.co/vxnnqkMh/ae3ad9998df4080cf668d167f0e60214.jpg" },
+      { nome: "Fundo do Mar",    foto: "https://i.ibb.co/Pz9yXHZj/b72e181bd98888fc068bd5bb8ef85638.jpg" },
+      { nome: "Princesa",        foto: "https://i.ibb.co/v6PLmQbN/94e33e56b755479e1331dbf0c572f666.jpg" },
+      { nome: "Safari",          foto: "https://i.ibb.co/679Q7Q2g/332b09b8acc7c2a61701bca20278ec39.jpg" },
+      { nome: "Moranguinho",     foto: "https://i.ibb.co/cdsWHQK/538678c70556df50649761196cde7fd1.jpg" },
+      { nome: "Formatura",       foto: "https://i.ibb.co/5WNyrghz/0e51b1bbeec61f5a68d9ca75f8abf822.jpg" },
+      { nome: "Looney Tunes",    foto: "https://i.ibb.co/LD8Hdcd1/c92de6059d1a81eb3559dbc95c51454c.jpg" },
+      { nome: "Hello Kitty",     foto: "https://i.ibb.co/tgwMjwM/0dbd0781fe4bcfba2b844378dcf39ea6.jpg" },
+      { nome: "Rapunzel",        foto: "https://i.ibb.co/Pz67hywp/775573581026f023383feeee45076b3b.jpg" },
+      { nome: "Pikachu",         foto: "https://i.ibb.co/5hC56gxd/0a4f02c244c0058fdd5b010ef0fc460e.jpg" },
+      { nome: "Toy Story",       foto: "https://i.ibb.co/wZX2GDzJ/249e99b9f1bcf1ce6e8b15215ae46cf0.jpg" },
+      { nome: "Turma da Mônica", foto: "https://i.ibb.co/B54QdG0d/bca74966d5ddf2345e08d49691e3422f.jpg" },
+      { nome: "Toy Story",       foto: "https://i.ibb.co/0jjnjPd1/107bc85a3e700ffee6e391202c79ee66.jpg" },
+      { nome: "Casa Nova",       foto: "https://i.ibb.co/gMgvM58y/90f9c51185a43944c9c31e7b81458a73.jpg" },
+      { nome: "Heróis",          foto: "https://i.ibb.co/3mZfWTsp/326d091663a0b2de673c0ce5f0dcf8e5.jpg" }
+    ];
+
+    var raiz = document.getElementById("categorias");
+    var trilho = document.getElementById("cat-trilho");
+    if(!raiz || !trilho) return;
+    var ant = raiz.querySelector(".cat-ant");
+    var prox = raiz.querySelector(".cat-prox");
+
+    CATEGORIAS.forEach(function(c){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "cat-item";
+      b.setAttribute("role", "listitem");
+      b.setAttribute("aria-label", "Pedir orçamento do tema " + c.nome);
+
+      var foto = document.createElement("span");
+      foto.className = "cat-foto";
+      var img = document.createElement("img");
+      var tentouOriginal = false;
+      img.src = "https://images.weserv.nl/?url=" + c.foto.replace(/^https?:\/\//, "") + "&w=200&h=200&fit=cover&q=76&output=webp";
+      img.alt = "";
+      img.width = 88; img.height = 88;
+      img.loading = "eager"; img.decoding = "async"; img.draggable = false;
+      img.addEventListener("error", function(){
+        if(!tentouOriginal){ tentouOriginal = true; img.src = c.foto; return; }
+        foto.classList.add("no-photo");
+        foto.innerHTML = '<i class="fas fa-image"></i>';
+      });
+      foto.appendChild(img);
+
+      var nome = document.createElement("span");
+      nome.className = "cat-nome";
+      nome.textContent = c.nome;
+
+      b.appendChild(foto);
+      b.appendChild(nome);
+      b.addEventListener("click", function(){
+        if(typeof window.pedirOrcamentoTema === "function") window.pedirOrcamentoTema(c.nome);
+      });
+      trilho.appendChild(b);
+    });
+
+    function passo(){ return Math.max(trilho.clientWidth * 0.8, 200); }
+    function atualizar(){
+      ant.disabled = trilho.scrollLeft <= 4;
+      prox.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+    }
+    ant.addEventListener("click", function(){ trilho.scrollBy({ left: -passo(), behavior: "smooth" }); });
+    prox.addEventListener("click", function(){ trilho.scrollBy({ left: passo(), behavior: "smooth" }); });
+    trilho.addEventListener("scroll", atualizar, { passive: true });
+    window.addEventListener("resize", atualizar);
+    atualizar();
+
+    // Arrastar com o mouse no computador
+    var apertado = false, moveu = false, x0 = 0, s0 = 0;
+    trilho.addEventListener("mousedown", function(e){ apertado = true; moveu = false; x0 = e.pageX; s0 = trilho.scrollLeft; });
+    window.addEventListener("mousemove", function(e){
+      if(!apertado) return;
+      var dx = e.pageX - x0;
+      if(Math.abs(dx) > 5){ moveu = true; trilho.classList.add("arrastando"); }
+      if(moveu) trilho.scrollLeft = s0 - dx;
+    });
+    window.addEventListener("mouseup", function(){ apertado = false; trilho.classList.remove("arrastando"); });
+    // Não abre o WhatsApp quando o clique foi só o fim de um arraste
+    trilho.addEventListener("click", function(e){
+      if(moveu){ e.preventDefault(); e.stopPropagation(); moveu = false; }
+    }, true);
+  })();
+} catch(e){}
+</script>
+
+<script id="precarregar-js">
+/* Pré-carrega em segundo plano TODAS as fotos do site, logo depois que a página abre.
+   As URLs são idênticas às usadas pelo site, então o navegador reaproveita do cache. */
+(function(){
+  try {
+    var MAX_SIMULTANEAS = 3;   // quantas fotos baixam ao mesmo tempo (pode subir para 4-6)
+
+    var con = navigator.connection || {};
+    var conexaoLenta = con.saveData === true || /(^|-)2g$/.test(con.effectiveType || "");
+
+    function semHttp(u){ return u.replace(/^https?:\/\//, ""); }
+    function prox(u, w, h){
+      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=" + w + (h ? "&h=" + h + "&fit=cover" : "") + "&q=75&output=webp";
+    }
+    function nitida(u){
+      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=1200&we&q=90&output=webp";
+    }
+    // Descobre o endereço original da foto (i.ibb.co) a partir do <img> já na página
+    function origem(src){
+      var m = /[?&]url=([^&]+)/.exec(src);
+      var u = m ? decodeURIComponent(m[1]) : src;
+      return /^https?:\/\//.test(u) ? u : "https://" + u;
+    }
+
+    var fila = [], vistos = {};
+    function add(url){ if(url && !vistos[url]){ vistos[url] = 1; fila.push(url); } }
+
+    function montarFila(){
+      // 0) Qualquer imagem do site marcada como "lazy" passa a carregar já
+      document.querySelectorAll('img[loading="lazy"]').forEach(function(im){ im.loading = "eager"; });
+
+      // 1) Temas mais pedidos
+      (window.TEMAS || []).forEach(function(t){
+        if(t && t.fotos && t.fotos[0]) add("https://images.weserv.nl/?url=" + semHttp(t.fotos[0]) + "&w=480&q=76&output=webp");
+      });
+
+      // 2) Miniaturas da galeria do celular
+      var fotos = window.FOTOS || [];
+      fotos.forEach(function(f){ add(prox(f.src, 200, 250)); });
+
+      if(conexaoLenta) return;   // em dados móveis econômicos / 2G, só o essencial
+
+      // 3) Foto grande de cada sabor (abre ao clicar no sabor do cardápio)
+      document.querySelectorAll("#cd-list .mn-thumb img").forEach(function(im){
+        var s = im.currentSrc || im.src;
+        if(s) add(nitida(origem(s)));
+      });
+
+      // 4) Foto ampliada da galeria (abre ao tocar na miniatura)
+      fotos.forEach(function(f){ add(prox(f.src, 1000)); });
+    }
+
+    var ativas = 0;
+    function proxima(){
+      while(ativas < MAX_SIMULTANEAS && fila.length){
+        (function(url){
+          ativas++;
+          var im = new Image();
+          im.decoding = "async";
+          var fim = function(){ ativas--; proxima(); };
+          im.onload = fim; im.onerror = fim;
+          im.src = url;
+        })(fila.shift());
+      }
+    }
+
+    function iniciar(){ montarFila(); proxima(); }
+    function quandoOciosa(){
+      if("requestIdleCallback" in window) requestIdleCallback(iniciar, { timeout: 2500 });
+      else setTimeout(iniciar, 400);
+    }
+    if(document.readyState === "complete") quandoOciosa();
+    else window.addEventListener("load", quandoOciosa);
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
