@@ -2130,8 +2130,8 @@ section,
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Doces da Analu</p>
-      <h1>Brigadeiros gourmet para tornar sua festa inesquecível</h1>
-      <p class="hero-sub">Brigadeiros artesanais feitos um a um, com carinho e capricho para deixar sua festa ainda mais doce.</p>
+      <h1>Doces personalizados para combinar com a sua festa, do jeitinho que você imaginou.</h1>
+      <p class="hero-sub">Pensados para fazer parte da sua decoração..</p>
       <div class="ctas">
         <a class="btn btn-pink" href="#pedido">Fazer pedido</a>
         <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
@@ -2278,8 +2278,7 @@ section,
   <div class="wrap">
     <div class="mn-head reveal">
       <p class="eyebrow">Cardápio</p>
-      <h2 class="mn-title">Doces personalizados para combinar com a <em>sua festa</em>, do jeitinho que você imaginou.</h2>
-      <span class="mn-orn" aria-hidden="true"></span>
+      <h2 class="mn-title">A parte mais <em>gostosa</em> da sua festa</h2>
       <p class="mn-lead"></p>
     </div>
 
@@ -2288,7 +2287,7 @@ section,
         <div class="mn-brand">
           <img src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&w=128&h=128&fit=cover&output=webp" width="64" height="64" alt="Doces da Analu" decoding="async">
           <h3>Cardápio</h3>
-          <p>Brigadeiros gourmet · 11 sabores</p>
+          <p>Nossos sabores tradicionais</p>
         </div>
 
         <div class="mn-carousel-wrap">
@@ -5008,5 +5007,31 @@ try {
   } catch(e){}
 })();
 </script>
+<style id="ajustes-iphone-2">
+/* iPhone (qualquer navegador no iOS): os apps abrem com um fade simples.
+   As animações de zoom dentro de tela arredondada são o que o Safari desenha errado. */
+@supports (-webkit-touch-callout: none){
+  .tv .ph-stage{ -webkit-transform:none !important; transform:none !important; -webkit-clip-path:none; clip-path:none; isolation:auto; }
+  .tv .ph-home, .tv .ph-home.away{ -webkit-transform:none !important; transform:none !important; filter:none !important; transition:none !important; }
+  .tv .ph-home.away{ visibility:hidden; opacity:0; }
+  .tv .ph-app-view{
+    display:none !important;
+    -webkit-transform:none !important; transform:none !important;
+    transition:none !important; will-change:auto;
+    -webkit-backface-visibility:visible; backface-visibility:visible;
+  }
+  .tv .ph-app-view.open{ display:flex !important; opacity:1; visibility:visible; animation:phFadeIn .22s ease; }
+  .tv .ph-gal-viewer{ -webkit-transform:none !important; transform:none !important; transition:opacity .2s ease; }
+}
+@keyframes phFadeIn{ from{ opacity:0; } to{ opacity:1; } }
+
+/* Toque não é "hover": no iPhone o ícone tocado ficava levantado depois de fechar o app */
+@media (hover:none){
+  .ph-app:hover .ph-ico{ transform:none; box-shadow:0 3px 7px rgba(80,0,40,.28), inset 0 0 0 .5px rgba(255,255,255,.35); }
+  .ph-gal-thumb:active img{ transform:none; }
+  .mn-item:hover, #cd-list .mn-item:hover{ transform:none; }
+  .mn-item:hover .mn-thumb img{ transform:none; }
+}
+</style>
 </body>
 </html>
