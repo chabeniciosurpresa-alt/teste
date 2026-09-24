@@ -1,4 +1,4 @@
-<!doctype html>
+x<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -75,7 +75,7 @@ a { color: inherit; text-decoration: none; }
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background: rgba(249,203,224,.64);
+  background: rgba(249,203,224,.44);
 }
 
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -163,7 +163,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .tv-panel { display: flex; align-items: center; justify-content: space-around; padding: 11px 22px 3px; }
 .tv-panel svg { width: 24px; height: 24px; display: block; filter: drop-shadow(0 1px 1px rgba(120,10,60,.35)); }
 
-.s-alt { background: rgba(255,246,250,.86); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.s-alt { background: rgba(255,246,250,.78); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section { padding: 62px 0; }
 
 .sabor-toast {
@@ -188,7 +188,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 
 .section-pedido {
   padding: 72px 0;
-  background: linear-gradient(160deg, rgba(252,232,243,.92) 0%, rgba(253,242,248,.92) 50%, rgba(248,224,239,.92) 100%);
+  background: linear-gradient(160deg, rgba(252,232,243,.86) 0%, rgba(253,242,248,.86) 50%, rgba(248,224,239,.86) 100%);
   position: relative; overflow: hidden;
 }
 .section-pedido::before {
@@ -2470,7 +2470,7 @@ section,
     <div class="galeria-frame" id="galeria-frame" style="cursor:pointer;">
       <div class="slider">
         <div class="slides" id="slides">
-          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=700&q=80&output=webp" alt="Trabalho recente" loading="lazy" decoding="async"></div>
+          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=560&q=76&output=webp" alt="Trabalho recente" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -2624,11 +2624,11 @@ try {
     };
 
     function leve(u){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=800&q=80&output=webp";
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=520&q=76&output=webp";
     }
 
     function nitida(u){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=1200&we&q=90&output=webp";
+      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=1000&we&q=80&output=webp";
     }
 
     var SPOTLIGHT = {
@@ -3164,13 +3164,13 @@ try {
     function mostrar(n){
       atual = (n + mostradas) % mostradas;
       var f = fotos[atual];
-      viewerImg.src = prox(f.src, 1000);
+      viewerImg.src = prox(f.src, 640);
       viewerImg.alt = f.nome || "Foto " + (atual + 1);
       viewerCap.textContent = (f.nome ? f.nome + " · " : "") + (atual + 1) + " de " + mostradas;
 
       [atual + 1, atual - 1].forEach(function(j){
         var g = fotos[(j + mostradas) % mostradas];
-        if(g){ var pre = new Image(); pre.src = prox(g.src, 1000); }
+        if(g){ var pre = new Image(); pre.src = prox(g.src, 640); }
       });
     }
 
@@ -4828,7 +4828,7 @@ try {
     var ant = raiz.querySelector(".cat-ant");
     var prox = raiz.querySelector(".cat-prox");
 
-    CATEGORIAS.forEach(function(c){
+    CATEGORIAS.forEach(function(c, idx){
       var b = document.createElement("button");
       b.type = "button";
       b.className = "cat-item";
@@ -4839,10 +4839,11 @@ try {
       foto.className = "cat-foto";
       var img = document.createElement("img");
       var tentouOriginal = false;
-      img.src = "https://images.weserv.nl/?url=" + c.foto.replace(/^https?:\/\//, "") + "&w=200&h=200&fit=cover&q=76&output=webp";
+      img.src = "https://images.weserv.nl/?url=" + c.foto.replace(/^https?:\/\//, "") + "&w=180&h=180&fit=cover&q=72&output=webp";
       img.alt = "";
       img.width = 88; img.height = 88;
       img.loading = "eager"; img.decoding = "async"; img.draggable = false;
+      if(idx >= 6) img.fetchPriority = "low";   // as 6 primeiras (visíveis) têm prioridade
       img.addEventListener("error", function(){
         if(!tentouOriginal){ tentouOriginal = true; img.src = c.foto; return; }
         foto.classList.add("no-photo");
@@ -4896,7 +4897,7 @@ try {
    As URLs são idênticas às usadas pelo site, então o navegador reaproveita do cache. */
 (function(){
   try {
-    var MAX_SIMULTANEAS = 3;   // quantas fotos baixam ao mesmo tempo (pode subir para 4-6)
+    var MAX_SIMULTANEAS = 5;   // quantas fotos baixam ao mesmo tempo (3 = mais leve, 6 = mais rápido)
 
     var con = navigator.connection || {};
     var conexaoLenta = con.saveData === true || /(^|-)2g$/.test(con.effectiveType || "");
@@ -4906,7 +4907,7 @@ try {
       return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=" + w + (h ? "&h=" + h + "&fit=cover" : "") + "&q=75&output=webp";
     }
     function nitida(u){
-      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=1200&we&q=90&output=webp";
+      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=1000&we&q=80&output=webp";
     }
     // Descobre o endereço original da foto (i.ibb.co) a partir do <img> já na página
     function origem(src){
@@ -4940,7 +4941,7 @@ try {
       });
 
       // 4) Foto ampliada da galeria (abre ao tocar na miniatura)
-      fotos.forEach(function(f){ add(prox(f.src, 1000)); });
+      fotos.forEach(function(f){ add(prox(f.src, 640)); });
     }
 
     var ativas = 0;
