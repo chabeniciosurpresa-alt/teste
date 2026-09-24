@@ -5022,6 +5022,22 @@ try {
   }
   .tv .ph-app-view.open{ display:flex !important; opacity:1; visibility:visible; animation:phFadeIn .22s ease; }
   .tv .ph-gal-viewer{ -webkit-transform:none !important; transform:none !important; transition:opacity .2s ease; }
+
+  /* Cantos: a área do app ganha o MESMO arredondamento da tela do celular (parte de cima),
+     então nunca aparece canto quadrado, mesmo que o Safari falhe em recortar. */
+  .tv{ --tv-r:34px; }
+  .tv .ph-stage,
+  .tv .ph-home,
+  .tv .ph-app-view{
+    border-radius:var(--tv-r) var(--tv-r) 0 0 !important;
+  }
+  .tv .ph-stage{
+    overflow:hidden;
+    -webkit-mask-image:-webkit-radial-gradient(white, black);
+  }
+}
+@media (max-width:480px){
+  @supports (-webkit-touch-callout: none){ .tv{ --tv-r:30px; } }
 }
 @keyframes phFadeIn{ from{ opacity:0; } to{ opacity:1; } }
 
