@@ -1,4 +1,4 @@
-x<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -75,7 +75,7 @@ a { color: inherit; text-decoration: none; }
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background: rgba(249,203,224,.44);
+  background: rgba(249,203,224,.64);
 }
 
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -163,7 +163,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .tv-panel { display: flex; align-items: center; justify-content: space-around; padding: 11px 22px 3px; }
 .tv-panel svg { width: 24px; height: 24px; display: block; filter: drop-shadow(0 1px 1px rgba(120,10,60,.35)); }
 
-.s-alt { background: rgba(255,246,250,.78); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.s-alt { background: rgba(255,246,250,.86); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section { padding: 62px 0; }
 
 .sabor-toast {
@@ -188,7 +188,7 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 
 .section-pedido {
   padding: 72px 0;
-  background: linear-gradient(160deg, rgba(252,232,243,.86) 0%, rgba(253,242,248,.86) 50%, rgba(248,224,239,.86) 100%);
+  background: linear-gradient(160deg, rgba(252,232,243,.92) 0%, rgba(253,242,248,.92) 50%, rgba(248,224,239,.92) 100%);
   position: relative; overflow: hidden;
 }
 .section-pedido::before {
@@ -3606,7 +3606,7 @@ try {
       // desce para a área de "tocando agora", como em um app de música.
       if(document.body.classList.contains("app-musica-aberto") && now){
         setTimeout(function(){
-          now.scrollIntoView({ behavior:"smooth", block:"nearest" });
+          /* sem scrollIntoView: no iPhone empurrava o conteúdo para fora da tela do celular */
         }, 120);
       }
 
@@ -4804,19 +4804,19 @@ try {
   (function(){
     // Para alterar categorias: edite nome e foto nesta lista.
     var CATEGORIAS = [
-      { nome: "Sonic",           foto: "https://i.ibb.co/JRL3PDvk/e76b7597247f6220f36c05a1969c4115.jpg" },
+      { nome: "Rapunzel",        foto: "https://i.ibb.co/Pz67hywp/775573581026f023383feeee45076b3b.jpg" },
+      { nome: "Hello Kitty",     foto: "https://i.ibb.co/tgwMjwM/0dbd0781fe4bcfba2b844378dcf39ea6.jpg" },
       { nome: "Mickey",          foto: "https://i.ibb.co/vxnnqkMh/ae3ad9998df4080cf668d167f0e60214.jpg" },
+      { nome: "Turma da Mônica", foto: "https://i.ibb.co/B54QdG0d/bca74966d5ddf2345e08d49691e3422f.jpg" },
+      { nome: "Looney Tunes",    foto: "https://i.ibb.co/LD8Hdcd1/c92de6059d1a81eb3559dbc95c51454c.jpg" },
+      { nome: "Sonic",           foto: "https://i.ibb.co/JRL3PDvk/e76b7597247f6220f36c05a1969c4115.jpg" },
       { nome: "Fundo do Mar",    foto: "https://i.ibb.co/Pz9yXHZj/b72e181bd98888fc068bd5bb8ef85638.jpg" },
       { nome: "Princesa",        foto: "https://i.ibb.co/v6PLmQbN/94e33e56b755479e1331dbf0c572f666.jpg" },
       { nome: "Safari",          foto: "https://i.ibb.co/679Q7Q2g/332b09b8acc7c2a61701bca20278ec39.jpg" },
       { nome: "Moranguinho",     foto: "https://i.ibb.co/cdsWHQK/538678c70556df50649761196cde7fd1.jpg" },
       { nome: "Formatura",       foto: "https://i.ibb.co/5WNyrghz/0e51b1bbeec61f5a68d9ca75f8abf822.jpg" },
-      { nome: "Looney Tunes",    foto: "https://i.ibb.co/LD8Hdcd1/c92de6059d1a81eb3559dbc95c51454c.jpg" },
-      { nome: "Hello Kitty",     foto: "https://i.ibb.co/tgwMjwM/0dbd0781fe4bcfba2b844378dcf39ea6.jpg" },
-      { nome: "Rapunzel",        foto: "https://i.ibb.co/Pz67hywp/775573581026f023383feeee45076b3b.jpg" },
       { nome: "Pikachu",         foto: "https://i.ibb.co/5hC56gxd/0a4f02c244c0058fdd5b010ef0fc460e.jpg" },
       { nome: "Toy Story",       foto: "https://i.ibb.co/wZX2GDzJ/249e99b9f1bcf1ce6e8b15215ae46cf0.jpg" },
-      { nome: "Turma da Mônica", foto: "https://i.ibb.co/B54QdG0d/bca74966d5ddf2345e08d49691e3422f.jpg" },
       { nome: "Toy Story",       foto: "https://i.ibb.co/0jjnjPd1/107bc85a3e700ffee6e391202c79ee66.jpg" },
       { nome: "Casa Nova",       foto: "https://i.ibb.co/gMgvM58y/90f9c51185a43944c9c31e7b81458a73.jpg" },
       { nome: "Heróis",          foto: "https://i.ibb.co/3mZfWTsp/326d091663a0b2de673c0ce5f0dcf8e5.jpg" }
@@ -4965,6 +4965,46 @@ try {
     }
     if(document.readyState === "complete") quandoOciosa();
     else window.addEventListener("load", quandoOciosa);
+  } catch(e){}
+})();
+</script>
+<style id="ajustes-iphone">
+/* ===== Celular fictício: nada escapa da tela no Safari/iPhone ===== */
+.tv .ph-stage{
+  overflow:hidden;
+  -webkit-clip-path:inset(0); clip-path:inset(0);
+  isolation:isolate;
+  -webkit-transform:translateZ(0); transform:translateZ(0);
+}
+.tv .ph-app-view{
+  visibility:hidden;
+  -webkit-backface-visibility:hidden; backface-visibility:hidden;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1), opacity .25s ease, visibility 0s linear .3s;
+}
+.tv .ph-app-view.open{
+  visibility:visible;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1), opacity .25s ease, visibility 0s;
+}
+.tv .ph-home{ transition:transform .3s ease, opacity .3s ease, visibility 0s; }
+.tv .ph-home.away{
+  filter:none; opacity:0; visibility:hidden;
+  transition:transform .3s ease, opacity .3s ease, visibility 0s linear .3s;
+}
+.ph-mus, .ph-mus-list, .ph-gal-grid{ overscroll-behavior:contain; }
+.ph-mus-list{ touch-action:pan-y; }
+</style>
+<script id="ajustes-iphone-js">
+/* Se o Safari tentar rolar por dentro do celular fictício, volta tudo para o lugar */
+(function(){
+  try {
+    var tela = document.getElementById("phone");
+    if(!tela) return;
+    tela.addEventListener("scroll", function(e){
+      var t = e.target;
+      if(t && t.matches && t.matches(".tv-screen,.ph-stage,.ph-home,.ph-app-view:not(.ph-mus)")){
+        if(t.scrollTop || t.scrollLeft){ t.scrollTop = 0; t.scrollLeft = 0; }
+      }
+    }, true);
   } catch(e){}
 })();
 </script>
