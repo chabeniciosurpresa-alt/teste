@@ -4185,6 +4185,31 @@ try {
 body:has(.mini-player.on){padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 
 #temas,#galeria,#contato{content-visibility:auto;contain-intrinsic-size:auto 700px}
+#ph-cal-today{display:none}
+#ph-cal-view .pc-bar{justify-content:center}
+.tv-screen .ph-mus{overflow:hidden !important}
+.tv .ph-app-view{overflow:hidden;contain:paint}
+.ph-mus-list,.ph-gal-grid{overscroll-behavior:none}
+@media (max-width:560px){
+  .numeros{flex-wrap:nowrap;row-gap:0}
+  .numeros li{padding:0 11px;min-width:0}
+  .numeros li:first-child{padding-left:0}
+  .numeros li:last-child{flex:1 1 auto}
+  .numeros strong{font-size:17px;line-height:1.15}
+  .numeros span{font-size:9.5px;letter-spacing:.05em}
+}
+@media (max-width:700px){
+  #cd-list.mn-list{gap:12px !important;padding:8px 2px 18px !important;scroll-snap-type:x mandatory !important}
+  #cd-list.mn-list .mn-item{flex:0 0 calc((100% - 12px)/2) !important;width:calc((100% - 12px)/2) !important;min-width:0 !important;padding:8px 8px 14px !important;border-radius:22px !important;scroll-snap-align:start}
+  #cd-list.mn-list .mn-thumb{border-radius:16px !important}
+  #cd-list.mn-list .mn-txt{padding:12px 4px 0 !important;gap:4px !important}
+  #cd-list.mn-list .mn-nome{font-size:19px !important}
+  #cd-list.mn-list .mn-resumo{font-size:11px !important;line-height:1.4;max-width:100% !important}
+  .mn-arrow{width:34px !important;height:34px !important;margin-top:-22px !important}
+  .mn-arrow svg{width:17px !important;height:17px !important}
+  .mn-arrow-prev{left:-6px !important}
+  .mn-arrow-next{right:-6px !important}
+}
 </style>
 <script id="melhorias-celular-js">
 (function(){try{
@@ -4194,7 +4219,16 @@ body:has(.mini-player.on){padding-bottom:calc(84px + env(safe-area-inset-bottom,
   (window.FOTOS||[]).forEach(function(f){
     new Image().src="https://images.weserv.nl/?url="+f.src.replace(/^https?:\/\//,"")+"&w=200&h=250&fit=cover&q=75&output=webp";
   });
-}catch(e){}})();
+['gal-grid','mus-list'].forEach(function(id){
+    var el=document.getElementById(id),y0=0;
+    if(!el)return;
+    el.addEventListener('touchstart',function(e){y0=e.touches[0].clientY;},{passive:true});
+    el.addEventListener('touchmove',function(e){
+      var dy=e.touches[0].clientY-y0,topo=el.scrollTop<=0,fim=el.scrollTop+el.clientHeight>=el.scrollHeight-1;
+      if((topo&&dy>0)||(fim&&dy<0))e.preventDefault();
+    },{passive:false});
+  });
+  }catch(e){}})();
 </script>
 
 </body>
