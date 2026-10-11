@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://i.ibb.co" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" fetchpriority="high" href="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&amp;w=800&amp;q=68&amp;output=webp">
+<link rel="preload" as="image" fetchpriority="high" href="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&amp;w=560&amp;q=48&amp;output=webp">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -115,7 +115,6 @@ h1 { font-size: clamp(30px, 5.5vw, 50px); margin-bottom: 16px; font-style: itali
 .numeros li:first-child { padding-left: 0; border-left: none; }
 .numeros strong { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--pink-text); }
 .numeros span { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .07em; }
-
 
 .video-wrap { display: flex; justify-content: center; }
 .tv { position: relative; width: 100%; max-width: 280px; padding: 0 6px; }
@@ -1624,11 +1623,9 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 </style>
 
 <style id="phone-real-style">
-/* ---- setinha só no sabor escolhido ---- */
 .pd-flavor .pd-tick{display:none;position:absolute;top:-6px;right:-4px;width:17px;height:17px;border-radius:50%;background:#fff;color:var(--pink);border:1.5px solid var(--pink);align-items:center;justify-content:center;font-size:8px;font-style:normal;box-shadow:0 2px 5px rgba(216,27,106,.25)}
 .pd-flavor.selected .pd-tick{display:flex}
 
-/* ---- celular menor e mais realista ---- */
 .tv{max-width:226px;padding:0 4px}
 .tv .tv-body{border-radius:44px;padding:5px;
   background:linear-gradient(145deg,#ffd3e5 0%,#f27fb3 12%,#d63c85 50%,#a3175a 88%,#7d0f45 100%);
@@ -1650,7 +1647,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   .tv-screen .ph-home{min-height:348px}
 }
 
-/* ---- calendário compacto para caber no celular menor ---- */
 #ph-cal-view{padding-bottom:4px}
 #ph-cal-view .pc-tip{padding:6px 9px;margin-bottom:0}
 #ph-cal-view .pc-tip b{font-size:10px}
@@ -1663,7 +1659,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 #ph-cal-view .ph-cal-day.has-note::after,
 #ph-cal-view .ph-cal-day.today.has-note::after{top:26px}
 
-/* ---- cardápio: sabores lado a lado ---- */
 .mn-item{position:relative}
 @media (max-width:699px){
   .mn-inner{padding:20px 12px 22px}
@@ -1679,7 +1674,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 #ph-cal-view .pc-opt{position:absolute;top:-7px;right:10px;margin:0;vertical-align:baseline;white-space:nowrap;box-shadow:0 2px 5px rgba(216,27,106,.3)}
 </style>
 <style id="phone-real-style-3">
-/* celular mais realista */
 .tv{filter:drop-shadow(0 26px 24px rgba(71,8,34,.28)) drop-shadow(0 6px 8px rgba(71,8,34,.18))}
 .tv .tv-body{border-radius:46px;padding:6px 6px 4px;
   background:
@@ -1697,7 +1691,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .ph-ico{position:relative;box-shadow:0 3px 7px rgba(80,0,40,.28),inset 0 0 0 .5px rgba(255,255,255,.35)}
 .ph-ico::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,0) 46%)}
 
-/* cardápio: logo no meio, sem ícone, fotos maiores */
 .mn-brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:22px}
 .mn-brand img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 20px rgba(216,27,106,.22)}
 .mn-brand h3{font-size:26px;font-style:italic;margin-top:6px}
@@ -1709,7 +1702,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 }
 </style>
 <style id="phone-real-style-4">
-/* ---- celular v4: barra de navegação dentro da tela, nada sobrepõe ---- */
 .tv .tv-body{padding:6px}
 .tv .tv-screen{display:flex;flex-direction:column;background:#000}
 .ph-stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;border-radius:0}
@@ -1722,7 +1714,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 .ph-nav button:active svg{opacity:1;transform:scale(.82)}
 @media (max-width:480px){ .tv-screen .ph-home{min-height:330px} }
 
-/* botões laterais mais discretos e metálicos */
 .tv .tv-body::before{left:-3px;top:78px;width:3px;height:30px;border-radius:2px 0 0 2px;
   background:linear-gradient(90deg,#8e1a52 0%,#e872ab 55%,#ffc6de 100%);
   box-shadow:0 40px 0 0 #d24a8b,0 1px 2px rgba(60,0,30,.35)}
@@ -1730,7 +1721,6 @@ img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
   background:linear-gradient(270deg,#8e1a52 0%,#e872ab 55%,#ffc6de 100%);
   box-shadow:0 1px 2px rgba(60,0,30,.35)}
 
-/* ---- app de músicas: tudo cabe dentro da tela ---- */
 .tv-screen .ph-mus{overflow:hidden}
 .tv-screen .ph-mus-head{padding:32px 14px 6px;font-size:18px}
 .tv-screen .ph-mus-banner{margin:0 10px 6px;padding:6px 9px;font-size:9.5px;line-height:1.3}
@@ -1749,7 +1739,6 @@ body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast{
   pointer-events:none;
 }
 
-/* gaveta do calendário empurra a grade (não cobre nada) */
 #ph-cal-view:has(.ph-cal-note:not([hidden])) .pc-tip,
 #ph-cal-view:has(.ph-cal-note:not([hidden])) .pc-bar{display:none}
 #ph-cal-view .ph-cal-note{position:relative;left:auto;right:auto;bottom:auto;margin:0;flex:0 0 auto;z-index:1;border-radius:16px 16px 0 0;box-shadow:0 -6px 16px rgba(30,10,20,.12);animation:none;padding:8px 12px 10px}
@@ -1761,7 +1750,6 @@ body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast{
 #ph-cal-view:has(.ph-cal-note:not([hidden])) .ph-cal-day.has-note::after,
 #ph-cal-view:has(.ph-cal-note:not([hidden])) .ph-cal-day.today.has-note::after{top:23px}
 
-/* ---- calendário: gaveta de anotação cabe na tela ---- */
 #ph-cal-view .ph-cal-note{padding:10px 12px 12px}
 #ph-cal-view .ph-cal-note-foot{flex-direction:column;align-items:stretch;gap:6px;margin-top:6px}
 #ph-cal-view .ph-cal-note-count{text-align:right}
@@ -1770,12 +1758,6 @@ body.app-musica-aberto .mini-player,body.app-musica-aberto #mus-toast{
 </style>
 
 <style id="mobile-overflow-fix">
-/* =========================================================
-   CORREÇÃO DEFINITIVA DE RESPONSIVIDADE — ANDROID + IPHONE
-   Mantém o celular/mockup dentro da própria moldura e
-   impede qualquer conteúdo de criar rolagem horizontal.
-   ========================================================= */
-
 html,
 body {
   width: 100%;
@@ -1806,7 +1788,6 @@ section,
   width: 100%;
 }
 
-/* O mockup nunca pode ficar maior que a largura disponível. */
 .video-wrap {
   width: 100%;
   overflow: visible;
@@ -1839,7 +1820,6 @@ section,
   position: relative;
 }
 
-/* Área interna do telefone: tudo fica preso dentro da tela. */
 .tv-screen .ph-stage {
   width: 100%;
   max-width: 100%;
@@ -1860,7 +1840,6 @@ section,
   box-sizing: border-box;
   overflow-x: hidden;
 }
-
 
 .tv-screen .ph-grid {
   width: 100%;
@@ -1883,7 +1862,6 @@ section,
   white-space: nowrap;
 }
 
-/* Imagens e iframes jamais ultrapassam a tela. */
 .tv-screen img,
 .tv-screen iframe,
 .tv-screen video {
@@ -1895,7 +1873,6 @@ section,
   width: 100%;
 }
 
-/* Calendário */
 #ph-cal-view,
 #ph-cal-view * {
   min-width: 0;
@@ -1912,7 +1889,6 @@ section,
   max-width: 100%;
 }
 
-/* Cardápio */
 .tv-screen .mn-inner,
 .tv-screen .mn-list,
 .tv-screen .mn-item,
@@ -1930,7 +1906,6 @@ section,
   overflow: hidden;
 }
 
-/* Galeria e músicas */
 .tv-screen .ph-gal-grid,
 .tv-screen .ph-mus-list,
 .tv-screen .ph-mus-now {
@@ -1956,7 +1931,6 @@ section,
   white-space: nowrap;
 }
 
-/* Evita botões/textos longos empurrarem a largura. */
 .tv-screen button,
 .tv-screen a,
 .tv-screen input,
@@ -1965,7 +1939,6 @@ section,
   box-sizing: border-box;
 }
 
-/* Android pequeno */
 @media (max-width: 480px) {
   .wrap {
     padding-left: 16px;
@@ -1997,7 +1970,6 @@ section,
   }
 }
 
-/* iPhone muito estreito / Android compacto */
 @media (max-width: 360px) {
   .wrap {
     padding-left: 12px;
@@ -2025,8 +1997,6 @@ section,
   }
 }
 
-/* Segurança contra qualquer componente externo que tente gerar
-   uma largura maior que a viewport. */
 @supports (overflow: clip) {
   html,
   body {
@@ -2036,7 +2006,6 @@ section,
 </style>
 
 <style id="categorias-style">
-/* ===== CATEGORIAS: carrossel de círculos ===== */
 #categorias { padding: 30px 0 20px; }
 #categorias .cat-head { text-align: center; margin-bottom: 14px; }
 #categorias .cat-head h2 { font-size: clamp(24px, 4.2vw, 32px); }
@@ -2117,7 +2086,7 @@ section,
 
 <div class="bg-fixed" aria-hidden="true">
   <img
-    src="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&w=800&q=68&output=webp"
+    src="https://images.weserv.nl/?url=i.ibb.co/8DYjbzhQ/brig.png&w=560&q=48&output=webp"
     onerror="this.onerror=null;this.src='https://i.ibb.co/8DYjbzhQ/brig.png';"
     alt=""
     fetchpriority="high"
@@ -2163,13 +2132,13 @@ section,
               <div class="ph-grid">
                 <a class="ph-app" href="#cardapio" id="hero-cardapio"><span class="ph-ico"><img src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&w=120&h=120&fit=cover&output=webp" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Cardápio</span></a>
                 <a class="ph-app" href="#pedido"><span class="ph-ico" style="background:#FF9500"><i class="fas fa-bag-shopping"></i></span><span class="ph-label">Pedido</span></a>
-                <button type="button" class="ph-app" id="app-galeria" aria-label="Abrir galeria"><span class="ph-ico" style="background:#fff"><img src="https://i.ibb.co/tMg2JXgv/images.jpg" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Galeria</span></button>
+                <button type="button" class="ph-app" id="app-galeria" aria-label="Abrir galeria"><span class="ph-ico" style="background:#fff"><img src="https://images.weserv.nl/?url=i.ibb.co/tMg2JXgv/images.jpg&w=120&h=120&fit=cover&output=webp" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Galeria</span></button>
                 <a class="ph-app" href="https://br.pinterest.com/docesdaanalu2026/minhas-produ%C3%A7%C3%B5es/" target="_blank" rel="noopener"><span class="ph-ico" style="background:#E60023"><i class="fa-brands fa-pinterest-p"></i></span><span class="ph-label">Pinterest</span></a>
                 <button type="button" class="ph-app" id="app-musica" aria-label="Abrir músicas"><span class="ph-ico" style="background:#1ED760"><img src="data:image/webp;base64,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" width="52" height="52" alt="" decoding="async"></span><span class="ph-label">Músicas</span></button>
                 <button type="button" class="ph-app" id="app-youtube" aria-label="Abrir vídeo"><span class="ph-ico" style="background:#FF0000"><i class="fa-brands fa-youtube"></i></span><span class="ph-label">YouTube</span></button>
                 <a class="ph-app" href="https://instagram.com/_docesdaanalu_" target="_blank" rel="noopener" aria-label="Instagram"><span class="ph-ico" style="background:linear-gradient(45deg,#FEDA75 0%,#FA7E1E 25%,#D62976 50%,#962FBF 75%,#4F5BD5 100%)"><i class="fa-brands fa-instagram"></i></span><span class="ph-label">Instagram</span></a>
                 <a class="ph-app" href="https://api.whatsapp.com/send?phone=558396905025&text=Oi%20Analu%2C%20quero%20fazer%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="ph-ico" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></span><span class="ph-label">WhatsApp</span></a>
-                <button type="button" class="ph-app" id="app-calendario" aria-label="Abrir calendário"><span class="ph-ico ph-calendar-ico"><img src="https://i.ibb.co/B2Xp1kjt/images.png" alt="Calendário" decoding="async"></span><span class="ph-label">Calendário</span></button>
+                <button type="button" class="ph-app" id="app-calendario" aria-label="Abrir calendário"><span class="ph-ico ph-calendar-ico"><img src="https://images.weserv.nl/?url=i.ibb.co/B2Xp1kjt/images.png&w=120&h=120&fit=cover&output=webp" alt="Calendário" decoding="async"></span><span class="ph-label">Calendário</span></button>
               </div>
             </div>
 
@@ -2417,12 +2386,12 @@ section,
         <label class="pd-flavor"><input type="checkbox" value="Meio Amargo"><span>Meio amargo</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Ninho"><span>Ninho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Ninho Colorido"><span>Ninho colorido</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
-        <label class="pd-flavor"><input type="checkbox" value="Surpresa de Uva"><span>Surpresa de uva</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Casadinho"><span>Casadinho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Beijinho"><span>Beijinho</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Amendoim"><span>Amendoim</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
-        <label class="pd-flavor"><input type="checkbox" value="Prestígio"><span>Prestígio</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
         <label class="pd-flavor"><input type="checkbox" value="Confete"><span>Confete</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Prestígio"><span>Prestígio</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
+        <label class="pd-flavor"><input type="checkbox" value="Surpresa de Uva"><span>Surpresa de uva</span><em class="pd-tick"><i class="fas fa-check"></i></em></label>
       </div>
       <div class="pd-nav">
         <button class="pd-btn-back" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
@@ -2469,7 +2438,7 @@ section,
     <div class="galeria-frame" id="galeria-frame" style="cursor:pointer;">
       <div class="slider">
         <div class="slides" id="slides">
-          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=560&q=76&output=webp" alt="Trabalho recente" loading="lazy" decoding="async"></div>
+          <div class="slide"><img src="https://images.weserv.nl/?url=i.ibb.co/chFYwQVd/6d860a18-fe0d-4366-b76c-fa14bd20f548.jpg&w=560&q=76&output=webp" alt="Trabalho recente" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -2524,8 +2493,8 @@ section,
       <div class="c-bloco reveal">
         <h3>Formas de pagamento</h3>
         <div class="pagtos">
-          <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
-          <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard">
+          <img src="https://images.weserv.nl/?url=cdn-icons-png.flaticon.com/512/196/196578.png&w=76&output=webp" alt="Visa" width="38" height="38" decoding="async">
+          <img src="https://images.weserv.nl/?url=cdn-icons-png.flaticon.com/512/196/196561.png&w=76&output=webp" alt="Mastercard" width="38" height="38" decoding="async">
           <img src="https://images.weserv.nl/?url=i.ibb.co/ynHypzSG/images.jpg&w=120&h=120&fit=contain&bg=white&output=webp" alt="Pix" style="object-fit:contain;">
         </div>
       </div>
@@ -2577,7 +2546,7 @@ section,
 
 <footer class="rodape">
   <div class="rodape-inner">
-    <img class="rodape-logo" src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&h=160&output=webp" height="52" alt="Doces da Analu" loading="lazy" decoding="async">
+    <img class="rodape-logo" src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&h=160&output=webp" height="52" alt="Doces da Analu" decoding="async">
     <p class="rodape-copy">© <span id="ano"></span> Doces da Analu · Confeitaria artesanal</p>
     <p class="rodape-copy" style="margin-top:4px;">Atendimento via WhatsApp · <a href="https://wa.me/558396905025" style="color:rgba(255,255,255,.9); text-decoration:underline;">(83) 9690-5025</a></p>
   </div>
@@ -2610,14 +2579,13 @@ var FOTOS = [
 try {
   (function(){
     var FOTOS_SAB = {
-      antiga: "https://i.ibb.co/yBn7jvfm/c5db1107-e41b-40e3-9bfd-3fc98ff42974.jpg",
       nova: "https://i.ibb.co/j12TNjv/874d1886-fd5b-43af-8272-77ffe25eb121.jpg",
       branca: "https://i.ibb.co/Jwb8bgZn/1a4056a2-25ed-4971-b08d-b642a88d626f.jpg",
       casadinho: "https://i.ibb.co/67p7Nw3s/3ab131bc-5cb2-4002-a972-227915da742c.jpg",
       ninhocolorido: "https://i.ibb.co/5gGtg9wC/4cd0fbc7-16a2-4966-a33a-1df31bce74ca.jpg",
       meioamargo: "https://i.ibb.co/FLQKN3jY/9a0b4f65-598e-41d0-bd11-21e6d3f56289.jpg",
       ninho: "https://i.ibb.co/DDvFv3NX/cd844cb3-8dfb-41bb-aa4a-26ca91e2a87e.jpg",
-      beijinho: "https://i.ibb.co/PGj6yTGj/7c7648fc-ff9d-4645-9711-e0dc7a2364f5.jpg",
+      beijinho: "https://i.ibb.co/0j9C6xdv/3b644cbc-0ab6-4d87-a8a6-10b91d0b07f6.jpg",
       aoleite: "https://i.ibb.co/gZmyLWn2/05763ffe-2fef-42e9-b9f9-3a018382f9ba.jpg",
       confete: "https://i.ibb.co/7NYYXjbN/007e0bcb-a24d-441e-b0c0-e600b4aa9bba.jpg"
     };
@@ -2626,160 +2594,27 @@ try {
       return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=520&q=76&output=webp";
     }
 
-    function nitida(u){
-      return "https://images.weserv.nl/?url=" + u.replace(/^https?:\/\//, "") + "&w=1000&we&q=80&output=webp";
-    }
-
     var SPOTLIGHT = {
-      branco: {
-        foto: "branca",
-        titulo: "Brigadeiro branco",
-        desc: "Brigadeiro branco cremoso, enrolado em granulado branco. Delicado, docinho e lindo em qualquer mesa de doces.",
-        tag: "Branco"
-      },
-      aoleite: {
-        foto: "aoleite",
-        titulo: "Brigadeiro ao leite",
-        desc: "Chocolate ao leite belga derretido com manteiga e leite condensado, finalizado com raspas de chocolate crocante por cima. O clássico que nunca sai de moda.",
-        tag: "Ao leite"
-      },
-      ninho: {
-        foto: "ninho",
-        titulo: "Ninho",
-        desc: "Brigadeiro de leite ninho, branquinho, cremoso e com sabor de infância.",
-        tag: "Ninho"
-      },
-      casadinho: {
-        foto: "casadinho",
-        titulo: "Casadinho",
-        desc: "Brigadeiro branco e brigadeiro de chocolate juntos em um só docinho. O casamento perfeito de sabores.",
-        tag: "Casadinho"
-      },
-      ninhocolorido: {
-        foto: "ninhocolorido",
-        titulo: "Ninho colorido",
-        desc: "Brigadeiro de leite ninho cremoso, enrolado em granulado colorido. Alegre e perfeito para festas.",
-        tag: "Ninho colorido"
-      },
-      meioamargo: {
-        foto: "meioamargo",
-        titulo: "Meio amargo",
-        desc: "Brigadeiro de chocolate meio amargo, intenso e cremoso. Para quem gosta de chocolate de verdade.",
-        tag: "Meio amargo"
-      },
-      uva: {
-        foto: "antiga",
-        titulo: "Surpresa de uva",
-        desc: "Uma uva verde inteira escondida no centro, envolvida em chocolate branco cremoso. A surpresa é a mordida — por fora parece um brigadeiro comum, por dentro tem a fruta fresquinha.",
-        tag: "Surpresa de uva"
-      },
-      confete: {
-        foto: "confete",
-        titulo: "Confete",
-        desc: "Chocolate ao leite cremoso coberto com confetes coloridos crocantes. Alegre, divertido e é sempre o primeiro a acabar nas festas infantis.",
-        tag: "Confete"
-      },
-      beijinho: {
-        foto: "beijinho",
-        titulo: "Beijinho",
-        desc: "Leite condensado com coco ralado fresco, enrolado e coberto com coco em flocos. Docinho tradicional que agrada todo mundo.",
-        tag: "Beijinho"
-      },
-      amendoim: {
-        foto: "nova",
-        titulo: "Amendoim",
-        desc: "Brigadeiro cremoso enrolado em amendoim crocante triturado. Doce e crocante na medida certa.",
-        tag: "Amendoim"
-      }
+      branco:        { foto: "branca",        titulo: "Brigadeiro branco" },
+      aoleite:       { foto: "aoleite",       titulo: "Brigadeiro ao leite" },
+      ninho:         { foto: "ninho",         titulo: "Ninho" },
+      casadinho:     { foto: "casadinho",     titulo: "Casadinho" },
+      ninhocolorido: { foto: "ninhocolorido", titulo: "Ninho colorido" },
+      meioamargo:    { foto: "meioamargo",    titulo: "Meio amargo" },
+      confete:       { foto: "confete",       titulo: "Confete" },
+      beijinho:      { foto: "beijinho",      titulo: "Beijinho" },
+      amendoim:      { foto: "nova",          titulo: "Amendoim" }
     };
-
-    var overlay = document.getElementById("sf-overlay");
-    var photoBox = document.getElementById("sf-photo");
-    var img = document.getElementById("sf-img");
-    var titleEl = document.getElementById("sf-title");
-    var descEl = document.getElementById("sf-desc");
-    var pedirBtn = document.getElementById("sf-pedir");
-    var chaveAtual = null;
-    var tentouOriginal = false, fotoAtual = null, carregada = false;
-    var eyebrowText = document.getElementById("sf-eyebrow-text");
-
-    var VALOR_CHECKBOX = {
-      branco: "Brigadeiro Branco",
-      aoleite: "Brigadeiro ao Leite",
-      beijinho: "Beijinho",
-      uva: "Surpresa de Uva",
-      confete: "Confete",
-      amendoim: "Amendoim",
-      casadinho: "Casadinho",
-      ninhocolorido: "Ninho Colorido",
-      meioamargo: "Meio Amargo",
-      ninho: "Ninho"
-    };
-
-    img.addEventListener("error", function(){
-      if(!tentouOriginal && fotoAtual){ tentouOriginal = true; img.src = FOTOS_SAB[fotoAtual]; }
-    });
-
-    img.addEventListener("load", function(){
-      carregada = true;
-      photoBox.classList.remove("loading");
-    });
-
-    window.abrirSaborFoto = function(chave){
-      var s = SPOTLIGHT[chave];
-      if(!s) return;
-      chaveAtual = chave;
-      if(fotoAtual !== s.foto){
-        fotoAtual = s.foto;
-        tentouOriginal = false;
-        carregada = false;
-        photoBox.classList.add("loading");
-        img.src = nitida(FOTOS_SAB[s.foto]);
-      }
-
-      eyebrowText.textContent = "Detalhes do sabor";
-      img.alt = s.titulo;
-      titleEl.textContent = s.titulo;
-      descEl.textContent = s.desc;
-
-      overlay.classList.add("open");
-      overlay.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-
-    };
-
-    function fecharSaborFoto(){
-      overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    document.getElementById("sf-close").addEventListener("click", fecharSaborFoto);
-    document.getElementById("sf-fechar").addEventListener("click", fecharSaborFoto);
-    overlay.addEventListener("click", function(e){ if(e.target === overlay) fecharSaborFoto(); });
-    document.addEventListener("keydown", function(e){ if(e.key === "Escape") fecharSaborFoto(); });
-
-    pedirBtn.addEventListener("click", function(){
-      if(chaveAtual){
-        var cb = document.querySelector('#flavor-list input[value="' + VALOR_CHECKBOX[chaveAtual] + '"]');
-        if(cb){ cb.checked = true; cb.dispatchEvent(new Event("change")); }
-      }
-      fecharSaborFoto();
-      var alvo = document.getElementById("pedido");
-      if(alvo){ alvo.scrollIntoView({ behavior: "smooth", block: "start" }); }
-    });
 
     var MENU = [
-      { key: "branco",        nome: "Brigadeiro branco",   resumo: "Cremoso, com granulado branco" },
-      { key: "aoleite",       nome: "Brigadeiro ao leite", resumo: "Com raspas de chocolate" },
-      { key: "meioamargo",    nome: "Meio amargo",         resumo: "Intenso e cremoso" },
-      { key: "ninho",         nome: "Ninho",               resumo: "Sabor de infância" },
-      { key: "ninhocolorido", nome: "Ninho colorido",      resumo: "Com granulado colorido" },
-      { key: "uva",           nome: "Surpresa de uva",     resumo: "Uva verde no centro" },
-      { key: "casadinho",     nome: "Casadinho",           resumo: "Branco e chocolate juntos" },
-      { key: "beijinho",      nome: "Beijinho",            resumo: "Coco, clássico de festa" },
+      { key: "branco",        nome: "Brigadeiro branco",   resumo: "finalizado com granulado nobre branco " },
+      { key: "aoleite",       nome: "Brigadeiro ao leite", resumo: "Brigadeiro ao Leite com Granulado Nobre" },
+      { key: "meioamargo",    nome: "Meio amargo",         resumo: "Brigadeiro Meio Amargo com Granulado Nobre" },
+      { key: "ninho",         nome: "Ninho",               resumo: "sabor inconfundível do Leite Ninho em um brigadeiro branquinho, com textura macia " },
+      { key: "ninhocolorido", nome: "Ninho colorido",      resumo: "Ninho com as cores da sua escolha" },
+      { key: "casadinho",     nome: "Casadinho",           resumo: " brigadeiro tradicional de chocolate e brigadeiro branco, unidos em uma só delícia" },
+      { key: "beijinho",      nome: "Beijinho",            resumo: " Finalizado com coco ralado, é aquele docinho tradicional que combina perfeitamente com sua festas " },
       { key: "amendoim",      nome: "Amendoim",            resumo: "Amendoim crocante" },
-      { key: "prestigio",     nome: "Prestígio",           resumo: "Chocolate com coco" },
       { key: "confete",       nome: "Confete",             resumo: "Coberto de confetes" }
     ];
 
@@ -2814,8 +2649,7 @@ try {
       montado = true;
       MENU.forEach(function(m){
         var sp = SPOTLIGHT[m.key];
-        var row = document.createElement("button");
-        row.type = "button";
+        var row = document.createElement("div");
         row.className = "mn-item";
         row.setAttribute("data-flavor-key", m.key);
 
@@ -2824,7 +2658,7 @@ try {
         if(sp){
           var im = document.createElement("img");
           var tentou = false;
-          im.alt = "";
+          im.alt = m.nome;
           im.decoding = "async";
           THUMBS.push({ im: im, sp: sp });
           im.addEventListener("load", function(){ ajustarThumb(im, sp); });
@@ -2849,16 +2683,8 @@ try {
         txt.appendChild(nome);
         txt.appendChild(resumo);
 
-        var go = document.createElement("i");
-        go.className = "fas " + (sp ? "fa-arrow-right" : "fa-chevron-right") + " mn-go";
-
         row.appendChild(th);
         row.appendChild(txt);
-        row.appendChild(go);
-        row.addEventListener("click", function(){
-          if(sp){ window.abrirSaborFoto(m.key); }
-          else if(window.irMontarPedido){ window.irMontarPedido(); }
-        });
         cdList.appendChild(row);
       });
     }
@@ -3199,7 +3025,7 @@ try {
         b.className = "ph-gal-thumb";
         b.setAttribute("aria-label", f.nome || "Foto " + (i + 1));
         var im = document.createElement("img");
-        im.loading = "lazy";
+       
         im.decoding = "async";
         im.alt = "";
         var tentou = false;
@@ -3396,16 +3222,7 @@ try {
       }, { passive: true });
     })();
 
-    
-
     document.getElementById("ph-cal-today").addEventListener("click", function(){
-      var hoje = new Date();
-      var hojeMes = hoje.getMonth();
-      var hojeAno = hoje.getFullYear();
-
-      var dataInicio = new Date(hojeAno, hojeMes, 1);
-      var diffMeses = (hojeAno - dataInicio.getFullYear()) * 12 + (hojeMes - dataInicio.getMonth());
-
       calMonthIndex = 0;
       montarCalendario(calMonthIndex);
     });
@@ -3574,9 +3391,6 @@ try {
         }
       });
 
-      // O mini-player aparece assim que a faixa é escolhida.
-      // Não depende de o áudio já ter carregado nem de o visitante estar
-      // perto da seção de música.
       if(atual >= 0){
         now.classList.add("on");
         if(!fechado && mini) mini.classList.add("on");
@@ -3595,19 +3409,10 @@ try {
       atual = i;
       audio.src = urlDaFaixa(i);
 
-      // Mostra imediatamente o player fixo no rodapé.
       ui();
 
       var pr = audio.play();
       if(pr && pr.catch) pr.catch(falha);
-
-      // Continua dentro do app de músicas. O player da faixa escolhida
-      // desce para a área de "tocando agora", como em um app de música.
-      if(document.body.classList.contains("app-musica-aberto") && now){
-        setTimeout(function(){
-          /* sem scrollIntoView: no iPhone empurrava o conteúdo para fora da tela do celular */
-        }, 120);
-      }
 
       if(!avisou){ avisou = true; aviso("Tocando agora"); }
       try {
@@ -3710,7 +3515,7 @@ try {
       var original = t.fotos[0], tentouOriginal = false;
       img.src = "https://images.weserv.nl/?url=" + original.replace(/^https?:\/\//, "") + "&w=480&q=76&output=webp";
       img.alt = t.nome;
-      img.loading = "lazy";
+      img.loading = "eager";
       img.decoding = "async";
       img.addEventListener("error", function(){
         if(!tentouOriginal){ tentouOriginal = true; img.src = original; return; }
@@ -3763,52 +3568,6 @@ try {
 } catch(e){}
 </script>
 
-
-<style id="music-no-default-selection">
-/* A tela de música sempre começa sem nenhuma faixa selecionada */
-#music-app [aria-selected="true"],
-#music-app .selected,
-#music-app .active,
-#music-app .playing,
-#music-app .is-playing {
-  /* estado visual será controlado pelo JS abaixo */
-}
-</style>
-<script id="music-no-default-selection-js">
-(function(){
-  function limparSelecaoInicial(){
-    const root = document.querySelector('#music-app, #music, .music-app, .music-screen');
-    if(!root) return;
-
-    root.querySelectorAll('[aria-selected="true"]').forEach(el => el.setAttribute('aria-selected','false'));
-    root.querySelectorAll('.selected,.active,.playing,.is-playing').forEach(el => {
-      el.classList.remove('selected','active','playing','is-playing');
-    });
-
-    const audio = root.querySelector('audio');
-    if(audio){
-      audio.pause();
-      audio.currentTime = 0;
-      audio.removeAttribute('autoplay');
-      audio.autoplay = false;
-    }
-
-    // Limpa possíveis referências globais de faixa atual.
-    ['selectedSong','selectedTrack','currentSong','currentTrack','activeSong','activeTrack'].forEach(k=>{
-      try { if(k in window) window[k] = null; } catch(e){}
-    });
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', limparSelecaoInicial);
-  } else {
-    limparSelecaoInicial();
-  }
-  setTimeout(limparSelecaoInicial, 100);
-})();
-</script>
-
-
 <style id="upgrade-calendar-flavor-spotify">
 .ph-cal-day.pulse-today{ animation: calPulseToday .9s ease; }
 @keyframes calPulseToday{
@@ -3817,32 +3576,6 @@ try {
   100%{ box-shadow:0 0 0 0 rgba(216,27,106,0); }
 }
 .sf-sweep, .sf-reticle, .sf-pulse, .sf-line, .sf-tag { display: none !important; }
-.sf-overlay{
-  background: rgba(28,8,19,.72) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.sf-card{
-  border-radius: 28px !important;
-  border: 1px solid rgba(255,255,255,.65) !important;
-  box-shadow: 0 40px 90px rgba(28,8,19,.32), 0 10px 26px rgba(28,8,19,.16) !important;
-}
-.sf-photo{
-  background: linear-gradient(160deg, var(--pink-pale), #fff) !important;
-}
-.sf-photo img{ transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-.sf-overlay.open .sf-photo img{ transform: scale(1.02); }
-.sf-close{
-  background: rgba(255,255,255,.9) !important;
-  color: var(--pink-dark) !important;
-  box-shadow: 0 6px 16px rgba(28,8,19,.18);
-}
-.sf-close:hover{ background:#fff !important; }
-.sf-eyebrow{ background: linear-gradient(135deg, var(--pink-pale), #fff) !important; }
-.sf-title{ font-size: clamp(26px, 4vw, 34px) !important; }
-.sf-desc{ font-size: 14.5px !important; line-height: 1.8 !important; color: var(--ink-mid) !important; }
-.sf-actions .btn-pink{ box-shadow: 0 10px 26px rgba(216,27,106,.28) !important; }
-.sf-actions .pd-btn-back{ border-radius: 999px !important; }
 
 .tv-screen .ph-mus{
   background: linear-gradient(180deg, #1e3a2a 0%, #121212 34%, #121212 100%) !important;
@@ -3889,289 +3622,7 @@ try {
 .mini-player .mp-btn:not(.mp-play):hover{ color: #fff !important; }
 </style>
 
-
-
-
-<style id="flavor-menu-bigger-clean">
-/* Fotos dos sabores maiores e cardápio mais elegante */
-.mn-list{
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-  gap:16px;
-}
-.mn-item{
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  gap:10px;
-  padding:10px 10px 14px;
-  border-radius:18px;
-}
-.mn-thumb{
-  width:100%;
-  height:auto;
-  aspect-ratio:4/5;
-  border-radius:14px;
-  overflow:hidden;
-}
-.mn-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-}
-.mn-txt{align-items:center;text-align:center}
-.mn-nome{font-size:20px}
-.mn-resumo{font-size:12px}
-@media (min-width:900px){
-  .mn-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-  .mn-thumb{aspect-ratio:4/5}
-}
-@media (min-width:1100px){
-  .mn-list{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-@media (max-width:699px){
-  .mn-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .mn-item{padding:8px 8px 12px}
-  .mn-thumb{aspect-ratio:4/5}
-  .mn-nome{font-size:17px}
-}
-</style>
-
-<style id="flavor-menu-premium">
-/* ===== CARDS PREMIUM — 3 POR FILEIRA ===== */
-#cd-list.mn-list,
-.mn-list{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px;
-  align-items:stretch;
-}
-
-.mn-item{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  min-height:100%;
-  padding:0 0 14px;
-  overflow:hidden;
-  border:1px solid rgba(159,25,82,.12);
-  border-radius:20px;
-  background:linear-gradient(180deg,#fff,#fff7fa);
-  box-shadow:0 8px 22px rgba(105,22,61,.10),0 2px 6px rgba(105,22,61,.05);
-  cursor:pointer;
-  text-align:left;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-}
-
-.mn-item::before{
-  content:"BRIGADEIRO GOURMET";
-  position:absolute;
-  z-index:5;
-  top:11px;
-  left:11px;
-  padding:6px 9px;
-  border-radius:999px;
-  background:rgba(255,250,252,.94);
-  color:#8f164d;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:.13em;
-  line-height:1;
-  box-shadow:0 3px 10px rgba(72,7,39,.12);
-}
-
-.mn-item:hover{
-  transform:translateY(-4px);
-  border-color:rgba(191,27,101,.25);
-  box-shadow:0 14px 30px rgba(105,22,61,.15),0 4px 10px rgba(105,22,61,.07);
-}
-
-.mn-thumb{
-  position:relative;
-  width:100%;
-  aspect-ratio:4/3.35;
-  overflow:hidden;
-  border-radius:19px 19px 0 0;
-  background:#f5dce7;
-}
-
-.mn-thumb::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent 55%,rgba(55,0,28,.16));
-}
-
-.mn-thumb img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center;
-  transition:transform .45s ease;
-}
-
-.mn-item:hover .mn-thumb img{
-  transform:scale(1.045);
-}
-
-.mn-txt{
-  display:flex !important;
-  flex-direction:column;
-  align-items:flex-start !important;
-  gap:4px;
-  width:100%;
-  padding:13px 15px 2px;
-  text-align:left !important;
-}
-
-.mn-nome{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:19px !important;
-  font-weight:700;
-  line-height:1.1;
-  color:#6e123d;
-  letter-spacing:-.02em;
-}
-
-.mn-nome::after{
-  content:"";
-  display:block;
-  width:29px;
-  height:2px;
-  margin-top:6px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#d51d70,#f3a2c5);
-}
-
-.mn-resumo{
-  max-width:92%;
-  color:#765266;
-  font-size:11.5px !important;
-  line-height:1.4;
-}
-
-.mn-go{
-  position:absolute !important;
-  right:13px;
-  bottom:13px;
-  z-index:6;
-  display:flex !important;
-  align-items:center;
-  justify-content:center;
-  width:31px;
-  height:31px;
-  border-radius:50%;
-  background:#fff;
-  color:#c71967;
-  font-size:10px;
-  box-shadow:0 4px 12px rgba(92,10,49,.13);
-  transition:transform .2s ease,background .2s ease,color .2s ease;
-}
-
-.mn-item:hover .mn-go{
-  transform:translateX(2px);
-  background:#c71967;
-  color:#fff;
-}
-
-.mn-thumb.no-photo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#c71967;
-  font-size:28px;
-  background:linear-gradient(135deg,#fff0f6,#f8d8e7);
-}
-
-.sf-overlay{
-  background:rgba(53,8,31,.68) !important;
-  backdrop-filter:blur(8px);
-}
-
-.sf-card{
-  border:1px solid rgba(255,255,255,.62) !important;
-  border-radius:25px !important;
-  overflow:hidden;
-  box-shadow:0 28px 70px rgba(44,4,25,.35) !important;
-}
-
-.sf-photo{
-  background:#f6dce7 !important;
-}
-
-.sf-info{
-  background:linear-gradient(180deg,#fffafd,#fff3f8) !important;
-}
-
-.sf-title{
-  font-family:Georgia,"Times New Roman",serif !important;
-  color:#6e123d !important;
-}
-
-@media (min-width:1100px){
-  #cd-list.mn-list,
-  .mn-list{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:22px;
-  }
-}
-
-@media (max-width:700px){
-  #cd-list.mn-list,
-  .mn-list{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
-  }
-
-  .mn-item{
-    border-radius:17px;
-    padding-bottom:11px;
-  }
-
-  .mn-item::before{
-    top:8px;
-    left:8px;
-    padding:5px 7px;
-    font-size:6.5px;
-    letter-spacing:.09em;
-  }
-
-  .mn-thumb{
-    aspect-ratio:4/3.15;
-    border-radius:16px 16px 0 0;
-  }
-
-  .mn-txt{
-    padding:10px 10px 2px;
-  }
-
-  .mn-nome{
-    font-size:16px !important;
-  }
-
-  .mn-nome::after{
-    width:23px;
-    height:1.5px;
-    margin-top:5px;
-  }
-
-  .mn-resumo{
-    font-size:9.5px !important;
-    line-height:1.3;
-  }
-
-  .mn-go{
-    right:8px;
-    bottom:8px;
-    width:26px;
-    height:26px;
-  }
-}
-</style>
-
 <style id="flavor-carousel-clean">
-/* ===== SABORES: CARROSSEL HORIZONTAL LIMPO ===== */
 #cd-list.mn-list,
 .mn-list{
   display:flex !important;
@@ -4185,27 +3636,11 @@ try {
   scroll-padding-left:2px;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
+  background:transparent !important;
 }
 
 #cd-list.mn-list::-webkit-scrollbar,
 .mn-list::-webkit-scrollbar{display:none}
-
-#cd-list .mn-item,
-.mn-list .mn-item{
-  flex:0 0 31%;
-  width:31%;
-  min-width:31%;
-  min-height:0;
-  padding:0 0 8px;
-  border:0 !important;
-  border-radius:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  overflow:visible;
-  scroll-snap-align:start;
-  text-align:center;
-  transition:transform .25s ease;
-}
 
 #cd-list .mn-item::before,
 #cd-list .mn-item::after,
@@ -4213,288 +3648,38 @@ try {
 .mn-list .mn-item::after{
   display:none !important;
 }
-
-#cd-list .mn-item:hover,
-.mn-list .mn-item:hover{
-  transform:translateY(-3px);
-  border:0;
-  box-shadow:none;
-}
-
-#cd-list .mn-thumb,
-.mn-list .mn-thumb{
-  position:relative;
-  width:100%;
-  aspect-ratio:1/1;
-  height:auto;
-  overflow:hidden;
-  border-radius:20px;
-  background:#f6e0e9;
-  box-shadow:0 8px 20px rgba(105,22,61,.12);
-}
-
-#cd-list .mn-thumb::after,
-.mn-list .mn-thumb::after{
-  display:none;
-}
-
-#cd-list .mn-thumb img,
-.mn-list .mn-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  transform:none;
-  transition:transform .4s ease;
-}
-
-#cd-list .mn-item:hover .mn-thumb img,
-.mn-list .mn-item:hover .mn-thumb img{
-  transform:scale(1.035);
-  filter:none;
-}
-
-#cd-list .mn-txt,
-.mn-list .mn-txt{
-  display:flex !important;
-  flex-direction:column;
-  align-items:center !important;
-  width:100%;
-  gap:5px;
-  padding:12px 4px 0;
-  text-align:center !important;
-}
-
-#cd-list .mn-nome,
-.mn-list .mn-nome{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:20px !important;
-  font-weight:700;
-  line-height:1.1;
-  color:#6e123d;
-}
-
-#cd-list .mn-nome::after,
-.mn-list .mn-nome::after{
-  content:"";
-  display:block;
-  width:26px;
-  height:2px;
-  margin:6px auto 0;
-  border-radius:99px;
-  background:#d51d70;
-}
-
-#cd-list .mn-resumo,
-.mn-list .mn-resumo{
-  max-width:95%;
-  color:#765266;
-  font-size:11.5px !important;
-  line-height:1.35;
-}
-
-#cd-list .mn-go,
-.mn-list .mn-go{
-  position:absolute !important;
-  right:10px;
-  bottom:auto;
-  top:10px;
-  width:31px;
-  height:31px;
-  border-radius:50%;
-  background:rgba(255,255,255,.94);
-  color:#c71967;
-  box-shadow:0 4px 12px rgba(92,10,49,.14);
-  opacity:0;
-  transform:scale(.9);
-  transition:opacity .2s ease,transform .2s ease,background .2s ease,color .2s ease;
-}
-
-#cd-list .mn-item:hover .mn-go,
-.mn-list .mn-item:hover .mn-go{
-  opacity:1;
-  transform:scale(1);
-  background:#fff;
-  color:#c71967;
-}
-
-/* ===== FOTO ABERTA: SEM CORTE ===== */
-.sf-card{
-  max-width:min(1080px,94vw) !important;
-  max-height:92vh !important;
-}
-
-.sf-photo{
-  aspect-ratio:auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  display:flex !important;
-  align-items:center;
-  justify-content:center;
-  background:#1d0712 !important;
-  overflow:hidden;
-}
-
-.sf-photo img{
-  width:100% !important;
-  height:auto !important;
-  max-height:88vh !important;
-  object-fit:contain !important;
-  object-position:center !important;
-  background:#1d0712;
-}
-
-@media (min-width:720px){
-  .sf-photo{
-    width:58% !important;
-    max-height:88vh !important;
-  }
-  .sf-info{
-    width:42%;
-  }
-}
-
-@media (max-width:700px){
-  #cd-list.mn-list,
-  .mn-list{
-    gap:13px;
-    padding-right:18vw;
-  }
-
-  #cd-list .mn-item,
-  .mn-list .mn-item{
-    flex:0 0 45%;
-    width:45%;
-    min-width:45%;
-  }
-
-  #cd-list .mn-thumb,
-  .mn-list .mn-thumb{
-    aspect-ratio:1/1;
-    border-radius:16px;
-  }
-
-  #cd-list .mn-txt,
-  .mn-list .mn-txt{
-    padding-top:9px;
-  }
-
-  #cd-list .mn-nome,
-  .mn-list .mn-nome{
-    font-size:16px !important;
-  }
-
-  #cd-list .mn-resumo,
-  .mn-list .mn-resumo{
-    font-size:10px !important;
-  }
-
-  #cd-list .mn-go,
-  .mn-list .mn-go{
-    opacity:1;
-    transform:scale(.9);
-    top:8px;
-    right:8px;
-    width:28px;
-    height:28px;
-  }
-
-  .sf-card{
-    width:94vw !important;
-    max-height:92vh !important;
-    border-radius:20px !important;
-  }
-
-  .sf-photo img{
-    max-height:58vh !important;
-  }
-}
 </style>
 
 <style id="flavor-carousel-arrows">
-/* ===== SETAS LIMPAS: SOMENTE O ÍCONE ===== */
+.mn-carousel-wrap{position:relative}
+
 .mn-arrow{
   position:absolute;
   z-index:20;
   top:50%;
-  width:42px;
-  height:56px;
-  margin-top:-28px;
-  border:0;
-  border-radius:0;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:0;
   cursor:pointer;
-  color:#555;
-  background:transparent;
-  box-shadow:none;
   outline:none;
-  transition:color .18s ease, transform .18s ease, opacity .18s ease;
+  transition:color .18s ease, background .18s ease, transform .18s ease, opacity .18s ease;
 }
-
-.mn-arrow::before{display:none}
-
 .mn-arrow svg{
-  width:25px;
-  height:25px;
   fill:none;
   stroke:currentColor;
-  stroke-width:1.7;
   stroke-linecap:round;
   stroke-linejoin:round;
-  filter:none;
 }
-
-.mn-arrow:hover{
-  color:#222;
-  background:transparent;
-  box-shadow:none;
-  filter:none;
-  transform:scale(1.08);
-}
-
-.mn-arrow:active{
-  transform:scale(.94);
-}
-
-.mn-arrow:focus-visible{
-  outline:1px solid rgba(80,80,80,.35);
-  outline-offset:2px;
-}
-
 .mn-arrow-prev{left:-18px}
 .mn-arrow-next{right:-18px}
+.mn-arrow.is-disabled{opacity:.18;pointer-events:none}
 
-.mn-arrow.is-disabled{
-  opacity:.18;
-  pointer-events:none;
-}
-
-@media (max-width:700px){
-  .mn-arrow{
-    width:34px;
-    height:48px;
-    margin-top:-24px;
-  }
-
-  .mn-arrow svg{
-    width:22px;
-    height:22px;
-  }
-
-  .mn-arrow-prev{left:-6px}
-  .mn-arrow-next{right:-6px}
-}
-
-/* ===== FOTO ABERTA: SEM FUNDO PRETO ===== */
 .sf-card{
   max-width:min(1080px,94vw) !important;
   max-height:94vh !important;
   background:#fff4f8 !important;
 }
-
 .sf-photo{
   aspect-ratio:auto !important;
   height:auto !important;
@@ -4505,7 +3690,6 @@ try {
   overflow:hidden;
   background:#fff4f8 !important;
 }
-
 .sf-photo img{
   width:100% !important;
   height:auto !important;
@@ -4513,27 +3697,6 @@ try {
   object-fit:contain !important;
   object-position:center !important;
   background:#fff4f8 !important;
-}
-
-@media (min-width:701px){
-  .sf-photo{
-    width:58% !important;
-    max-height:90vh !important;
-  }
-  .sf-info{width:42%}
-}
-
-@media (max-width:700px){
-  .sf-card{
-    width:94vw !important;
-    max-height:94vh !important;
-    border-radius:20px !important;
-    background:#fff4f8 !important;
-  }
-
-  .sf-photo img{
-    max-height:62vh !important;
-  }
 }
 </style>
 
@@ -4552,38 +3715,22 @@ try {
       return Array.from(track.querySelectorAll(".mn-item"));
     }
 
-    function addCloneHandlers(card){
-      const key = card.getAttribute("data-flavor-key");
-      if(!key) return;
-      card.addEventListener("click", function(){
-        if(window.abrirSaborFoto) window.abrirSaborFoto(key);
-      });
-    }
-
     function montarLoop(){
       if(ready) return;
       const originals = cards();
       if(!originals.length) return;
 
-      originals.forEach(function(card){
-        const key = card.getAttribute("data-flavor-key");
-        if(!key){
-          const nome = card.querySelector(".mn-nome");
-          if(nome) card.setAttribute("data-flavor-key", nome.textContent.trim());
-        }
-      });
-
-      const base = cards();
+      const base = originals;
       const before = base.map(function(card){
         const c = card.cloneNode(true);
         c.classList.add("mn-clone");
-        addCloneHandlers(c);
+        c.setAttribute("aria-hidden", "true");
         return c;
       });
       const after = base.map(function(card){
         const c = card.cloneNode(true);
         c.classList.add("mn-clone");
-        addCloneHandlers(c);
+        c.setAttribute("aria-hidden", "true");
         return c;
       });
 
@@ -4597,7 +3744,9 @@ try {
         if(!first) return;
         const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 18);
         const step = first.getBoundingClientRect().width + gap;
+        track.style.scrollSnapType = "none";
         track.scrollLeft = step * base.length;
+        requestAnimationFrame(function(){ track.style.scrollSnapType = ""; });
       });
     }
 
@@ -4618,9 +3767,6 @@ try {
       const s = step();
       const bloco = baseCount * s;
 
-      // Existem três blocos: anterior, original e seguinte.
-      // Ao entrar nos blocos laterais, saltamos para o bloco equivalente
-      // sem animação perceptível, criando um carrossel infinito.
       if(track.scrollLeft < bloco * 0.45){
         normalizing = true;
         track.scrollLeft += bloco;
@@ -4644,13 +3790,7 @@ try {
     });
 
     track.addEventListener("scroll", normalizar, {passive:true});
-    window.addEventListener("resize", function(){
-      if(!ready) return;
-      const base = cards().filter(function(c){ return !c.classList.contains("mn-clone"); });
-      if(!base.length) return;
-    });
 
-    // O cardápio original é montado dinamicamente.
     const observer = new MutationObserver(function(){
       montarLoop();
     });
@@ -4697,17 +3837,6 @@ try {
     bottom:max(8px,env(safe-area-inset-bottom,0px)) !important;
   }
 }
-
-/* Não deixa controles de navegação aparecerem no topo da tela. */
-.mn-carousel-wrap{
-  position:relative;
-}
-</style>
-
-<style id="clean-card-arrows">
-.mn-go{
-  display:none !important;
-}
 </style>
 
 <style id="music-now-scroll">
@@ -4720,45 +3849,7 @@ try {
 }
 </style>
 
-<style id="flavor-transparent-bg">
-/* ===== SABORES: MAIS LEVES E TRANSPARENTES ===== */
-#cd-list.mn-list,
-.mn-list{
-  background:transparent !important;
-}
-
-#cd-list .mn-item,
-.mn-list .mn-item{
-  background:rgba(255,255,255,.48) !important;
-  border:1px solid rgba(255,255,255,.38) !important;
-  box-shadow:0 7px 20px rgba(105,22,61,.07) !important;
-  backdrop-filter:blur(3px);
-  -webkit-backdrop-filter:blur(3px);
-}
-
-#cd-list .mn-item:hover,
-.mn-list .mn-item:hover{
-  background:rgba(255,255,255,.58) !important;
-  box-shadow:0 11px 26px rgba(105,22,61,.10) !important;
-}
-
-#cd-list .mn-txt,
-.mn-list .mn-txt{
-  background:transparent !important;
-}
-</style>
-
-
-<style id="flavor-more-transparent">
-#cd-list.mn-list,.mn-list{background:transparent!important}
-.mn-item{background:rgba(255,255,255,.30)!important;border-color:rgba(255,255,255,.24)!important;box-shadow:0 7px 20px rgba(44,12,28,.07)!important;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
-.mn-item:hover{background:rgba(255,255,255,.40)!important;box-shadow:0 10px 24px rgba(44,12,28,.10)!important}
-.mn-txt{background:transparent!important}
-</style>
-
 <style id="fix-iphone-tela-celular">
-/* Correção Safari: mantém o celular no tamanho original e impede
-   qualquer conteúdo da tela de escapar do aparelho. */
 .tv .tv-screen{
   overflow:hidden !important;
   -webkit-mask-image:-webkit-radial-gradient(white, black);
@@ -4779,8 +3870,6 @@ try {
 </style>
 
 <script id="fix-iphone-altura-tela">
-/* Não força uma nova altura: o aspect-ratio original continua
-   responsável pelo tamanho do celular. */
 (function(){
   function fixPhoneOverflow(){
     document.querySelectorAll('.tv .tv-screen').forEach(function(screen){
@@ -4797,11 +3886,9 @@ try {
 })();
 </script>
 
-
 <script id="categorias-js">
 try {
   (function(){
-    // Para alterar categorias: edite nome e foto nesta lista.
     var CATEGORIAS = [
       { nome: "Rapunzel",        foto: "https://i.ibb.co/Pz67hywp/775573581026f023383feeee45076b3b.jpg" },
       { nome: "Hello Kitty",     foto: "https://i.ibb.co/tgwMjwM/0dbd0781fe4bcfba2b844378dcf39ea6.jpg" },
@@ -4842,7 +3929,7 @@ try {
       img.alt = "";
       img.width = 88; img.height = 88;
       img.loading = "eager"; img.decoding = "async"; img.draggable = false;
-      if(idx >= 6) img.fetchPriority = "low";   // as 6 primeiras (visíveis) têm prioridade
+      
       img.addEventListener("error", function(){
         if(!tentouOriginal){ tentouOriginal = true; img.src = c.foto; return; }
         foto.classList.add("no-photo");
@@ -4873,7 +3960,6 @@ try {
     window.addEventListener("resize", atualizar);
     atualizar();
 
-    // Arrastar com o mouse no computador
     var apertado = false, moveu = false, x0 = 0, s0 = 0;
     trilho.addEventListener("mousedown", function(e){ apertado = true; moveu = false; x0 = e.pageX; s0 = trilho.scrollLeft; });
     window.addEventListener("mousemove", function(e){
@@ -4883,7 +3969,6 @@ try {
       if(moveu) trilho.scrollLeft = s0 - dx;
     });
     window.addEventListener("mouseup", function(){ apertado = false; trilho.classList.remove("arrastando"); });
-    // Não abre o WhatsApp quando o clique foi só o fim de um arraste
     trilho.addEventListener("click", function(e){
       if(moveu){ e.preventDefault(); e.stopPropagation(); moveu = false; }
     }, true);
@@ -4891,84 +3976,7 @@ try {
 } catch(e){}
 </script>
 
-<script id="precarregar-js">
-/* Pré-carrega em segundo plano TODAS as fotos do site, logo depois que a página abre.
-   As URLs são idênticas às usadas pelo site, então o navegador reaproveita do cache. */
-(function(){
-  try {
-    var MAX_SIMULTANEAS = 5;   // quantas fotos baixam ao mesmo tempo (3 = mais leve, 6 = mais rápido)
-
-    var con = navigator.connection || {};
-    var conexaoLenta = con.saveData === true || /(^|-)2g$/.test(con.effectiveType || "");
-
-    function semHttp(u){ return u.replace(/^https?:\/\//, ""); }
-    function prox(u, w, h){
-      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=" + w + (h ? "&h=" + h + "&fit=cover" : "") + "&q=75&output=webp";
-    }
-    function nitida(u){
-      return "https://images.weserv.nl/?url=" + semHttp(u) + "&w=1000&we&q=80&output=webp";
-    }
-    // Descobre o endereço original da foto (i.ibb.co) a partir do <img> já na página
-    function origem(src){
-      var m = /[?&]url=([^&]+)/.exec(src);
-      var u = m ? decodeURIComponent(m[1]) : src;
-      return /^https?:\/\//.test(u) ? u : "https://" + u;
-    }
-
-    var fila = [], vistos = {};
-    function add(url){ if(url && !vistos[url]){ vistos[url] = 1; fila.push(url); } }
-
-    function montarFila(){
-      // 0) Qualquer imagem do site marcada como "lazy" passa a carregar já
-      document.querySelectorAll('img[loading="lazy"]').forEach(function(im){ im.loading = "eager"; });
-
-      // 1) Temas mais pedidos
-      (window.TEMAS || []).forEach(function(t){
-        if(t && t.fotos && t.fotos[0]) add("https://images.weserv.nl/?url=" + semHttp(t.fotos[0]) + "&w=480&q=76&output=webp");
-      });
-
-      // 2) Miniaturas da galeria do celular
-      var fotos = window.FOTOS || [];
-      fotos.forEach(function(f){ add(prox(f.src, 200, 250)); });
-
-      if(conexaoLenta) return;   // em dados móveis econômicos / 2G, só o essencial
-
-      // 3) Foto grande de cada sabor (abre ao clicar no sabor do cardápio)
-      document.querySelectorAll("#cd-list .mn-thumb img").forEach(function(im){
-        var s = im.currentSrc || im.src;
-        if(s) add(nitida(origem(s)));
-      });
-
-      // 4) Foto ampliada da galeria (abre ao tocar na miniatura)
-      fotos.forEach(function(f){ add(prox(f.src, 640)); });
-    }
-
-    var ativas = 0;
-    function proxima(){
-      while(ativas < MAX_SIMULTANEAS && fila.length){
-        (function(url){
-          ativas++;
-          var im = new Image();
-          im.decoding = "async";
-          var fim = function(){ ativas--; proxima(); };
-          im.onload = fim; im.onerror = fim;
-          im.src = url;
-        })(fila.shift());
-      }
-    }
-
-    function iniciar(){ montarFila(); proxima(); }
-    function quandoOciosa(){
-      if("requestIdleCallback" in window) requestIdleCallback(iniciar, { timeout: 2500 });
-      else setTimeout(iniciar, 400);
-    }
-    if(document.readyState === "complete") quandoOciosa();
-    else window.addEventListener("load", quandoOciosa);
-  } catch(e){}
-})();
-</script>
 <style id="ajustes-iphone">
-/* ===== Celular fictício: nada escapa da tela no Safari/iPhone ===== */
 .tv .ph-stage{
   overflow:hidden;
   -webkit-clip-path:inset(0); clip-path:inset(0);
@@ -4993,7 +4001,6 @@ try {
 .ph-mus-list{ touch-action:pan-y; }
 </style>
 <script id="ajustes-iphone-js">
-/* Se o Safari tentar rolar por dentro do celular fictício, volta tudo para o lugar */
 (function(){
   try {
     var tela = document.getElementById("phone");
@@ -5008,8 +4015,6 @@ try {
 })();
 </script>
 <style id="ajustes-iphone-2">
-/* iPhone (qualquer navegador no iOS): os apps abrem com um fade simples.
-   As animações de zoom dentro de tela arredondada são o que o Safari desenha errado. */
 @supports (-webkit-touch-callout: none){
   .tv .ph-stage{ -webkit-transform:none !important; transform:none !important; -webkit-clip-path:none; clip-path:none; isolation:auto; }
   .tv .ph-home, .tv .ph-home.away{ -webkit-transform:none !important; transform:none !important; filter:none !important; transition:none !important; }
@@ -5023,8 +4028,6 @@ try {
   .tv .ph-app-view.open{ display:flex !important; opacity:1; visibility:visible; animation:phFadeIn .22s ease; }
   .tv .ph-gal-viewer{ -webkit-transform:none !important; transform:none !important; transition:opacity .2s ease; }
 
-  /* Cantos: a área do app ganha o MESMO arredondamento da tela do celular (parte de cima),
-     então nunca aparece canto quadrado, mesmo que o Safari falhe em recortar. */
   .tv{ --tv-r:34px; }
   .tv .ph-stage,
   .tv .ph-home,
@@ -5041,7 +4044,6 @@ try {
 }
 @keyframes phFadeIn{ from{ opacity:0; } to{ opacity:1; } }
 
-/* Toque não é "hover": no iPhone o ícone tocado ficava levantado depois de fechar o app */
 @media (hover:none){
   .ph-app:hover .ph-ico{ transform:none; box-shadow:0 3px 7px rgba(80,0,40,.28), inset 0 0 0 .5px rgba(255,255,255,.35); }
   .ph-gal-thumb:active img{ transform:none; }
@@ -5049,5 +4051,151 @@ try {
   .mn-item:hover .mn-thumb img{ transform:none; }
 }
 </style>
+
+<style id="carrossel-sabores-bonito">
+.mn-carousel-wrap{position:relative;padding:0 30px}
+#cd-list.mn-list{gap:20px !important;padding:12px 4px 26px !important}
+
+#cd-list .mn-item{
+  flex:0 0 calc((100% - 40px)/3) !important;
+  width:calc((100% - 40px)/3) !important;
+  min-width:0 !important;
+  cursor:default !important;
+  padding:10px 10px 20px !important;
+  overflow:hidden !important;
+  background:rgba(255,255,255,.74) !important;
+  border:1px solid rgba(255,255,255,.9) !important;
+  border-radius:28px !important;
+  box-shadow:0 14px 34px rgba(120,20,70,.14), 0 2px 6px rgba(120,20,70,.06) !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+  transition:transform .3s ease, box-shadow .3s ease !important;
+  scroll-snap-align:start;
+  text-align:center;
+}
+#cd-list .mn-item:hover{
+  transform:translateY(-6px) !important;
+  background:rgba(255,255,255,.84) !important;
+  box-shadow:0 22px 44px rgba(120,20,70,.20), 0 4px 10px rgba(120,20,70,.08) !important;
+}
+
+#cd-list .mn-thumb{
+  display:block !important;
+  position:relative;
+  width:100%;
+  height:auto !important;
+  aspect-ratio:1/1 !important;
+  border-radius:20px !important;
+  overflow:hidden;
+  box-shadow:none !important;
+  background:#f6e0e9;
+}
+#cd-list .mn-thumb::after{
+  content:"" !important; display:block !important;
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,transparent 60%,rgba(110,18,61,.18));
+}
+#cd-list .mn-thumb img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  transition:transform .5s ease;
+}
+#cd-list .mn-item:hover .mn-thumb img{transform:scale(1.05)}
+
+#cd-list .mn-txt{
+  display:flex !important; flex-direction:column; align-items:center !important;
+  padding:16px 6px 0 !important; gap:6px !important;
+  text-align:center !important; background:transparent !important;
+}
+#cd-list .mn-nome{
+  font-family:'Cormorant Garamond',serif !important;
+  font-style:italic;
+  font-size:25px !important;
+  font-weight:700;
+  line-height:1.1;
+  color:var(--pink-dark) !important;
+}
+#cd-list .mn-resumo{
+  font-size:12.5px !important;
+  color:var(--ink-soft) !important;
+  max-width:90% !important;
+  padding-right:0 !important;
+}
+#cd-list .mn-go{display:none !important}
+
+.mn-arrow{
+  width:46px !important; height:46px !important; margin-top:-30px !important;
+  border-radius:50% !important;
+  color:var(--pink) !important;
+  background:#fff !important;
+  border:1px solid var(--pink-soft) !important;
+  box-shadow:0 8px 20px rgba(216,27,106,.22) !important;
+}
+.mn-arrow svg{width:22px !important;height:22px !important;stroke-width:2.2 !important}
+.mn-arrow:hover{background:var(--pink) !important;color:#fff !important;transform:scale(1.08) !important}
+.mn-arrow:active{transform:scale(.94) !important}
+.mn-arrow:focus-visible{outline:2px solid var(--pink-mid);outline-offset:2px}
+.mn-arrow-prev{left:-14px !important}
+.mn-arrow-next{right:-14px !important}
+
+@media (max-width:700px){
+  .mn-carousel-wrap{padding:0}
+  #cd-list.mn-list{gap:12px !important;padding-right:10vw !important}
+  #cd-list .mn-item{
+    flex:0 0 62% !important; width:62% !important;
+    padding:8px 8px 16px !important; border-radius:24px !important;
+  }
+  #cd-list .mn-thumb{border-radius:17px !important}
+  #cd-list .mn-nome{font-size:21px !important}
+  #cd-list .mn-resumo{font-size:11.5px !important}
+  .mn-arrow{width:38px !important;height:38px !important;margin-top:-26px !important}
+  .mn-arrow svg{width:19px !important;height:19px !important}
+  .mn-arrow-prev{left:-4px !important}
+  .mn-arrow-next{right:-4px !important}
+}
+@media (hover:none){
+  #cd-list .mn-item:hover{transform:none !important}
+}
+</style>
+<style id="melhorias-celular-bugs">
+.tv{width:min(240px,calc(100vw - 40px));max-width:240px}
+.tv .tv-body{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,0) 7%,rgba(255,255,255,0) 93%,rgba(255,255,255,.3)),
+    linear-gradient(160deg,#ffd0e3 0%,#f07fb4 12%,#d23a80 48%,#9b1553 88%,#6f0d3d 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),inset 0 0 0 3px rgba(110,10,58,.4),
+    inset 0 3px 5px rgba(255,255,255,.7),inset 0 -3px 6px rgba(60,0,30,.5),0 0 0 1px rgba(90,8,45,.4);
+}
+.tv-screen .ph-home{
+  min-height:410px;
+  background:
+    radial-gradient(70% 40% at 20% 8%,rgba(255,255,255,.45),transparent 70%),
+    radial-gradient(60% 40% at 85% 95%,rgba(255,60,150,.5),transparent 70%),
+    linear-gradient(170deg,#ff9cc4 0%,#e8559a 50%,#a8144f 100%);
+}
+.ph-clock-time{font-weight:200;font-size:44px}
+.ph-ico{border-radius:22.5%;box-shadow:0 4px 10px rgba(80,0,40,.3),inset 0 0 0 .5px rgba(255,255,255,.4)}
+.ph-label{letter-spacing:.01em}
+.ph-nav{height:36px}
+.ph-nav button{width:48px;height:32px}
+
+.numeros{flex-wrap:wrap;row-gap:12px}
+.mn-lead:empty{display:none}
+body:has(.mini-player.on){padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+
+#temas,#galeria,#contato{content-visibility:auto;contain-intrinsic-size:auto 700px}
+</style>
+<script id="melhorias-celular-js">
+(function(){try{
+  var s=document.querySelector('.hero-sub');
+  if(s)s.textContent=s.textContent.replace(/\.{2,}\s*$/,'.');
+
+  (window.FOTOS||[]).forEach(function(f){
+    new Image().src="https://images.weserv.nl/?url="+f.src.replace(/^https?:\/\//,"")+"&w=200&h=250&fit=cover&q=75&output=webp";
+  });
+}catch(e){}})();
+</script>
+
 </body>
 </html>
