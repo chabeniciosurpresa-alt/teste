@@ -2244,30 +2244,41 @@ section,
             </div>
 
             <div class="ph-app-view ph-calc" id="ph-calc-view" aria-hidden="true" style="transform-origin:17% 88%">
-              <div class="pcl-wrap">
-                <div class="pcl-title">
-                  <span class="pcl-ico"><i class="fas fa-calculator"></i></span>
-                  <div><strong>Calculadora de festa</strong><small>Quantos doces pedir?</small></div>
+              <div class="pcl-scroll">
+                <div class="pcl-hero">
+                  <i class="pcl-sp s1"></i><i class="pcl-sp s2"></i><i class="pcl-sp s3"></i><i class="pcl-sp s4"></i><i class="pcl-sp s5"></i>
+                  <span class="pcl-ico"><i class="fas fa-cake-candles"></i></span>
+                  <div class="pcl-ht"><strong>Calculadora de festa</strong><small>Descubra quantos doces pedir</small></div>
                 </div>
-                <label class="pcl-lab" for="pcl-guests">Quantas pessoas?</label>
-                <div class="pcl-step">
-                  <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
-                  <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="50">
-                  <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
+
+                <div class="pcl-card">
+                  <label class="pcl-lab" for="pcl-guests"><i class="fas fa-users"></i> Quantas pessoas?</label>
+                  <div class="pcl-step">
+                    <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
+                    <div class="pcl-num">
+                      <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="50">
+                      <span>pessoas</span>
+                    </div>
+                    <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <input id="pcl-range" type="range" min="5" max="300" step="5" value="50" aria-label="Ajustar número de convidados">
                 </div>
-                <span class="pcl-lab">Quanto de doce?</span>
+
+                <div class="pcl-lab pcl-lab2"><i class="fas fa-cookie-bite"></i> Quanto de doce?</div>
                 <div class="pcl-chips" id="pcl-chips">
-                  <button type="button" data-per="4">Leve<small>4 por pessoa</small></button>
-                  <button type="button" data-per="6" class="on">Normal<small>6 por pessoa</small></button>
-                  <button type="button" data-per="8">Fartura<small>8 por pessoa</small></button>
+                  <button type="button" data-per="4"><i class="fas fa-feather"></i>Leve<small>4 por pessoa</small></button>
+                  <button type="button" data-per="6" class="on"><i class="fas fa-gift"></i>Normal<small>6 por pessoa</small></button>
+                  <button type="button" data-per="8"><i class="fas fa-fire"></i>Fartura<small>8 por pessoa</small></button>
                 </div>
+
                 <div class="pcl-result">
                   <small>Você vai precisar de</small>
-                  <strong id="pcl-total">300</strong>
+                  <div class="pcl-big"><strong id="pcl-total">300</strong><span>doces</span></div>
                   <small id="pcl-detail"></small>
-                  <p class="pcl-combo" id="pcl-combo"></p>
+                  <div class="pcl-pill" id="pcl-combo"><i class="fas fa-box-open"></i><span id="pcl-combo-txt"></span></div>
                 </div>
-                <button type="button" class="pcl-go" id="pcl-go"><i class="fas fa-bag-shopping"></i><span id="pcl-go-txt">Usar no meu pedido</span></button>
+
+                <button type="button" class="pcl-go" id="pcl-go"><i class="fas fa-bag-shopping"></i><span id="pcl-go-txt">Usar no meu pedido</span><i class="fas fa-arrow-right"></i></button>
               </div>
             </div>
 
@@ -4333,42 +4344,77 @@ try {
 @keyframes phVibra{0%,100%{transform:translate3d(0,0,0) rotate(0)}8%{transform:translate3d(-3px,1px,0) rotate(-1deg)}18%{transform:translate3d(3px,-1px,0) rotate(1deg)}28%{transform:translate3d(-3px,1px,0) rotate(-1deg)}38%{transform:translate3d(3px,0,0) rotate(.8deg)}48%{transform:translate3d(-2px,1px,0) rotate(-.8deg)}58%{transform:translate3d(2px,-1px,0) rotate(.6deg)}68%{transform:translate3d(-2px,0,0) rotate(-.5deg)}80%{transform:translate3d(1px,0,0) rotate(.3deg)}}
 @media (prefers-reduced-motion:no-preference){.tv.vibra{animation:phVibra .6s linear 1}}
 
-#ph-calc-view{background:linear-gradient(180deg,#fff7fb,#fde8f2);color:#2b1220;overflow-y:auto !important;scrollbar-width:none}
+#ph-calc-view{background:#fff4f9;color:#2b1220;overflow-y:auto !important;scrollbar-width:none}
 #ph-calc-view::-webkit-scrollbar{display:none}
-.pcl-wrap{padding:30px 12px 14px;display:flex;flex-direction:column;gap:8px}
-.pcl-title{display:flex;align-items:center;gap:8px}
-.pcl-ico{width:30px;height:30px;flex:0 0 30px;border-radius:9px;background:#D81B6A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 3px 8px rgba(216,27,106,.25)}
-.pcl-title strong{display:block;font-size:12.5px;line-height:1.15}
-.pcl-title small{font-size:9.5px;color:#8a5b72}
-.pcl-lab{font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#A8144F;margin-top:2px}
-.pcl-step{display:flex;align-items:center;gap:6px}
-.pcl-step button{width:34px;height:34px;flex:0 0 34px;border:0;border-radius:50%;background:#fff;color:#D81B6A;font-size:12px;cursor:pointer;box-shadow:0 2px 6px rgba(120,20,70,.14)}
-.pcl-step button:active{transform:scale(.9)}
-.pcl-step input{flex:1;min-width:0;height:34px;border:1.5px solid #f0d8e8;border-radius:12px;background:#fff;text-align:center;font:800 16px/1 'Inter',sans-serif;color:#2b1220;outline:0;-moz-appearance:textfield;appearance:textfield}
-.pcl-step input:focus{border-color:#D81B6A}
-.pcl-step input::-webkit-outer-spin-button,.pcl-step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.pcl-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.pcl-chips button{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border:1.5px solid #f0d8e8;border-radius:11px;background:#fff;color:#4E2438;font:700 10px 'Inter',sans-serif;cursor:pointer}
+.pcl-scroll{min-height:100%;display:flex;flex-direction:column;padding-bottom:16px}
+
+.pcl-hero{position:relative;overflow:hidden;display:flex;align-items:center;gap:9px;padding:32px 14px 36px;color:#fff;background:linear-gradient(150deg,#ff8cba 0%,#e8559a 52%,#c2185b 100%);border-radius:0 0 28px 28px;box-shadow:0 8px 20px rgba(168,20,79,.28)}
+.pcl-hero::before{content:'';position:absolute;right:-26px;top:-26px;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%)}
+.pcl-ico{position:relative;width:34px;height:34px;flex:0 0 34px;border-radius:12px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 4px 10px rgba(120,10,60,.25)}
+.pcl-ht{position:relative;min-width:0}
+.pcl-ht strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:700;line-height:1.05;text-shadow:0 1px 3px rgba(100,0,50,.3)}
+.pcl-ht small{display:block;margin-top:2px;font-size:9.5px;color:rgba(255,255,255,.88)}
+.pcl-sp{position:absolute;width:10px;height:3px;border-radius:2px;opacity:.6}
+.pcl-sp.s1{left:12px;bottom:12px;background:#fff;transform:rotate(30deg)}
+.pcl-sp.s2{left:46%;bottom:9px;background:#ffd873;transform:rotate(-40deg)}
+.pcl-sp.s3{right:18px;bottom:16px;background:#fff;transform:rotate(70deg)}
+.pcl-sp.s4{right:44px;top:12px;background:#ffd873;transform:rotate(-20deg)}
+.pcl-sp.s5{left:34%;top:9px;background:#fff;transform:rotate(55deg)}
+
+.pcl-card{position:relative;z-index:1;margin:-20px 10px 0;padding:10px 10px 12px;border-radius:18px;background:#fff;box-shadow:0 10px 24px rgba(168,20,79,.16)}
+.pcl-lab{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#A8144F}
+.pcl-lab i{color:#E8559A;font-size:10px}
+.pcl-lab2{margin:12px 12px 6px}
+.pcl-step{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:6px 0 4px}
+.pcl-step button{width:34px;height:34px;flex:0 0 34px;border:0;border-radius:50%;background:linear-gradient(145deg,#ff74ac,#D81B6A);color:#fff;font-size:12px;cursor:pointer;box-shadow:0 5px 12px rgba(216,27,106,.35);transition:transform .12s ease}
+.pcl-step button:active{transform:scale(.88)}
+.pcl-num{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center}
+.pcl-num input{width:100%;min-width:0;border:0;background:transparent;text-align:center;font:700 34px/1.05 'Cormorant Garamond',serif;color:#A8144F;outline:0;padding:0;-moz-appearance:textfield;appearance:textfield}
+.pcl-num input::-webkit-outer-spin-button,.pcl-num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.pcl-num span{margin-top:-1px;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#a07b8f}
+#pcl-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:6px;margin:8px 0 2px;border-radius:99px;outline:0;cursor:pointer;background:linear-gradient(90deg,#E8559A var(--p,15%),#f6dbe9 var(--p,15%))}
+#pcl-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid #D81B6A;box-shadow:0 2px 7px rgba(216,27,106,.45)}
+#pcl-range::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid #D81B6A;box-shadow:0 2px 7px rgba(216,27,106,.45)}
+
+.pcl-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 10px}
+.pcl-chips button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 7px;border:1.5px solid #f3d6e6;border-radius:14px;background:#fff;color:#4E2438;font:700 10px 'Inter',sans-serif;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.pcl-chips button i{font-size:13px;color:#E8559A;margin-bottom:1px}
 .pcl-chips button small{font-size:7.5px;font-weight:600;color:#8a5b72}
-.pcl-chips button.on{background:#D81B6A;border-color:#D81B6A;color:#fff}
-.pcl-chips button.on small{color:#ffd9e9}
-.pcl-result{padding:9px 10px;border:1px solid #f0d8e8;border-radius:14px;background:#fff;text-align:center;box-shadow:0 4px 12px rgba(120,20,70,.08)}
-.pcl-result small{display:block;font-size:9.5px;color:#8a5b72}
-.pcl-result strong{display:block;font:700 32px/1.05 'Cormorant Garamond',serif;color:#A8144F}
-.pcl-combo{margin-top:5px;font-size:10px;font-weight:700;line-height:1.3;color:#2b1220}
-.pcl-go{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border:0;border-radius:999px;background:#D81B6A;color:#fff;font:700 11.5px 'Inter',sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(216,27,106,.3)}
+.pcl-chips button.on{background:linear-gradient(160deg,#ff74ac,#D81B6A);border-color:#D81B6A;color:#fff;box-shadow:0 7px 14px rgba(216,27,106,.32);transform:translateY(-1px)}
+.pcl-chips button.on i{color:#fff}
+.pcl-chips button.on small{color:#ffe1ee}
+
+.pcl-result{position:relative;overflow:hidden;margin:12px 10px 0;padding:12px 10px 11px;border-radius:18px;text-align:center;color:#fff;background:linear-gradient(160deg,#3d1329,#1C0813);box-shadow:0 10px 24px rgba(28,8,19,.35)}
+.pcl-result::before{content:'';position:absolute;right:-32px;top:-32px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(255,116,172,.5),transparent 70%)}
+.pcl-result small{position:relative;display:block;font-size:9px;color:#f6c6dc}
+.pcl-big{position:relative;display:flex;align-items:baseline;justify-content:center;gap:5px;margin:1px 0}
+.pcl-big strong{font:700 42px/1 'Cormorant Garamond',serif;color:#fff;font-variant-numeric:tabular-nums}
+.pcl-big span{font-size:11px;font-weight:800;color:#ff9cc4}
+.pcl-pill{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-size:9.5px;font-weight:700;line-height:1.25;text-align:left}
+.pcl-pill i{color:#ffb3d3}
+
+.pcl-go{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:7px;margin:12px 10px 0;padding:11px 12px;border:0;border-radius:999px;background:linear-gradient(135deg,#ff4c90,#D81B6A);color:#fff;font:800 11.5px 'Inter',sans-serif;cursor:pointer;box-shadow:0 8px 18px rgba(216,27,106,.4)}
+.pcl-go i:last-child{font-size:10px}
 .pcl-go:active{transform:scale(.96)}
 .pcl-go:disabled{opacity:.4;cursor:not-allowed}
+@media (prefers-reduced-motion:no-preference){
+  .pcl-go::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:pclShine 3.2s ease-in-out infinite}
+  @keyframes pclShine{0%,55%{left:-40%}100%{left:130%}}
+}
 </style>
 
 <script id="notificacoes-calculadora-js">
 (function(){ try {
   var $ = function(id){ return document.getElementById(id); };
-  var tv = document.querySelector(".tv"), notif = $("ph-notif"), body = $("ph-notif-body"), badge = $("badge-calc");
-  var calcView = $("ph-calc-view"), inp = $("pcl-guests"), totalEl = $("pcl-total"), detEl = $("pcl-detail");
-  var comboEl = $("pcl-combo"), go = $("pcl-go"), goTxt = $("pcl-go-txt");
-  var per = 6, hideT, alvoNotif = null;
   var TEL = "558396905025";
+  var reduzido = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var tv = document.querySelector(".tv"), notif = $("ph-notif"), nBody = $("ph-notif-body");
+  var calcView = $("ph-calc-view"), inp = $("pcl-guests"), rng = $("pcl-range");
+  var totalEl = $("pcl-total"), detEl = $("pcl-detail"), comboEl = $("pcl-combo"), comboTxt = $("pcl-combo-txt");
+  var go = $("pcl-go"), goTxt = $("pcl-go-txt");
+  var per = 6, shown = 300, raf, hideT, pend, calarAte = 0, ultimaNotif = 0, atual = null, ultimo = null;
+
+  function tick(ms){ try { if(navigator.vibrate) navigator.vibrate(ms || 10); } catch(e){} }
 
   /* inclui o número de convidados na mensagem do WhatsApp */
   var _base = window.linhaDataFesta;
@@ -4388,33 +4434,48 @@ try {
     return null;
   }
 
+  function animar(para){
+    cancelAnimationFrame(raf);
+    if(reduzido || para < 0){ shown = Math.max(0, para); totalEl.textContent = para < 0 ? "—" : para; return; }
+    var de = shown, t0 = null;
+    function f(t){
+      if(t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / 380);
+      shown = Math.round(de + (para - de) * (1 - Math.pow(1 - p, 3)));
+      totalEl.textContent = shown;
+      if(p < 1) raf = requestAnimationFrame(f);
+    }
+    raf = requestAnimationFrame(f);
+  }
+
   function calc(){
     var g = convidados(), total = g * per, s = sugestao(total);
     go.disabled = g < 1;
-    totalEl.textContent = g < 1 ? "—" : total;
+    var v = Math.min(300, Math.max(5, g));
+    rng.value = v;
+    rng.style.setProperty("--p", ((v - 5) / 295 * 100) + "%");
+    animar(g < 1 ? -1 : total);
     detEl.textContent = g < 1 ? "Digite o número de convidados" : g + (g === 1 ? " convidado" : " convidados") + " · " + per + " por pessoa";
-    if(g < 1){ comboEl.textContent = ""; goTxt.textContent = "Usar no meu pedido"; return; }
+    if(g < 1){ comboTxt.textContent = "Informe quantas pessoas vêm"; goTxt.textContent = "Usar no meu pedido"; return; }
     if(s){
-      comboEl.textContent = "Combo ideal: " + s.nome;
+      comboTxt.textContent = "Combo ideal: " + s.nome;
       goTxt.textContent = "Usar no meu pedido";
     } else {
-      comboEl.textContent = "Quantidade grande: a Analu monta um pedido sob medida";
+      comboTxt.textContent = "Quantidade grande: pedido sob medida";
       goTxt.textContent = "Pedir orçamento";
     }
   }
 
-  function passo(d){
-    var g = convidados();
-    inp.value = Math.max(1, Math.min(2000, g + d));
-    calc();
-  }
+  function passo(d){ tick(10); inp.value = Math.max(1, Math.min(2000, convidados() + d)); calc(); }
   $("pcl-minus").addEventListener("click", function(){ passo(-5); });
   $("pcl-plus").addEventListener("click", function(){ passo(5); });
   inp.addEventListener("input", calc);
   inp.addEventListener("blur", function(){ if(convidados() < 1) inp.value = 1; calc(); });
+  rng.addEventListener("input", function(){ inp.value = rng.value; calc(); });
 
   Array.prototype.forEach.call(document.querySelectorAll("#pcl-chips button"), function(b){
     b.addEventListener("click", function(){
+      tick(10);
       per = parseInt(b.dataset.per, 10) || 6;
       Array.prototype.forEach.call(document.querySelectorAll("#pcl-chips button"), function(o){ o.classList.toggle("on", o === b); });
       calc();
@@ -4425,6 +4486,8 @@ try {
     var g = convidados(); if(g < 1) return;
     var total = g * per, s = sugestao(total);
     window.convidadosPedido = g;
+    calarAte = Date.now() + 1500;
+    tick(18);
     if(s){
       if(window.__fecharApp) window.__fecharApp();
       var alvo = $("pedido");
@@ -4445,12 +4508,49 @@ try {
 
   $("app-calc").addEventListener("click", function(){
     if(window.__abrirApp) window.__abrirApp(calcView);
-    badge.hidden = true;
-    esconder();
     calc();
   });
 
-  /* ---------- notificações ---------- */
+  /* ---------- notificações (ao entrar e sair dos apps) ---------- */
+  var POOL = [
+    { id: "calc", sel: "#app-calc",                       txt: "Quantos doces pedir para a sua festa? 🎂 Abra a Calculadora e descubra pelo número de convidados." },
+    { id: "cal",  sel: "#app-calendario",                 txt: "Já escolheu a data? 📅 Marque no Calendário e garanta a sua com a Analu." },
+    { id: "gal",  sel: "#app-galeria",                    txt: "Inspire-se 📸 Veja na Galeria festas que a Analu já preparou." },
+    { id: "mus",  sel: "#app-musica",                     txt: "Que tal uma playlist? 🎵 Ouça música enquanto escolhe seus doces." },
+    { id: "yt",   sel: "#app-youtube",                    txt: "Dá o play ▶️ Veja o trabalho da Analu em vídeo." },
+    { id: "card", sel: "#hero-cardapio",                  txt: "Já viu o cardápio? 🍫 São brigadeiros gourmet em vários sabores." },
+    { id: "ped",  sel: '.ph-app[href="#pedido"]',         txt: "Monte seu pedido em 3 passos 🛍️ e envie direto no WhatsApp." },
+    { id: "zap",  sel: '.ph-app[aria-label="WhatsApp"]',  txt: "Ficou com dúvida? 💬 Chame a Analu no WhatsApp." }
+  ];
+  var VIEWS = { "ph-gal-view": "gal", "ph-mus-view": "mus", "ph-cal-view": "cal", "ph-yt-view": "yt", "ph-calc-view": "calc" };
+  var fila = [];
+
+  function embaralhar(a){
+    for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function proxima(excl){
+    for(var tent = 0; tent < 2; tent++){
+      for(var i = 0; i < fila.length; i++){
+        if(fila[i].id !== excl && fila[i].id !== ultimo) return fila.splice(i, 1)[0];
+      }
+      fila = embaralhar(POOL.slice());
+    }
+    return POOL[0];
+  }
+
+  function badge(p, on){
+    if(!p.el) return;
+    var b = p.el.querySelector(".ph-badge");
+    if(!b && on){ b = document.createElement("b"); b.className = "ph-badge"; b.textContent = "1"; p.el.appendChild(b); }
+    if(b) b.hidden = !on;
+  }
+
+  POOL.forEach(function(p){
+    p.el = document.querySelector(p.sel);
+    if(p.el) p.el.addEventListener("click", function(){ badge(p, false); esconder(); });
+  });
+
   function esconder(){
     clearTimeout(hideT);
     notif.classList.remove("show");
@@ -4459,17 +4559,19 @@ try {
 
   function vibrar(){
     try { if(navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 300]); } catch(e){}
-    if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if(reduzido) return;
     tv.classList.remove("vibra");
     void tv.offsetWidth;
     tv.classList.add("vibra");
     setTimeout(function(){ tv.classList.remove("vibra"); }, 900);
   }
 
-  function mostrar(n){
-    body.textContent = n.txt;
-    alvoNotif = n.app;
-    if(n.app === "app-calc") badge.hidden = false;
+  function mostrar(excl){
+    var p = proxima(excl);
+    if(!p.el) return;
+    atual = p; ultimo = p.id; ultimaNotif = Date.now();
+    nBody.textContent = p.txt;
+    badge(p, true);
     notif.classList.add("show");
     notif.setAttribute("aria-hidden", "false");
     vibrar();
@@ -4477,12 +4579,38 @@ try {
     hideT = setTimeout(esconder, 8000);
   }
 
+  var visivel = true, tela = $("phone");
+  if(tela && "IntersectionObserver" in window){
+    visivel = false;
+    new IntersectionObserver(function(es){ visivel = es[0].isIntersecting; }, { threshold: 0.35 }).observe(tela);
+  }
+
+  function agendar(atraso, excl){
+    clearTimeout(pend);
+    pend = setTimeout(function(){
+      var agora = Date.now();
+      if(agora < calarAte || agora - ultimaNotif < 5000 || !visivel || document.hidden) return;
+      mostrar(excl);
+    }, atraso);
+  }
+
+  Object.keys(VIEWS).forEach(function(vid){
+    var el = $(vid); if(!el) return;
+    var was = el.classList.contains("open");
+    new MutationObserver(function(){
+      var is = el.classList.contains("open");
+      if(is === was) return;
+      was = is;
+      agendar(is ? 1300 : 700, VIEWS[vid]);
+    }).observe(el, { attributes: true, attributeFilter: ["class"] });
+  });
+
   function abrirAlvo(){
-    var id = alvoNotif;
+    var p = atual;
     esconder();
+    calarAte = Date.now() + 1500;
     if(window.__fecharApp) window.__fecharApp();
-    var b = id && $(id);
-    if(b) setTimeout(function(){ b.click(); }, 60);
+    if(p && p.el){ setTimeout(function(){ p.el.click(); }, 60); }
   }
   notif.addEventListener("click", abrirAlvo);
   notif.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); abrirAlvo(); } });
@@ -4492,25 +4620,6 @@ try {
   notif.addEventListener("touchend", function(e){
     if(y0 - e.changedTouches[0].clientY > 18){ e.preventDefault(); esconder(); }
   });
-
-  var NOTIFS = [
-    { app: "app-calc",       txt: "Quantos doces pedir para a sua festa? 🎂 Abra a Calculadora e descubra pelo número de convidados." },
-    { app: "app-calendario", txt: "Já escolheu a data? 📅 Marque no Calendário e garanta a sua com a Analu." },
-    { app: "app-galeria",    txt: "Veja festas que a Analu já preparou 📸 Abra a Galeria e se inspire." }
-  ];
-  var idx = 0, visivel = false, tela = $("phone");
-  if(tela && "IntersectionObserver" in window){
-    new IntersectionObserver(function(es){ visivel = es[0].isIntersecting; }, { threshold: 0.35 }).observe(tela);
-  } else { visivel = true; }
-
-  function appAberto(){ return !!document.querySelector("#phone .ph-app-view.open"); }
-  function tentar(){
-    if(idx >= NOTIFS.length) return;
-    if(!visivel || appAberto() || document.hidden){ setTimeout(tentar, 4000); return; }
-    mostrar(NOTIFS[idx++]);
-    if(idx < NOTIFS.length) setTimeout(tentar, 40000);
-  }
-  setTimeout(tentar, 6000);
 } catch(e){ console.error(e); } })();
 </script>
 </body>
