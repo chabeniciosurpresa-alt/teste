@@ -2145,7 +2145,7 @@ section,
             <div class="ph-home" id="ph-home">
               <div class="ph-status">
                 <span id="ph-time">20:45</span>
-                <span class="ph-status-ico"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></span>
+                <span class="ph-status-ico"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full" id="ph-bat-ico"></i><b id="ph-bat-pct" class="ph-bat-pct" hidden></b></span>
               </div>
               <div class="ph-clock">
                 <div class="ph-clock-time" id="ph-clock-time">20:45</div>
@@ -2258,20 +2258,20 @@ section,
                   <div class="pcl-step">
                     <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
                     <div class="pcl-num">
-                      <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="50">
+                      <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="30">
                       <span>pessoas</span>
                     </div>
                     <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
                   </div>
-                  <input id="pcl-range" type="range" min="5" max="300" step="5" value="50" aria-label="Ajustar número de convidados">
+                  <input id="pcl-range" type="range" min="1" max="200" step="1" value="30" aria-label="Ajustar número de convidados">
                 </div>
 
                 <div class="pcl-sec">
                   <div class="pcl-lab pcl-lab2"><svg class="pcl-cup pcl-cup-s" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22.5h26l-2.6 12.2a2.5 2.5 0 0 1-2.4 1.8H12a2.5 2.5 0 0 1-2.4-1.8z"/><path d="M14 24.5l1 10.5M20 24.5v11M26 24.5l-1 10.5"/><circle cx="20" cy="14.5" r="9.5"/><path d="M13.5 12l3 1.5M18 7.5l1.2 3.2M23.5 9l-1.5 3M25.5 15l-3.2-.8M15 17.5l2.8-1.6M20.5 18.8l.6-3.2M11.8 16.2l2.2.3"/></g></svg> Doces por pessoa</div>
                   <div class="pcl-chips" id="pcl-chips">
-                    <button type="button" data-per="1"><b>1</b><small>brigadeiro</small></button>
-                    <button type="button" data-per="2" class="on"><b>2</b><small>brigadeiros</small></button>
-                    <button type="button" data-per="4"><b>4</b><small>brigadeiros</small></button>
+                    <button type="button" data-per="3"><b>3</b><small>brigadeiros</small></button>
+                    <button type="button" data-per="4" class="on"><b>4</b><small>brigadeiros</small></button>
+                    <button type="button" data-per="5"><b>5</b><small>brigadeiros</small></button>
                   </div>
                 </div>
 
@@ -2279,7 +2279,7 @@ section,
                   <img class="pcl-brig" src="https://images.weserv.nl/?url=i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png&w=640&q=100&output=png" onerror="this.onerror=null;this.src='https://i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png';" alt="" decoding="async">
                   <div class="pcl-rt">
                     <small class="pcl-r-top">Você vai precisar de</small>
-                    <div class="pcl-big"><strong id="pcl-total">100</strong><span>doces</span></div>
+                    <div class="pcl-big"><strong id="pcl-total">120</strong><span id="pcl-un">doces</span></div>
                   </div>
                   <small id="pcl-detail"></small>
                   <div class="pcl-pill" id="pcl-combo"><i class="fas fa-box-open"></i><span id="pcl-combo-txt"></span></div>
@@ -4418,7 +4418,7 @@ try {
   var calcView = $("ph-calc-view"), inp = $("pcl-guests"), rng = $("pcl-range");
   var totalEl = $("pcl-total"), detEl = $("pcl-detail"), comboEl = $("pcl-combo"), comboTxt = $("pcl-combo-txt");
   var go = $("pcl-go"), goTxt = $("pcl-go-txt");
-  var per = 2, shown = 100, raf, hideT, pend, calarAte = 0, ultimaNotif = 0, atual = null, ultimo = null;
+  var per = 4, shown = 120, raf, hideT, pend, calarAte = 0, ultimaNotif = 0, atual = null, ultimo = null;
 
   function tick(ms){ try { if(navigator.vibrate) navigator.vibrate(ms || 10); } catch(e){} }
 
@@ -4457,10 +4457,11 @@ try {
   function calc(){
     var g = convidados(), total = g * per, s = sugestao(total);
     go.disabled = g < 1;
-    var v = Math.min(300, Math.max(5, g));
+    var v = Math.min(200, Math.max(1, g));
     rng.value = v;
-    rng.style.setProperty("--p", ((v - 5) / 295 * 100) + "%");
+    rng.style.setProperty("--p", ((v - 1) / 199 * 100) + "%");
     animar(g < 1 ? -1 : total);
+    var un = document.getElementById("pcl-un"); if(un) un.textContent = total === 1 ? "doce" : "doces";
     detEl.textContent = g < 1 ? "Digite o número de convidados" : g + (g === 1 ? " convidado" : " convidados") + " · " + per + " por pessoa";
     if(g < 1){ comboTxt.textContent = "Informe quantas pessoas vêm"; goTxt.textContent = "Usar no meu pedido"; return; }
     if(s){
@@ -4473,8 +4474,8 @@ try {
   }
 
   function passo(d){ tick(10); inp.value = Math.max(1, Math.min(2000, convidados() + d)); calc(); }
-  $("pcl-minus").addEventListener("click", function(){ passo(-5); });
-  $("pcl-plus").addEventListener("click", function(){ passo(5); });
+  $("pcl-minus").addEventListener("click", function(){ passo(-1); });
+  $("pcl-plus").addEventListener("click", function(){ passo(1); });
   inp.addEventListener("input", calc);
   inp.addEventListener("blur", function(){ if(convidados() < 1) inp.value = 1; calc(); });
   rng.addEventListener("input", function(){ inp.value = rng.value; calc(); });
@@ -4482,7 +4483,7 @@ try {
   Array.prototype.forEach.call(document.querySelectorAll("#pcl-chips button"), function(b){
     b.addEventListener("click", function(){
       tick(10);
-      per = parseInt(b.dataset.per, 10) || 2;
+      per = parseInt(b.dataset.per, 10) || 4;
       Array.prototype.forEach.call(document.querySelectorAll("#pcl-chips button"), function(o){ o.classList.toggle("on", o === b); });
       calc();
     });
@@ -4613,8 +4614,19 @@ try {
   }
 
   /* vibra só o aparelho do cliente (quando o navegador permite); o celular da tela não balança */
+  var SOM_NOTIF = "notificacao.mp3", somEl = null, ultVib = 0;
   function vibrar(){
-    try { if(navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 300]); } catch(e){}
+    var agora = Date.now();
+    if(agora - ultVib < 1500) return;           /* nunca duas vezes seguidas */
+    ultVib = agora;
+    try { if(navigator.vibrate) navigator.vibrate(250); } catch(e){}
+    try {
+      if(SOM_NOTIF){
+        if(!somEl){ somEl = new Audio(SOM_NOTIF); somEl.preload = "auto"; }
+        somEl.currentTime = 0;
+        var pr = somEl.play(); if(pr && pr.catch) pr.catch(function(){});
+      }
+    } catch(e){}
   }
 
   function mostrar(excl, forcado){
@@ -4831,5 +4843,30 @@ try {
 #ph-calc-view .pcl-result{column-gap:6px;padding:6px 12px 6px 6px}
 #ph-calc-view .pcl-big strong{font-size:32px}
 </style>
+<style id="calculadora-v3-volta">
+#ph-calc-view .pcl-brig{filter:none;mix-blend-mode:multiply;width:54px;height:54px;flex-basis:54px;background:none}
+#ph-calc-view .pcl-result{column-gap:8px;padding:9px 10px 10px}
+#ph-calc-view .pcl-big strong{font-size:30px}
+</style>
+<script>
+(function(){
+  var ico = document.getElementById("ph-bat-ico"), pct = document.getElementById("ph-bat-pct");
+  if(!ico || !navigator.getBattery) return;   /* iPhone/Safari e Firefox não liberam a bateria */
+  navigator.getBattery().then(function(b){
+    function atualizar(){
+      var n = Math.round(b.level * 100);
+      var cls = n > 87 ? "full" : n > 62 ? "three-quarters" : n > 37 ? "half" : n > 12 ? "quarter" : "empty";
+      ico.className = "fas fa-battery-" + cls;
+      ico.style.color = (n <= 15 && !b.charging) ? "#ff5a5f" : "";
+      pct.textContent = n + "%" + (b.charging ? " ⚡" : "");
+      pct.hidden = false;
+    }
+    atualizar();
+    b.addEventListener("levelchange", atualizar);
+    b.addEventListener("chargingchange", atualizar);
+  }).catch(function(){});
+})();
+</script>
+<style>.ph-bat-pct{font:700 9px 'Inter',sans-serif;margin-left:2px}</style>
 </body>
 </html>
