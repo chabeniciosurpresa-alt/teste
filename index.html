@@ -4521,51 +4521,16 @@ try {
   /* ---------- notificações (ao entrar e sair dos apps) ---------- */
   /* várias mensagens por app (f = índice da música que toca ao abrir) */
   var POOL = [
-    { id: "calc", sel: "#app-calc", msgs: [
-      "🧮 Faça a soma de quantos doces vai precisar: é só dizer quantos convidados vêm.",
-      "Convidados confirmados? 🎂 A Calculadora mostra quantos doces pedir, sem sobra e sem falta.",
-      "Quantos doces para a sua festa? 🍫 Em segundos você descobre a quantidade ideal.",
-      "Não deixe faltar brigadeiro! 😋 Calcule agora quantos você vai precisar.",
-      "Festa grande ou pequena? 🎉 Calcule a quantidade certa e já veja o combo ideal para o seu pedido."
-    ] },
     { id: "mus", sel: "#app-musica", msgs: [
       { t: "🎵 Ouça Ariana Grande enquanto escolhe os seus doces.", f: 5 },
-      { t: "🎶 Ouça Katy Perry e deixe a escolha do cardápio bem mais animada.", f: 6 },
-      { t: "💖 Ouça Sabrina Carpenter: a trilha perfeita para montar o seu pedido.", f: 0 },
-      { t: "✨ Ouça Taylor Swift e se inspire para a sua festa.", f: 2 },
-      { t: "🕺 Ouça ABBA: clássico que combina com qualquer festa!", f: 1 },
-      { t: "💃 Ouça Jennifer Lopez e entre no clima de comemoração.", f: 3 },
-      { t: "🎧 Ouça Moony enquanto vê o cardápio com calma.", f: 4 },
-      "Tem uma playlist esperando por você 🎧 Escolha uma música e fique à vontade."
-    ] },
-    { id: "cal", sel: "#app-calendario", msgs: [
-      "📅 Já escolheu a data da festa? Marque no Calendário e facilite a combinação com a Analu.",
-      "A agenda da Analu enche rápido ✨ Escolha a sua data e deixe anotado no pedido.",
-      "Festa marcada? 🎈 Toque no Calendário e escolha o dia.",
-      "Anote o dia da festa 🗓️ A data vai junto com o seu pedido no WhatsApp."
+      { t: "🎶 Ouça Katy Perry e deixe a escolha do cardápio bem mais animada.", f: 6 }
     ] },
     { id: "gal", sel: "#app-galeria", msgs: [
       "📸 Inspire-se na Galeria: veja festas que a Analu já preparou.",
-      "Quer ideias para a sua mesa? 🍬 Confira os doces de festas anteriores na Galeria.",
-      "Cada festa tem seu tema 🎨 Veja na Galeria como os doces combinam com a decoração.",
-      "Dê uma olhadinha na Galeria: tem 15 anos, chá de bebê, infantil e muito mais 💕"
-    ] },
-    { id: "yt", sel: "#app-youtube", msgs: [
-      "▶️ Dá o play! Veja o trabalho da Analu em vídeo.",
-      "Veja o capricho em cada detalhe 🎥 Assista ao vídeo da Analu.",
-      "Um minutinho para conhecer os doces feitos com carinho ✨ Toque e assista."
-    ] },
-    { id: "card", sel: "#hero-cardapio", msgs: [
-      "🍫 Já viu o cardápio? São brigadeiros gourmet em vários sabores.",
-      "Ao leite, ninho, beijinho, casadinho… 😋 Confira todos os sabores no Cardápio.",
-      "Tem sabor que combina com a sua festa 💖 Dê uma olhada no Cardápio."
-    ] },
-    { id: "zap", sel: '.ph-app[aria-label="WhatsApp"]', msgs: [
-      "💬 Ficou com dúvida? Chame a Analu no WhatsApp.",
-      "Quer um orçamento personalizado? 📲 Fale direto com a Analu no WhatsApp.",
-      "Conte para a Analu como é a sua festa 💌 A resposta vem pelo WhatsApp."
+      "Quer ideias para a sua mesa? 🍬 Confira os doces de festas anteriores na Galeria."
     ] }
   ];
+
 
   function sortearMsg(p){
     var n = p.msgs.length, i = Math.floor(Math.random() * n);
@@ -4583,16 +4548,14 @@ try {
     for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
-  /* a calculadora é a primeira da fila depois da música */
-  fila = POOL.filter(function(x){ return x.id === "calc"; }).concat(embaralhar(POOL.filter(function(x){ return x.id !== "calc"; })));
+  /* só duas notificações por visita: primeiro a música, depois a galeria */
+  var MAX_NOTIF = 2, enviadas = 0;
+  fila = POOL.slice();
   function proxima(excl){
-    for(var tent = 0; tent < 2; tent++){
-      for(var i = 0; i < fila.length; i++){
-        if(fila[i].id !== excl && fila[i].id !== ultimo) return fila.splice(i, 1)[0];
-      }
-      fila = embaralhar(POOL.slice());
+    for(var i = 0; i < fila.length; i++){
+      if(fila[i].id !== excl && fila[i].id !== ultimo) return fila.splice(i, 1)[0];
     }
-    return POOL[0];
+    return null;
   }
 
   function badge(p, on){
@@ -4630,8 +4593,11 @@ try {
   }
 
   function mostrar(excl, forcado){
+    if(enviadas >= MAX_NOTIF) return;
     var p = forcado || proxima(excl);
-    if(!p.el) return;
+    if(!p || !p.el) return;
+    if(forcado){ var k = fila.indexOf(forcado); if(k > -1) fila.splice(k, 1); }
+    enviadas++;
     atual = p; ultimo = p.id; ultimaNotif = Date.now();
     var m = sortearMsg(p);
     p.faixa = (m.f === undefined ? null : m.f);
@@ -4868,5 +4834,56 @@ try {
 })();
 </script>
 <style>.ph-bat-pct{font:700 9px 'Inter',sans-serif;margin-left:2px}</style>
+<style id="celular-elegante">
+/* ===== Celular: acabamento mais sofisticado (vinho + rosé champagne) ===== */
+.tv{filter:drop-shadow(0 34px 38px rgba(58,10,36,.34)) drop-shadow(0 8px 12px rgba(58,10,36,.22))}
+.tv .tv-body{
+  padding:5px;border-radius:46px;
+  background:
+    linear-gradient(90deg,rgba(255,235,225,.34) 0,rgba(255,235,225,0) 5%,rgba(255,235,225,0) 95%,rgba(255,235,225,.24) 100%),
+    linear-gradient(160deg,#8f5f68 0%,#4a2230 22%,#2a0d1b 55%,#4d2433 85%,#7d505a 100%);
+  border:1px solid rgba(240,214,200,.55);
+  box-shadow:inset 0 0 0 1px rgba(20,4,12,.65),inset 0 1.5px 2px rgba(255,235,225,.5),inset 0 -2px 3px rgba(0,0,0,.5),0 0 0 1px rgba(40,8,24,.5);
+}
+.tv .tv-body::before{background:linear-gradient(90deg,#6a3d49,#d8b4aa 60%,#f0d8cc);box-shadow:0 40px 0 0 #c9a39a,0 1px 2px rgba(0,0,0,.35)}
+.tv .tv-body::after{background:linear-gradient(270deg,#6a3d49,#d8b4aa 60%,#f0d8cc);box-shadow:0 1px 2px rgba(0,0,0,.35)}
+.tv .tv-screen{border:4px solid #07020a;border-radius:40px;box-shadow:0 0 0 1px rgba(255,235,225,.08),inset 0 0 0 1px rgba(255,255,255,.05)}
+.tv-screen::after{background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,0) 28%)}
+.ph-nav{background:#07020a}
+.ph-nav svg{opacity:.55}
+
+/* papel de parede */
+.tv-screen .ph-home{
+  background:
+    radial-gradient(90% 55% at 80% -5%,rgba(233,170,190,.38),transparent 62%),
+    radial-gradient(80% 50% at 0% 100%,rgba(150,50,95,.55),transparent 65%),
+    linear-gradient(172deg,#5a1a3c 0%,#3a0f28 48%,#1f0716 100%);
+}
+.ph-status{text-shadow:none;font-weight:600}
+.ph-clock{text-shadow:none}
+.ph-clock-time{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:52px;letter-spacing:.01em;color:#FBEFF2}
+.ph-clock-date{font-weight:500;font-size:10.5px;letter-spacing:.06em;color:#E9C9D2;opacity:1}
+
+/* ícones */
+.tv-screen .ph-ico{box-shadow:0 6px 14px rgba(10,0,6,.45),inset 0 0 0 .5px rgba(255,255,255,.14);filter:saturate(.88)}
+.tv-screen .ph-ico::after{display:none}
+.tv-screen .ph-label{font-weight:500;font-size:9.5px;letter-spacing:.02em;color:rgba(255,244,247,.92);text-shadow:0 1px 3px rgba(0,0,0,.45)}
+
+/* calendário: rosa mais profundo */
+#ph-cal-view .pc-title span,#ph-cal-view .pc-nav button{color:#A3184F}
+#ph-cal-view .ph-cal-day.today span{background:#A3184F}
+#ph-cal-view .ph-cal-day.has-note::after,#ph-cal-view .ph-cal-day.today.has-note::after{background:#A3184F}
+#ph-cal-view .pc-tip{background:#f6e9ee;color:#6e1637}
+#ph-cal-view .pc-tip i{color:#A3184F}
+#ph-cal-view .pc-tip span{color:#7a4a5c}
+#ph-cal-view .pc-opt{background:#A3184F}
+
+/* calculadora: tons menos doces */
+#ph-calc-view{--ac:#A83A62;--ac2:#8E2A52;--dk:#4A1530;--tx:#7A4A5E;--ln:#EBCBD3;background:linear-gradient(180deg,#F7EAEC 0%,#F1DEE3 100%)}
+#ph-calc-view .pcl-chips button.on{background:#8E2A52;border-color:#8E2A52}
+#ph-calc-view .pcl-step button{background:#EBCBD3;color:#8E2A52}
+#ph-calc-view .pcl-result{background:#EBD0D7}
+</style>
+
 </body>
 </html>
