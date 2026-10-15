@@ -4578,7 +4578,7 @@ try {
 
   /* vibra só o aparelho do cliente (quando o navegador permite); o celular da tela não balança */
   var SOM_NOTIF = "notificacao.mp3", somEl = null, ultVib = 0;
-  var somPendente = false, somLiberado = false;
+  var somPendente = false, somLiberado = false, destravando = false;
   var EVS_TOQUE = ["pointerdown", "pointerup", "touchend", "click", "keydown"];
 
   /* carrega o som já na abertura da página, para tocar sem atraso quando a notificação aparecer */
@@ -4607,16 +4607,18 @@ try {
   function aoToque(){
     if(somLiberado){ removerOuvintesToque(); return; }
     if(somPendente && notif.classList.contains("show")){
+      somPendente = false;   /* evita tocar de novo nos eventos seguidos do mesmo toque */
       try { if(navigator.vibrate) navigator.vibrate(250); } catch(e){}
       tocarSom();
       clearTimeout(hideT);
       hideT = setTimeout(esconder, 6000);
-    } else if(somEl){
+    } else if(somEl && !destravando){
+      destravando = true;
       try {
         somEl.muted = true;
         var p = somEl.play();
         var fim = function(){ try { somEl.pause(); somEl.currentTime = 0; somEl.muted = false; } catch(e){} liberouSom(); };
-        if(p && p.then){ p.then(fim).catch(function(){ try { somEl.muted = false; } catch(e){} }); } else { fim(); }
+        if(p && p.then){ p.then(fim).catch(function(){ destravando = false; try { somEl.muted = false; } catch(e){} }); } else { fim(); }
       } catch(e){}
     }
   }
@@ -4882,7 +4884,7 @@ try {
 #ph-calc-view .pcl-step button{background:#EBCBD3;color:#8E2A52}
 #ph-calc-view .pcl-result{background:#EBD0D7}
 /* papel de parede do celular */
-.tv-screen .ph-home{background:linear-gradient(180deg,rgba(30,4,18,.22) 0%,rgba(30,4,18,.10) 40%,rgba(30,4,18,.30) 100%),url("https://images.weserv.nl/?url=i.ibb.co/xKQK6C6V/IMG-20261013-230015-124.jpg&w=600&q=80&output=webp") center/cover no-repeat,url("https://i.ibb.co/xKQK6C6V/IMG-20261013-230015-124.jpg") center/cover no-repeat #a8144f}
+.tv-screen .ph-home{background:linear-gradient(180deg,rgba(30,4,18,.22) 0%,rgba(30,4,18,.10) 40%,rgba(30,4,18,.30) 100%),url("https://images.weserv.nl/?url=i.ibb.co/rGqckd7r/IMG-20261014-WA0043.jpg&w=600&q=80&output=webp") center/cover no-repeat,url("https://i.ibb.co/rGqckd7r/IMG-20261014-WA0043.jpg") center/cover no-repeat #a8144f}
 </style>
 
 </body>
