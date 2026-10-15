@@ -2243,47 +2243,64 @@ section,
             </div>
 
             <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="pcl-semfundo" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -2.11 -2.11 -2.11 0 6.33"/></filter></svg>
+            <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="pcl-cup-sym" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22.5h26l-2.6 12.2a2.5 2.5 0 0 1-2.4 1.8H12a2.5 2.5 0 0 1-2.4-1.8z"/><path d="M14 24.5l1 10.5M20 24.5v11M26 24.5l-1 10.5"/><circle cx="20" cy="14.5" r="9.5"/><path d="M13.5 12l3 1.5M18 7.5l1.2 3.2M23.5 9l-1.5 3M25.5 15l-3.2-.8M15 17.5l2.8-1.6M20.5 18.8l.6-3.2M11.8 16.2l2.2.3"/></g></symbol></svg>
             <div class="ph-app-view ph-calc" id="ph-calc-view" aria-hidden="true" style="transform-origin:17% 88%">
               <div class="pcl-scroll">
-                <img class="pcl-logo" src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&h=120&output=webp" onerror="this.onerror=null;this.src='https://i.ibb.co/jkCF4Xhv/logo-set.jpg';" alt="Doces da Analu" decoding="async">
+                <div class="pcl-blob" aria-hidden="true"></div>
+                <div class="pcl-body">
+                  <div class="pcl-head">
+                    <span class="pcl-menu" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <img class="pcl-logo" src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&h=120&output=webp" onerror="this.onerror=null;this.src='https://i.ibb.co/jkCF4Xhv/logo-set.jpg';" alt="Doces da Analu" decoding="async">
+                    <svg class="pcl-hico" viewBox="0 0 40 34" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 28C8 20 5 13 9 8c3-3 8-2 11 2 3-4 8-5 11-2 4 5 1 12-11 20z"/><path d="M4 6l3 2M2 15h3M35 6l-3 2M37 15h-3M20 1v3"/></g></svg>
+                  </div>
 
-                <div class="pcl-top">
-                  <strong>Calculadora de festa</strong>
-                  <em>descubra quantos doces pedir</em>
-                  <span class="pcl-div"><i class="fa-regular fa-heart"></i></span>
-                </div>
-
-                <div class="pcl-sec">
-                  <label class="pcl-lab" for="pcl-guests"><i class="fas fa-user-group"></i> Quantas pessoas?</label>
-                  <div class="pcl-step">
-                    <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
-                    <div class="pcl-num">
-                      <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="30">
-                      <span>pessoas</span>
+                  <div class="pcl-top">
+                    <svg class="pcl-cup pcl-cup-t" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg>
+                    <div class="pcl-top-txt">
+                      <strong>Calculadora de festa</strong>
+                      <em>Descubra quantos doces pedir</em>
                     </div>
-                    <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
                   </div>
-                  <input id="pcl-range" type="range" min="1" max="200" step="1" value="30" aria-label="Ajustar número de convidados">
+                  <span class="pcl-div"><i class="fa-regular fa-heart"></i></span>
+
+                  <div class="pcl-box">
+                    <div class="pcl-lab"><span class="pcl-ic"><i class="fas fa-user"></i></span><label for="pcl-guests">Quantas pessoas?</label></div>
+                    <div class="pcl-step">
+                      <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
+                      <div class="pcl-num">
+                        <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="30">
+                        <span>pessoas</span>
+                      </div>
+                      <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <input id="pcl-range" type="range" min="1" max="200" step="1" value="30" aria-label="Ajustar número de convidados">
+                  </div>
+
+                  <div class="pcl-box">
+                    <div class="pcl-lab"><span class="pcl-ic"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg></span><span>Doces por pessoa</span></div>
+                    <div class="pcl-chips" id="pcl-chips">
+                      <button type="button" data-per="3"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>3</b><small>brigadeiros</small></button>
+                      <button type="button" data-per="4" class="on"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>4</b><small>brigadeiros</small></button>
+                      <button type="button" data-per="5"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>5</b><small>brigadeiros</small></button>
+                    </div>
+                  </div>
+
+                  <div class="pcl-result">
+                    <img class="pcl-brig" src="https://images.weserv.nl/?url=i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png&w=640&q=100&output=png" onerror="this.onerror=null;this.src='https://i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png';" alt="" decoding="async">
+                    <div class="pcl-rt">
+                      <small class="pcl-r-top">Você vai precisar de</small>
+                      <div class="pcl-big"><strong id="pcl-total">120</strong><span id="pcl-un">doces</span></div>
+                    </div>
+                    <small id="pcl-detail"></small>
+                    <div class="pcl-pill" id="pcl-combo"><i class="fas fa-box-open"></i><span id="pcl-combo-txt"></span></div>
+                    <button type="button" class="pcl-go" id="pcl-go" hidden tabindex="-1" aria-hidden="true"><span id="pcl-go-txt">Usar no meu pedido</span><i class="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
 
-                <div class="pcl-sec">
-                  <div class="pcl-lab pcl-lab2"><svg class="pcl-cup pcl-cup-s" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22.5h26l-2.6 12.2a2.5 2.5 0 0 1-2.4 1.8H12a2.5 2.5 0 0 1-2.4-1.8z"/><path d="M14 24.5l1 10.5M20 24.5v11M26 24.5l-1 10.5"/><circle cx="20" cy="14.5" r="9.5"/><path d="M13.5 12l3 1.5M18 7.5l1.2 3.2M23.5 9l-1.5 3M25.5 15l-3.2-.8M15 17.5l2.8-1.6M20.5 18.8l.6-3.2M11.8 16.2l2.2.3"/></g></svg> Doces por pessoa</div>
-                  <div class="pcl-chips" id="pcl-chips">
-                    <button type="button" data-per="3"><b>3</b><small>brigadeiros</small></button>
-                    <button type="button" data-per="4" class="on"><b>4</b><small>brigadeiros</small></button>
-                    <button type="button" data-per="5"><b>5</b><small>brigadeiros</small></button>
-                  </div>
-                </div>
-
-                <div class="pcl-result">
-                  <img class="pcl-brig" src="https://images.weserv.nl/?url=i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png&w=640&q=100&output=png" onerror="this.onerror=null;this.src='https://i.ibb.co/C375DmYm/37409103-29d3-4f7b-954c-55c1e14fce19.png';" alt="" decoding="async">
-                  <div class="pcl-rt">
-                    <small class="pcl-r-top">Você vai precisar de</small>
-                    <div class="pcl-big"><strong id="pcl-total">120</strong><span id="pcl-un">doces</span></div>
-                  </div>
-                  <small id="pcl-detail"></small>
-                  <div class="pcl-pill" id="pcl-combo"><i class="fas fa-box-open"></i><span id="pcl-combo-txt"></span></div>
-                  <button type="button" class="pcl-go" id="pcl-go" hidden tabindex="-1" aria-hidden="true"><span id="pcl-go-txt">Usar no meu pedido</span><i class="fas fa-arrow-right"></i></button>
+                <div class="pcl-foot">
+                  <p>Mais do que doces,<br>levamos alegria para o seu dia!</p>
+                  <span class="pcl-fdiv"><i class="fa-regular fa-heart"></i></span>
+                  <i class="fa-regular fa-heart pcl-fheart"></i>
                 </div>
               </div>
             </div>
@@ -4071,7 +4088,7 @@ try {
     if(!tela) return;
     tela.addEventListener("scroll", function(e){
       var t = e.target;
-      if(t && t.matches && t.matches(".tv-screen,.ph-stage,.ph-home,.ph-app-view:not(.ph-mus)")){
+      if(t && t.matches && t.matches(".tv-screen,.ph-stage,.ph-home,.ph-app-view:not(.ph-mus):not(.ph-calc)")){
         if(t.scrollTop || t.scrollLeft){ t.scrollTop = 0; t.scrollLeft = 0; }
       }
     }, true);
@@ -4528,6 +4545,10 @@ try {
     { id: "gal", sel: "#app-galeria", msgs: [
       "📸 Inspire-se na Galeria: veja festas que a Analu já preparou.",
       "Quer ideias para a sua mesa? 🍬 Confira os doces de festas anteriores na Galeria."
+    ] },
+    { id: "cal", sel: "#app-calendario", msgs: [
+      "📅 Já tem a data da festa? Marque no Calendário e ela vai junto com o seu pedido.",
+      "🎂 Escolha o dia da sua festa no Calendário para facilitar a combinação com a Analu."
     ] }
   ];
 
@@ -4548,8 +4569,8 @@ try {
     for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
-  /* só duas notificações por visita: primeiro a música, depois a galeria */
-  var MAX_NOTIF = 2, enviadas = 0;
+  /* três notificações por visita: música (sem som), depois galeria e calendário (com som) */
+  var MAX_NOTIF = 3, enviadas = 0;
   fila = POOL.slice();
   function proxima(excl){
     for(var i = 0; i < fila.length; i++){
@@ -4624,12 +4645,12 @@ try {
   }
   EVS_TOQUE.forEach(function(ev){ document.addEventListener(ev, aoToque, true); });
 
-  function vibrar(){
+  function vibrar(comSom){
     var agora = Date.now();
     if(agora - ultVib < 1500) return;           /* nunca duas vezes seguidas */
     ultVib = agora;
     try { if(navigator.vibrate) navigator.vibrate(250); } catch(e){}
-    tocarSom();
+    if(comSom) tocarSom();
   }
 
   function mostrar(excl, forcado){
@@ -4645,7 +4666,7 @@ try {
     badge(p, true);
     notif.classList.add("show");
     notif.setAttribute("aria-hidden", "false");
-    vibrar();
+    vibrar(enviadas > 1);          /* 1ª notificação: só vibra (sem som); da 2ª em diante vibra e toca o som */
     clearTimeout(hideT);
     /* se o som foi bloqueado, mantém a notificação visível até o primeiro toque (máx. ~23s) */
     hideT = setTimeout(function(){
@@ -4717,146 +4738,6 @@ try {
 </script>
 
 
-<style id="calculadora-v3">
-#ph-calc-view{--bg:#F9E7EA;--dk:#6E1637;--ac:#D4557C;--ac2:#C94B74;--ln:#F0CDD6;--tx:#7A3A55;background:linear-gradient(180deg,#FBEBEE 0%,#F8E2E7 100%);color:var(--dk)}
-#ph-calc-view .pcl-scroll{min-height:100%;display:flex;flex-direction:column;padding:26px 14px 10px}
-
-#ph-calc-view .pcl-logo{display:block;height:46px;width:auto;max-width:160px;margin:0 auto 6px;object-fit:contain;mix-blend-mode:multiply;border-radius:0;box-shadow:none;background:none}
-
-#ph-calc-view .pcl-top{text-align:center;margin-bottom:9px}
-#ph-calc-view .pcl-top strong{display:block;font-family:'Cormorant Garamond',serif;font-style:normal;font-weight:600;font-size:19px;line-height:1.05;color:var(--dk)}
-#ph-calc-view .pcl-top em{display:block;margin-top:2px;font-size:9px;font-style:normal;color:var(--tx)}
-#ph-calc-view .pcl-div{display:flex;align-items:center;gap:6px;margin:6px 24px 0;color:var(--ac);font-size:9px}
-#ph-calc-view .pcl-div::before,#ph-calc-view .pcl-div::after{content:'';flex:1;height:1px;background:var(--ac);opacity:.6}
-
-#ph-calc-view .pcl-sec{margin-bottom:9px}
-#ph-calc-view .pcl-lab{display:flex;align-items:center;gap:6px;margin:0 0 5px;font-size:8.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tx)}
-#ph-calc-view .pcl-lab i{color:var(--ac);font-size:11px}
-#ph-calc-view .pcl-lab .pcl-cup-s{width:15px;height:15px;flex:0 0 15px;color:var(--ac)}
-
-#ph-calc-view .pcl-step{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}
-#ph-calc-view .pcl-step button{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:#F4D2DA;color:#B8456B;border:0;box-shadow:none;font-size:10px;transition:transform .12s ease,background .15s}
-#ph-calc-view .pcl-step button:active{transform:scale(.9);background:#EEBBC9}
-#ph-calc-view .pcl-num{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;padding:3px 6px 4px;border-radius:16px;background:rgba(255,255,255,.4);border:1px solid var(--ln)}
-#ph-calc-view .pcl-num input{font:600 22px/1 'Cormorant Garamond',serif;color:var(--dk);letter-spacing:0}
-#ph-calc-view .pcl-num span{margin-top:0;font-size:9px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--tx)}
-
-#ph-calc-view #pcl-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:4px;margin:0;border-radius:4px;background:linear-gradient(90deg,var(--ac) var(--p,15%),#F2D3DB var(--p,15%))}
-#ph-calc-view #pcl-range::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:#fff;border:2.5px solid var(--ac);box-shadow:0 1px 4px rgba(110,22,55,.25)}
-#ph-calc-view #pcl-range::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--ac);box-shadow:0 1px 4px rgba(110,22,55,.25)}
-
-#ph-calc-view .pcl-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0;padding:0;background:none;border-radius:0}
-#ph-calc-view .pcl-chips button{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;padding:7px 2px 6px;border:1px solid var(--ln);border-radius:12px;background:rgba(255,255,255,.35);color:#A33A5E;box-shadow:none;transform:none;font:inherit;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-#ph-calc-view .pcl-chips button b{font:600 21px/1 'Cormorant Garamond',serif}
-#ph-calc-view .pcl-chips button small{margin-top:1px;font-size:9.5px;font-weight:500;color:var(--tx)}
-#ph-calc-view .pcl-chips button.on{background:#DA5F85;border-color:#DA5F85;color:#fff;box-shadow:none}
-#ph-calc-view .pcl-chips button.on small{color:#fff}
-#ph-calc-view .pcl-chips button.on::before{display:none}
-
-#ph-calc-view .pcl-result{position:-webkit-sticky;position:sticky;bottom:6px;z-index:3;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:10px;margin:auto 0 0;padding:11px 12px 11px;border-radius:16px;background:#F5D8DF;box-shadow:0 4px 12px rgba(110,22,55,.08);text-align:left}
-#ph-calc-view .pcl-result::before{display:none}
-#ph-calc-view .pcl-cup-b{width:34px;height:34px;color:#D4557C}
-#ph-calc-view .pcl-rt{min-width:0}
-#ph-calc-view .pcl-r-top{display:block;font-size:7.5px !important;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tx) !important}
-#ph-calc-view .pcl-big{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:0 6px;margin:1px 0 0;padding:0 0 2px;border-bottom:1px solid var(--ac)}
-#ph-calc-view .pcl-big::after{display:none}
-#ph-calc-view .pcl-big strong{font:700 36px/1 'Cormorant Garamond',serif;font-style:normal;color:#8E1D47;letter-spacing:-.01em}
-#ph-calc-view .pcl-big span{font:italic 600 16px/1 'Cormorant Garamond',serif;color:#A33A5E}
-#ph-calc-view #pcl-detail{display:none}
-#ph-calc-view .pcl-pill{grid-column:1 / -1;display:flex;align-items:center;justify-content:center;gap:6px;margin:8px 0 0;padding:6px 9px;border:0;border-radius:10px;background:rgba(255,255,255,.55);font-size:9.5px;font-weight:600;line-height:1.3;color:var(--dk);text-align:left}
-#ph-calc-view .pcl-pill::before,#ph-calc-view .pcl-pill::after{display:none}
-#ph-calc-view .pcl-pill i{color:var(--ac);font-size:10px}
-#ph-calc-view .pcl-go{grid-column:1 / -1;display:flex;align-items:center;justify-content:center;width:100%;margin:7px 0 0;padding:10px 12px;border:0;border-radius:999px;background:var(--ac2);color:#fff;box-shadow:none;font:700 11.5px 'Inter',sans-serif;gap:8px}
-#ph-calc-view .pcl-go::after{display:none}
-</style>
-<style id="calculadora-v3-ajuste">
-#ph-calc-view .pcl-scroll{padding:24px 14px 8px}
-#ph-calc-view .pcl-logo{height:40px;margin-bottom:4px}
-#ph-calc-view .pcl-top{margin-bottom:6px}
-#ph-calc-view .pcl-top strong{font-size:18px}
-#ph-calc-view .pcl-div{margin-top:4px}
-#ph-calc-view .pcl-sec{margin-bottom:7px}
-#ph-calc-view .pcl-step{margin-bottom:6px}
-#ph-calc-view .pcl-chips button{padding:5px 2px 5px}
-#ph-calc-view .pcl-chips button b{font-size:19px}
-#ph-calc-view .pcl-result{bottom:4px;column-gap:8px;padding:8px 10px 9px}
-#ph-calc-view .pcl-brig{display:block;width:34px;height:34px;object-fit:contain;flex:0 0 34px}
-#ph-calc-view .pcl-rt{min-width:0}
-#ph-calc-view .pcl-r-top{font-size:7px !important;letter-spacing:.14em;white-space:nowrap}
-#ph-calc-view .pcl-big{flex-wrap:nowrap;gap:0 5px}
-#ph-calc-view .pcl-big strong{font-size:28px}
-#ph-calc-view .pcl-big span{font-size:14px}
-#ph-calc-view .pcl-pill{margin-top:6px;padding:5px 8px;font-size:9px}
-#ph-calc-view .pcl-go{margin-top:6px;padding:9px 12px;font-size:11px}
-</style>
-<style id="calculadora-v3-ajuste2">
-#ph-calc-view .pcl-brig{mix-blend-mode:multiply;background:none;border-radius:0}
-#ph-calc-view .pcl-scroll{padding:22px 14px 6px}
-#ph-calc-view .pcl-logo{height:34px;margin-bottom:3px}
-#ph-calc-view .pcl-top{margin-bottom:5px}
-#ph-calc-view .pcl-top strong{font-size:17px}
-#ph-calc-view .pcl-top em{font-size:8.5px;margin-top:1px}
-#ph-calc-view .pcl-div{display:none}
-#ph-calc-view .pcl-sec{margin-bottom:6px}
-#ph-calc-view .pcl-lab{margin-bottom:4px;font-size:8px}
-#ph-calc-view .pcl-step{gap:7px;margin-bottom:5px}
-#ph-calc-view .pcl-step button{width:27px;height:27px;flex-basis:27px;font-size:9px}
-#ph-calc-view .pcl-num{padding:2px 6px 3px}
-#ph-calc-view .pcl-num input{font-size:19px}
-#ph-calc-view .pcl-num span{font-size:8.5px}
-#ph-calc-view #pcl-range::-webkit-slider-thumb{width:15px;height:15px}
-#ph-calc-view .pcl-chips{gap:5px}
-#ph-calc-view .pcl-chips button{padding:4px 2px 4px;border-radius:10px}
-#ph-calc-view .pcl-chips button b{font-size:17px}
-#ph-calc-view .pcl-chips button small{font-size:8.5px;margin-top:0}
-#ph-calc-view .pcl-result{padding:7px 10px 8px}
-#ph-calc-view .pcl-brig{width:30px;height:30px;flex-basis:30px}
-#ph-calc-view .pcl-big strong{font-size:26px}
-#ph-calc-view .pcl-pill{margin-top:5px;padding:4px 8px;font-size:8.5px}
-#ph-calc-view .pcl-go{margin-top:5px;padding:8px 12px;font-size:10.5px}
-</style>
-<style id="calculadora-sem-pedido">
-#ph-calc-view .pcl-go{display:none !important}
-</style>
-<style id="calculadora-sem-sob-medida">
-#ph-calc-view .pcl-pill:has(#pcl-combo-txt:empty){display:none !important}
-</style>
-<style id="calculadora-v3-espacamento">
-#ph-calc-view .pcl-scroll{padding:24px 14px 8px}
-#ph-calc-view .pcl-logo{height:42px;margin-bottom:5px}
-#ph-calc-view .pcl-top{margin-bottom:9px}
-#ph-calc-view .pcl-top strong{font-size:19px}
-#ph-calc-view .pcl-top em{font-size:9px;margin-top:2px}
-#ph-calc-view .pcl-sec{margin-bottom:10px}
-#ph-calc-view .pcl-lab{margin-bottom:5px;font-size:8.5px}
-#ph-calc-view .pcl-step{gap:8px;margin-bottom:7px}
-#ph-calc-view .pcl-step button{width:32px;height:32px;flex-basis:32px;font-size:10px}
-#ph-calc-view .pcl-num{padding:3px 6px 4px}
-#ph-calc-view .pcl-num input{font-size:21px}
-#ph-calc-view .pcl-num span{font-size:9px}
-#ph-calc-view #pcl-range::-webkit-slider-thumb{width:17px;height:17px}
-#ph-calc-view .pcl-chips{gap:6px}
-#ph-calc-view .pcl-chips button{padding:6px 2px 6px;border-radius:12px}
-#ph-calc-view .pcl-chips button b{font-size:20px}
-#ph-calc-view .pcl-chips button small{font-size:9.5px}
-#ph-calc-view .pcl-result{bottom:6px;column-gap:8px;padding:9px 10px 10px}
-#ph-calc-view .pcl-brig{width:54px;height:54px;flex-basis:54px;image-rendering:auto}
-#ph-calc-view .pcl-r-top{font-size:7.5px !important}
-#ph-calc-view .pcl-big strong{font-size:30px}
-#ph-calc-view .pcl-big span{font-size:15px}
-#ph-calc-view .pcl-pill{margin-top:8px;padding:6px 9px;font-size:9px}
-</style>
-<style id="calculadora-v3-final">
-#ph-calc-view .pcl-pill{display:none !important}
-#ph-calc-view .pcl-brig{mix-blend-mode:normal;filter:url(#pcl-semfundo) drop-shadow(0 2px 3px rgba(110,22,55,.18));width:86px;height:86px;flex-basis:86px;background:none}
-#ph-calc-view .pcl-result{column-gap:6px;padding:6px 12px 6px 6px}
-#ph-calc-view .pcl-big strong{font-size:32px}
-</style>
-<style id="calculadora-v3-volta">
-#ph-calc-view .pcl-brig{filter:none;mix-blend-mode:multiply;width:54px;height:54px;flex-basis:54px;background:none}
-#ph-calc-view .pcl-result{column-gap:8px;padding:9px 10px 10px}
-#ph-calc-view .pcl-big strong{font-size:30px}
-</style>
 <script>
 (function(){
   var ico = document.getElementById("ph-bat-ico"), pct = document.getElementById("ph-bat-pct");
@@ -4878,14 +4759,75 @@ try {
 </script>
 <style>.ph-bat-pct{font:700 9px 'Inter',sans-serif;margin-left:2px}</style>
 <style id="celular-elegante">
-/* calculadora: tons menos doces */
-#ph-calc-view{--ac:#A83A62;--ac2:#8E2A52;--dk:#4A1530;--tx:#7A4A5E;--ln:#EBCBD3;background:linear-gradient(180deg,#F7EAEC 0%,#F1DEE3 100%)}
-#ph-calc-view .pcl-chips button.on{background:#8E2A52;border-color:#8E2A52}
-#ph-calc-view .pcl-step button{background:#EBCBD3;color:#8E2A52}
-#ph-calc-view .pcl-result{background:#EBD0D7}
 /* papel de parede do celular */
 .tv-screen .ph-home{background:linear-gradient(180deg,rgba(30,4,18,.22) 0%,rgba(30,4,18,.10) 40%,rgba(30,4,18,.30) 100%),url("https://images.weserv.nl/?url=i.ibb.co/rGqckd7r/IMG-20261014-WA0043.jpg&w=600&q=80&output=webp") center/cover no-repeat,url("https://i.ibb.co/rGqckd7r/IMG-20261014-WA0043.jpg") center/cover no-repeat #a8144f}
 </style>
 
+<style id="calculadora-v4">
+#ph-calc-view{background:#FBEFF0;color:#2B1220;overflow-y:auto !important;scrollbar-width:none;overscroll-behavior:contain}
+#ph-calc-view::-webkit-scrollbar{display:none}
+#ph-calc-view .pcl-scroll{position:relative;flex:0 0 auto;min-height:100%;display:flex;flex-direction:column;padding:0;background:linear-gradient(180deg,#FCF2F3 0%,#F9E8EC 100%)}
+#ph-calc-view .pcl-blob{position:absolute;top:0;right:0;width:66%;height:78px;background:#F4D9E0;border-radius:0 0 0 80% / 0 0 0 100%;opacity:.85;pointer-events:none}
+#ph-calc-view .pcl-body{position:relative;padding:20px 12px 8px}
+
+#ph-calc-view .pcl-head{position:relative;display:flex;align-items:center;justify-content:center;height:36px}
+#ph-calc-view .pcl-menu{position:absolute;left:2px;top:10px;display:flex;flex-direction:column;gap:3px}
+#ph-calc-view .pcl-menu i{display:block;width:15px;height:2px;border-radius:2px;background:#A33A6A}
+#ph-calc-view .pcl-logo{display:block;height:32px;width:auto;max-width:120px;margin:0;object-fit:contain;mix-blend-mode:multiply;background:none;border-radius:0;box-shadow:none}
+#ph-calc-view .pcl-hico{position:absolute;right:0;top:5px;width:24px;height:20px;color:#A33A6A}
+
+#ph-calc-view .pcl-cup{width:14px;height:14px;display:block}
+#ph-calc-view .pcl-top{position:relative;display:flex;align-items:center;gap:4px;margin:2px 0 0;padding:5px 8px 5px 2px;text-align:left;border-radius:0}
+#ph-calc-view .pcl-top::before{content:"";position:absolute;left:24px;right:0;top:3px;bottom:3px;background:#F1CCD7;border-radius:6px 16px 8px 20px / 12px 8px 14px 10px;transform:rotate(-1.2deg)}
+#ph-calc-view .pcl-cup-t{position:relative;width:28px;height:28px;flex:0 0 28px;color:#8A2A55}
+#ph-calc-view .pcl-top-txt{position:relative;display:flex;flex-direction:column;min-width:0;white-space:nowrap}
+#ph-calc-view .pcl-top strong{display:block;font:700 17.5px/1 'Caveat','Segoe Script',cursive;font-style:normal;color:#7E2450;margin:0}
+#ph-calc-view .pcl-top em{display:block;margin-top:1px;font:600 11px/1.1 'Caveat','Segoe Script',cursive;font-style:normal;color:#7A3A55}
+#ph-calc-view .pcl-div{display:flex;align-items:center;gap:6px;margin:3px 26px 6px;color:#B5587F;font-size:8px}
+#ph-calc-view .pcl-div::before,#ph-calc-view .pcl-div::after{content:"";flex:1;height:1px;background:#B5587F;opacity:.55}
+
+#ph-calc-view .pcl-box{margin:0 0 7px;padding:7px 8px 8px;border-radius:16px;background:rgba(255,248,249,.94);border:1px solid rgba(235,203,211,.7);box-shadow:0 3px 10px rgba(120,40,80,.07)}
+#ph-calc-view .pcl-lab{display:flex;align-items:center;gap:6px;margin:0 0 5px;font:700 9px/1 'Inter',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#6E1F44}
+#ph-calc-view .pcl-lab label{cursor:default}
+#ph-calc-view .pcl-ic{width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#A33A6A;color:#fff;display:flex;align-items:center;justify-content:center}
+#ph-calc-view .pcl-lab i{color:#fff;font-size:8px}
+#ph-calc-view .pcl-ic .pcl-cup{width:12px;height:12px;color:#fff}
+
+#ph-calc-view .pcl-step{display:flex;align-items:center;gap:0;margin:0;padding:3px;border-radius:999px;background:#F6DEE4;border:1px solid #EBCBD3}
+#ph-calc-view .pcl-step button{width:26px;height:26px;flex:0 0 26px;border:0;border-radius:50%;background:linear-gradient(160deg,#C4698F,#A64A74);color:#fff;font-size:10px;cursor:pointer;box-shadow:0 3px 7px rgba(140,40,90,.3),inset 0 1px 1px rgba(255,255,255,.3);transition:transform .12s ease}
+#ph-calc-view .pcl-step button:active{transform:scale(.9)}
+#ph-calc-view .pcl-num{flex:1;min-width:0;margin:0 4px;padding:3px 4px 4px;border-radius:999px;background:#FFF9FA;border:0;display:flex;flex-direction:column;align-items:center}
+#ph-calc-view .pcl-num input{width:100%;min-width:0;border:0;background:none;text-align:center;font:700 22px/1.05 'Inter',sans-serif;color:#2B1220;outline:0;padding:0}
+#ph-calc-view .pcl-num span{margin:-1px 0 0;font:500 9px/1.2 'Inter',sans-serif;letter-spacing:0;text-transform:none;color:#4E2438}
+#ph-calc-view #pcl-range{display:none}
+
+#ph-calc-view .pcl-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 0;padding:0;background:none}
+#ph-calc-view .pcl-chips button{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 2px 5px;border:1px solid #EBCBD3;border-radius:12px;background:#F9E2E7;color:#2B1220;font:inherit;cursor:pointer;transform:none;box-shadow:none;transition:background .15s,color .15s}
+#ph-calc-view .pcl-chips button .pcl-cup{width:12px;height:12px;color:#B5587F;margin-bottom:1px}
+#ph-calc-view .pcl-chips button b{font:600 15px/1 'Inter',sans-serif}
+#ph-calc-view .pcl-chips button small{font:500 8px/1.2 'Inter',sans-serif;color:#4E2438}
+#ph-calc-view .pcl-chips button.on{background:linear-gradient(160deg,#9C3768,#7E2450);border-color:#7E2450;color:#fff;box-shadow:0 5px 10px rgba(126,36,80,.3)}
+#ph-calc-view .pcl-chips button.on small,#ph-calc-view .pcl-chips button.on .pcl-cup{color:#fff}
+#ph-calc-view .pcl-chips button.on::before{content:"\2665";position:absolute;top:-8px;left:50%;margin-left:-7px;width:14px;height:14px;border-radius:50%;background:#F6DCE3;color:#8E2A5A;font-size:8px;line-height:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+
+#ph-calc-view .pcl-result{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:6px;margin:11px 0 0;padding:12px 8px 8px 6px;border:1.5px dashed #DDAFC0;border-radius:16px;background:rgba(253,240,243,.92);color:#6E1F44;text-align:left;overflow:visible;box-shadow:none}
+#ph-calc-view .pcl-result::before{content:"\2665";position:absolute;left:12px;top:-1px;right:auto;width:14px;height:19px;border-radius:0;background:#E4A3BA;color:#fff;font-size:7px;line-height:14px;text-align:center;clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)}
+#ph-calc-view .pcl-brig{display:block;width:52px;height:52px;flex:0 0 52px;object-fit:contain;mix-blend-mode:multiply;filter:none;background:none;border-radius:0}
+#ph-calc-view .pcl-rt{min-width:0;text-align:center}
+#ph-calc-view .pcl-rt::after{content:"";display:block;height:1px;margin:4px 8px 0;background:linear-gradient(90deg,transparent,#C97A99 20%,#C97A99 80%,transparent)}
+#ph-calc-view .pcl-r-top{display:block;font:700 7.5px/1.25 'Inter',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#6E1F44}
+#ph-calc-view .pcl-big{display:flex;flex-direction:column;align-items:center;gap:0;margin:1px 0 0;padding:0;border:0}
+#ph-calc-view .pcl-big strong{font:800 32px/1 'Inter',sans-serif;font-style:normal;color:#8A2A55;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#ph-calc-view .pcl-big span{font:700 19px/1 'Caveat','Segoe Script',cursive;font-style:normal;color:#8A2A55}
+#ph-calc-view #pcl-detail{display:none}
+#ph-calc-view .pcl-pill{display:none !important}
+#ph-calc-view .pcl-go{display:none !important}
+
+#ph-calc-view .pcl-foot{position:relative;margin-top:auto;padding:20px 16px 10px;text-align:center;color:#fff;background:linear-gradient(180deg,#9A3566,#7E2450);border-radius:60% 40% 0 0 / 26px 20px 0 0}
+#ph-calc-view .pcl-foot p{margin:0 24px 0 0;font:italic 600 11.5px/1.3 'Cormorant Garamond',serif;color:#fff}
+#ph-calc-view .pcl-fdiv{display:flex;align-items:center;gap:5px;margin:7px 30px 0 6px;font-size:7px;color:#fff;opacity:.85}
+#ph-calc-view .pcl-fdiv::before,#ph-calc-view .pcl-fdiv::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.55)}
+#ph-calc-view .pcl-fheart{position:absolute;right:12px;top:20px;font-size:20px;color:#fff;opacity:.92}
+</style>
 </body>
 </html>
