@@ -4578,18 +4578,56 @@ try {
 
   /* vibra só o aparelho do cliente (quando o navegador permite); o celular da tela não balança */
   var SOM_NOTIF = "notificacao.mp3", somEl = null, ultVib = 0;
+  var somPendente = false, somLiberado = false;
+  var EVS_TOQUE = ["pointerdown", "pointerup", "touchend", "click", "keydown"];
+
+  /* carrega o som já na abertura da página, para tocar sem atraso quando a notificação aparecer */
+  try { somEl = new Audio(SOM_NOTIF); somEl.preload = "auto"; somEl.load(); } catch(e){}
+
+  function removerOuvintesToque(){
+    EVS_TOQUE.forEach(function(ev){ document.removeEventListener(ev, aoToque, true); });
+  }
+  function liberouSom(){ somLiberado = true; somPendente = false; removerOuvintesToque(); }
+
+  /* toca o som da notificação; se o navegador bloquear (sem toque do usuário ainda), fica pendente */
+  function tocarSom(){
+    if(!somEl) return;
+    try {
+      somEl.muted = false;
+      somEl.currentTime = 0;
+      var pr = somEl.play();
+      if(pr && pr.then){
+        pr.then(liberouSom).catch(function(){ somPendente = true; });
+      } else { liberouSom(); }
+    } catch(e){ somPendente = true; }
+  }
+
+  /* primeiro toque na tela: toca o som que ficou bloqueado (se a notificação ainda está visível)
+     ou só destrava o áudio para as próximas notificações tocarem normalmente */
+  function aoToque(){
+    if(somLiberado){ removerOuvintesToque(); return; }
+    if(somPendente && notif.classList.contains("show")){
+      try { if(navigator.vibrate) navigator.vibrate(250); } catch(e){}
+      tocarSom();
+      clearTimeout(hideT);
+      hideT = setTimeout(esconder, 6000);
+    } else if(somEl){
+      try {
+        somEl.muted = true;
+        var p = somEl.play();
+        var fim = function(){ try { somEl.pause(); somEl.currentTime = 0; somEl.muted = false; } catch(e){} liberouSom(); };
+        if(p && p.then){ p.then(fim).catch(function(){ try { somEl.muted = false; } catch(e){} }); } else { fim(); }
+      } catch(e){}
+    }
+  }
+  EVS_TOQUE.forEach(function(ev){ document.addEventListener(ev, aoToque, true); });
+
   function vibrar(){
     var agora = Date.now();
     if(agora - ultVib < 1500) return;           /* nunca duas vezes seguidas */
     ultVib = agora;
     try { if(navigator.vibrate) navigator.vibrate(250); } catch(e){}
-    try {
-      if(SOM_NOTIF){
-        if(!somEl){ somEl = new Audio(SOM_NOTIF); somEl.preload = "auto"; }
-        somEl.currentTime = 0;
-        var pr = somEl.play(); if(pr && pr.catch) pr.catch(function(){});
-      }
-    } catch(e){}
+    tocarSom();
   }
 
   function mostrar(excl, forcado){
@@ -4607,7 +4645,10 @@ try {
     notif.setAttribute("aria-hidden", "false");
     vibrar();
     clearTimeout(hideT);
-    hideT = setTimeout(esconder, 8000);
+    /* se o som foi bloqueado, mantém a notificação visível até o primeiro toque (máx. ~23s) */
+    hideT = setTimeout(function(){
+      if(somPendente){ hideT = setTimeout(esconder, 15000); } else { esconder(); }
+    }, 8000);
   }
 
   var visivel = true, tela = $("phone");
