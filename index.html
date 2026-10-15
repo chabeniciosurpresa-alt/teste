@@ -2249,29 +2249,20 @@ section,
                 <div class="pcl-blob" aria-hidden="true"></div>
                 <div class="pcl-body">
                   <div class="pcl-head">
-                    <span class="pcl-menu" aria-hidden="true"><i></i><i></i><i></i></span>
                     <img class="pcl-logo" src="https://images.weserv.nl/?url=i.ibb.co/jkCF4Xhv/logo-set.jpg&h=120&output=webp" onerror="this.onerror=null;this.src='https://i.ibb.co/jkCF4Xhv/logo-set.jpg';" alt="Doces da Analu" decoding="async">
-                    <svg class="pcl-hico" viewBox="0 0 40 34" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 28C8 20 5 13 9 8c3-3 8-2 11 2 3-4 8-5 11-2 4 5 1 12-11 20z"/><path d="M4 6l3 2M2 15h3M35 6l-3 2M37 15h-3M20 1v3"/></g></svg>
                   </div>
 
-                  <div class="pcl-top">
-                    <svg class="pcl-cup pcl-cup-t" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg>
-                    <div class="pcl-top-txt">
-                      <strong>Calculadora de festa</strong>
-                      <em>Descubra quantos doces pedir</em>
-                    </div>
-                  </div>
-                  <span class="pcl-div"><i class="fa-regular fa-heart"></i></span>
+                  <div class="pcl-top"><em>Descubra quantos doces pedir</em></div>
 
                   <div class="pcl-box">
                     <div class="pcl-lab"><span class="pcl-ic"><i class="fas fa-user"></i></span><label for="pcl-guests">Quantas pessoas?</label></div>
                     <div class="pcl-step">
-                      <button type="button" id="pcl-minus" aria-label="Menos pessoas"><i class="fas fa-minus"></i></button>
+                      <button type="button" id="pcl-minus" aria-label="Menos pessoas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></button>
                       <div class="pcl-num">
                         <input id="pcl-guests" type="number" inputmode="numeric" min="1" max="2000" value="30">
                         <span>pessoas</span>
                       </div>
-                      <button type="button" id="pcl-plus" aria-label="Mais pessoas"><i class="fas fa-plus"></i></button>
+                      <button type="button" id="pcl-plus" aria-label="Mais pessoas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></button>
                     </div>
                     <input id="pcl-range" type="range" min="1" max="200" step="1" value="30" aria-label="Ajustar número de convidados">
                   </div>
@@ -2279,9 +2270,9 @@ section,
                   <div class="pcl-box">
                     <div class="pcl-lab"><span class="pcl-ic"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg></span><span>Doces por pessoa</span></div>
                     <div class="pcl-chips" id="pcl-chips">
-                      <button type="button" data-per="3"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>3</b><small>brigadeiros</small></button>
-                      <button type="button" data-per="4" class="on"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>4</b><small>brigadeiros</small></button>
-                      <button type="button" data-per="5"><svg class="pcl-cup" viewBox="0 0 40 40" aria-hidden="true"><use href="#pcl-cup-sym"/></svg><b>5</b><small>brigadeiros</small></button>
+                      <button type="button" data-per="3"><b>3</b><small>brigadeiros</small></button>
+                      <button type="button" data-per="4" class="on"><b>4</b><small>brigadeiros</small></button>
+                      <button type="button" data-per="5"><b>5</b><small>brigadeiros</small></button>
                     </div>
                   </div>
 
@@ -2295,12 +2286,6 @@ section,
                     <div class="pcl-pill" id="pcl-combo"><i class="fas fa-box-open"></i><span id="pcl-combo-txt"></span></div>
                     <button type="button" class="pcl-go" id="pcl-go" hidden tabindex="-1" aria-hidden="true"><span id="pcl-go-txt">Usar no meu pedido</span><i class="fas fa-arrow-right"></i></button>
                   </div>
-                </div>
-
-                <div class="pcl-foot">
-                  <p>Mais do que doces,<br>levamos alegria para o seu dia!</p>
-                  <span class="pcl-fdiv"><i class="fa-regular fa-heart"></i></span>
-                  <i class="fa-regular fa-heart pcl-fheart"></i>
                 </div>
               </div>
             </div>
@@ -4768,23 +4753,17 @@ try {
 #ph-calc-view::-webkit-scrollbar{display:none}
 #ph-calc-view .pcl-scroll{position:relative;flex:0 0 auto;min-height:100%;display:flex;flex-direction:column;padding:0;background:linear-gradient(180deg,#FCF2F3 0%,#F9E8EC 100%)}
 #ph-calc-view .pcl-blob{position:absolute;top:0;right:0;width:66%;height:78px;background:#F4D9E0;border-radius:0 0 0 80% / 0 0 0 100%;opacity:.85;pointer-events:none}
-#ph-calc-view .pcl-body{position:relative;padding:20px 12px 8px}
+#ph-calc-view .pcl-body{position:relative;padding:20px 12px 16px}
 
-#ph-calc-view .pcl-head{position:relative;display:flex;align-items:center;justify-content:center;height:36px}
+#ph-calc-view .pcl-head{position:relative;display:flex;align-items:center;justify-content:center;height:62px}
 #ph-calc-view .pcl-menu{position:absolute;left:2px;top:10px;display:flex;flex-direction:column;gap:3px}
 #ph-calc-view .pcl-menu i{display:block;width:15px;height:2px;border-radius:2px;background:#A33A6A}
-#ph-calc-view .pcl-logo{display:block;height:32px;width:auto;max-width:120px;margin:0;object-fit:contain;mix-blend-mode:multiply;background:none;border-radius:0;box-shadow:none}
+#ph-calc-view .pcl-logo{display:block;height:60px;width:auto;max-width:170px;margin:0;object-fit:contain;mix-blend-mode:multiply;background:none;border-radius:0;box-shadow:none}
 #ph-calc-view .pcl-hico{position:absolute;right:0;top:5px;width:24px;height:20px;color:#A33A6A}
 
 #ph-calc-view .pcl-cup{width:14px;height:14px;display:block}
-#ph-calc-view .pcl-top{position:relative;display:flex;align-items:center;gap:4px;margin:2px 0 0;padding:5px 8px 5px 2px;text-align:left;border-radius:0}
-#ph-calc-view .pcl-top::before{content:"";position:absolute;left:24px;right:0;top:3px;bottom:3px;background:#F1CCD7;border-radius:6px 16px 8px 20px / 12px 8px 14px 10px;transform:rotate(-1.2deg)}
-#ph-calc-view .pcl-cup-t{position:relative;width:28px;height:28px;flex:0 0 28px;color:#8A2A55}
-#ph-calc-view .pcl-top-txt{position:relative;display:flex;flex-direction:column;min-width:0;white-space:nowrap}
-#ph-calc-view .pcl-top strong{display:block;font:700 17.5px/1 'Caveat','Segoe Script',cursive;font-style:normal;color:#7E2450;margin:0}
-#ph-calc-view .pcl-top em{display:block;margin-top:1px;font:600 11px/1.1 'Caveat','Segoe Script',cursive;font-style:normal;color:#7A3A55}
-#ph-calc-view .pcl-div{display:flex;align-items:center;gap:6px;margin:3px 26px 6px;color:#B5587F;font-size:8px}
-#ph-calc-view .pcl-div::before,#ph-calc-view .pcl-div::after{content:"";flex:1;height:1px;background:#B5587F;opacity:.55}
+#ph-calc-view .pcl-top{margin:0 0 10px;padding:0;text-align:center;border-radius:0}
+#ph-calc-view .pcl-top em{display:block;font:600 12.5px/1.1 'Caveat','Segoe Script',cursive;font-style:normal;color:#7A3A55}
 
 #ph-calc-view .pcl-box{margin:0 0 7px;padding:7px 8px 8px;border-radius:16px;background:rgba(255,248,249,.94);border:1px solid rgba(235,203,211,.7);box-shadow:0 3px 10px rgba(120,40,80,.07)}
 #ph-calc-view .pcl-lab{display:flex;align-items:center;gap:6px;margin:0 0 5px;font:700 9px/1 'Inter',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#6E1F44}
@@ -4793,20 +4772,24 @@ try {
 #ph-calc-view .pcl-lab i{color:#fff;font-size:8px}
 #ph-calc-view .pcl-ic .pcl-cup{width:12px;height:12px;color:#fff}
 
-#ph-calc-view .pcl-step{display:flex;align-items:center;gap:0;margin:0;padding:3px;border-radius:999px;background:#F6DEE4;border:1px solid #EBCBD3}
-#ph-calc-view .pcl-step button{width:26px;height:26px;flex:0 0 26px;border:0;border-radius:50%;background:linear-gradient(160deg,#C4698F,#A64A74);color:#fff;font-size:10px;cursor:pointer;box-shadow:0 3px 7px rgba(140,40,90,.3),inset 0 1px 1px rgba(255,255,255,.3);transition:transform .12s ease}
+#ph-calc-view .pcl-step{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0;padding:0;border:0;background:none}
+#ph-calc-view .pcl-step button{width:34px;height:34px;flex:0 0 34px;display:flex;align-items:center;justify-content:center;padding:0;border-radius:50%;border:1.5px solid #B5587F;background:transparent;color:#8E2A5A;box-shadow:none;cursor:pointer;transition:background .15s,color .15s,transform .12s}
+#ph-calc-view .pcl-step button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+#ph-calc-view #pcl-plus{background:#8E2A5A;border-color:#8E2A5A;color:#fff}
+#ph-calc-view #pcl-minus:hover{background:#F6DEE4}
+#ph-calc-view #pcl-plus:hover{background:#7E2450;border-color:#7E2450}
 #ph-calc-view .pcl-step button:active{transform:scale(.9)}
-#ph-calc-view .pcl-num{flex:1;min-width:0;margin:0 4px;padding:3px 4px 4px;border-radius:999px;background:#FFF9FA;border:0;display:flex;flex-direction:column;align-items:center}
+#ph-calc-view .pcl-num{flex:1;min-width:0;margin:0;padding:3px 4px 4px;border-radius:14px;background:#F8E8EC;border:0;display:flex;flex-direction:column;align-items:center}
 #ph-calc-view .pcl-num input{width:100%;min-width:0;border:0;background:none;text-align:center;font:700 22px/1.05 'Inter',sans-serif;color:#2B1220;outline:0;padding:0}
 #ph-calc-view .pcl-num span{margin:-1px 0 0;font:500 9px/1.2 'Inter',sans-serif;letter-spacing:0;text-transform:none;color:#4E2438}
 #ph-calc-view #pcl-range{display:none}
 
 #ph-calc-view .pcl-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 0;padding:0;background:none}
-#ph-calc-view .pcl-chips button{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 2px 5px;border:1px solid #EBCBD3;border-radius:12px;background:#F9E2E7;color:#2B1220;font:inherit;cursor:pointer;transform:none;box-shadow:none;transition:background .15s,color .15s}
+#ph-calc-view .pcl-chips button{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;padding:9px 2px 6px;border:1px solid #EBCBD3;border-radius:12px;background:#F9E2E7;color:#2B1220;font:inherit;cursor:pointer;transform:none;box-shadow:none;transition:background .15s,color .15s}
 #ph-calc-view .pcl-chips button .pcl-cup{width:12px;height:12px;color:#B5587F;margin-bottom:1px}
 #ph-calc-view .pcl-chips button b{font:600 15px/1 'Inter',sans-serif}
 #ph-calc-view .pcl-chips button small{font:500 8px/1.2 'Inter',sans-serif;color:#4E2438}
-#ph-calc-view .pcl-chips button.on{background:linear-gradient(160deg,#9C3768,#7E2450);border-color:#7E2450;color:#fff;box-shadow:0 5px 10px rgba(126,36,80,.3)}
+#ph-calc-view .pcl-chips button.on{background:#8E2A5A;border-color:#8E2A5A;color:#fff;box-shadow:none}
 #ph-calc-view .pcl-chips button.on small,#ph-calc-view .pcl-chips button.on .pcl-cup{color:#fff}
 #ph-calc-view .pcl-chips button.on::before{content:"\2665";position:absolute;top:-8px;left:50%;margin-left:-7px;width:14px;height:14px;border-radius:50%;background:#F6DCE3;color:#8E2A5A;font-size:8px;line-height:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 
@@ -4823,11 +4806,6 @@ try {
 #ph-calc-view .pcl-pill{display:none !important}
 #ph-calc-view .pcl-go{display:none !important}
 
-#ph-calc-view .pcl-foot{position:relative;margin-top:auto;padding:20px 16px 10px;text-align:center;color:#fff;background:linear-gradient(180deg,#9A3566,#7E2450);border-radius:60% 40% 0 0 / 26px 20px 0 0}
-#ph-calc-view .pcl-foot p{margin:0 24px 0 0;font:italic 600 11.5px/1.3 'Cormorant Garamond',serif;color:#fff}
-#ph-calc-view .pcl-fdiv{display:flex;align-items:center;gap:5px;margin:7px 30px 0 6px;font-size:7px;color:#fff;opacity:.85}
-#ph-calc-view .pcl-fdiv::before,#ph-calc-view .pcl-fdiv::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.55)}
-#ph-calc-view .pcl-fheart{position:absolute;right:12px;top:20px;font-size:20px;color:#fff;opacity:.92}
 </style>
 </body>
 </html>
