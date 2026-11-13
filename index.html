@@ -16,7 +16,7 @@
   --accent: #e0407a;
   --accent-fg: #ffffff;
   --gold: #e9a92b;
-  --veil: .66; /* quanto o fundo é coberto pela cor do tema: 0 mostra a imagem pura, 1 esconde */
+  --veil: .28; /* quanto o fundo é coberto pela cor do tema: 0 mostra a imagem pura, 1 esconde */
   --line: #d9cfe9;
   --font-display: "Sansita Swashed", "Palatino Linotype", Georgia, serif;
   --font-body: "Lora", Georgia, "Times New Roman", serif;
@@ -44,7 +44,9 @@ body { position: relative; isolation: isolate; }
 body::before { content: ""; position: fixed; inset: 0; z-index: -2; background: url("https://i.ibb.co/4wyP7cmL/564ab90b-0a35-4d2c-a67e-d601a3463b56.jpg") center / cover no-repeat; }
 body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: var(--bg); opacity: var(--veil); }
 .wrap { max-width: 1020px; margin: 0 auto; }
-header { text-align: center; margin-bottom: 24px; }
+header { text-align: center; margin-bottom: 20px; padding: 16px 12px; border-radius: 18px; background: var(--surface); background: color-mix(in srgb, var(--surface) 84%, transparent); }
+.us { margin: 0 auto 26px; max-width: 560px; border: 3px solid var(--gold); border-radius: 18px; overflow: hidden; background: var(--surface); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); }
+.us img { display: block; width: 100%; height: auto; max-height: 72vh; object-fit: contain; }
 h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin: 0; text-wrap: balance; }
 h1 span { color: var(--accent); }
 header::after { content: "\2726  \2726  \2726"; display: block; margin-top: 10px; color: var(--gold); letter-spacing: .5em; font-size: .8rem; }
@@ -135,6 +137,8 @@ select, textarea, input[type="date"] { font: inherit; color: var(--fg); backgrou
     <h1>Roleta de <span>Filmes</span></h1>
     <p class="sub" id="sub">Noite de cinema a dois. Gire e veja o que o destino escolheu.</p>
   </header>
+
+  <figure class="us"><img src="https://i.ibb.co/4wyP7cmL/564ab90b-0a35-4d2c-a67e-d601a3463b56.jpg" alt="Nós dois" referrerpolicy="no-referrer"></figure>
 
   <div class="stage">
     <div>
